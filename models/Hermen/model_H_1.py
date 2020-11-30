@@ -1,6 +1,6 @@
 import numpy as np
 
-model_1 = [
+model_H_1 = [
     {'type': 'input',  # Type of node (input, output, variable, parameter)
      'unit': 'kg/capita/yr',  # Unit
      'id': 'FDKG2017_i',  # Unique code to define the node
