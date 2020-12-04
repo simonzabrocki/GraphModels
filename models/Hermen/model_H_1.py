@@ -82,8 +82,6 @@ model_H_1 = [
      'in': ['FDTi_animal'],  # Specify what comes into the nod
      'computation': {'name': 'Selection animal-based food groups',  # When the node is compulationnal specify the computation like this
                      'formula': lambda X: np.array([X['FDTi_animal'][0], X['FDTi_animal'][2], X['FDTi_animal'][3], X['FDTi_animal'][7], X['FDTi_animal'][8], (X['FDTi_animal'][1] + X['FDTi_animal'][4])])}  # selects the food groups that are animal based
-
-
      },
     {'type': 'input',  # Type of node (input, output, variable, parameter)
      'unit': '%',  # Unit
