@@ -132,10 +132,12 @@ class GraphModel(nx.DiGraph):
         '''
         X = X.copy()
         for node_id in self.node_ordering:
+            print(node_id)  # for debugging
             node = self.nodes[node_id]
             result = self.compute_node(node, X)
             out = node['out']
             X[out] = result
+            print(result)
         return X
 
     def draw(self, draw_properties=draw_properties):

@@ -30,7 +30,171 @@
         "id": "AFDi2017",
         "name": "total animal feed demand",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "1000 t"
+        "unit": "1000 t",
+        "year": 2017
+    },
+    "ANP2017i": {
+        "data": {
+            "Eggs, hen, in shell": 202155.0,
+            "Meat, Poultry": 1745381.0,
+            "Meat, ass": NaN,
+            "Meat, camel": NaN,
+            "Meat, cattle": 8028967.0,
+            "Meat, game": NaN,
+            "Meat, goat": 2280869.0,
+            "Meat, horse": 634289.0,
+            "Meat, mule": NaN,
+            "Meat, other camelids": NaN,
+            "Meat, other rodents": NaN,
+            "Meat, other*": NaN,
+            "Meat, pig": 17465005.0,
+            "Meat, rabbit": 4464.0,
+            "Meat, sheep": 3026005.0,
+            "Milk, Total": 4784329.0
+        },
+        "id": "Ayi",
+        "name": "animals needed for production",
+        "source": "http://www.fao.org/faostat/en/#data/QL",
+        "unit": "heads",
+        "year": 2017
+    },
+    "AYi2017": {
+        "data": {
+            "Eggs, hen, in shell": 137083.0,
+            "Meat, Poultry": 18616.0,
+            "Meat, ass": NaN,
+            "Meat, camel": NaN,
+            "Meat, cattle": 2400.0,
+            "Meat, game": NaN,
+            "Meat, goat": 174.0,
+            "Meat, horse": 1321.0,
+            "Meat, mule": NaN,
+            "Meat, other camelids": NaN,
+            "Meat, other rodents": NaN,
+            "Meat, other*": NaN,
+            "Meat, pig": 826.0,
+            "Meat, rabbit": 10000.0,
+            "Meat, sheep": 204.0,
+            "Milk, Total": 25056.0
+        },
+        "id": "Ayi",
+        "name": "Yield/Carcass Weight",
+        "source": "http://www.fao.org/faostat/en/#data/QL",
+        "unit": "kg/animal",
+        "year": 2017
+    },
+    "CSF": {
+        "data": {
+            "value": 0
+        },
+        "id": "CSF",
+        "name": "Climate smart forestry practices",
+        "source": NaN,
+        "unit": "m3/ha",
+        "year": 2017
+    },
+    "CYi": {
+        "data": {
+            "Cereals, Total": 37997,
+            "Fibre Crops Primary": 10632,
+            "Fruit Primary": 153174,
+            "Oilcrops": 40377,
+            "Pulses, Total": 8598,
+            "Roots and Tubers, Total": 285105,
+            "Sugar Crops Primary": 737725,
+            "Treenuts, Total": 17997,
+            "Vegetables Primary": 220107
+        },
+        "id": "Cyi",
+        "name": "crop yields",
+        "source": NaN,
+        "unit": "hg/ha",
+        "year": 2017
+    },
+    "EECH4": {
+        "data": {
+            "Cattle": 1959.6587,
+            "Mules, Horse and Asses***": 180.5396,
+            "Poultry Birds*": 0.0,
+            "Sheep and Goats": 88.1381,
+            "Swine": 17.2103
+        },
+        "id": "EECH4",
+        "name": "enteric CH4",
+        "source": NaN,
+        "unit": "ggCH4",
+        "year": 2017
+    },
+    "E_ASi2017": {
+        "data": {
+            "Cattle": 2.2382,
+            "Mules, Horse and Asses***": 0.0892,
+            "Poultry Birds*": 3.2536,
+            "Sheep and Goats": 0.0293,
+            "Swine": 5.3243
+        },
+        "id": "E_ASi2017",
+        "name": "N2O emissions applied to soil",
+        "source": NaN,
+        "unit": "ggN2O",
+        "year": 2017
+    },
+    "E_Li2017": {
+        "data": {
+            "Cattle": 50.4466,
+            "Mules, Horse and Asses***": 8.831,
+            "Poultry Birds*": 4.0094,
+            "Sheep and Goats": 5.2854,
+            "Swine": 0.0
+        },
+        "id": "E_Li2017",
+        "name": "N2O emissions left on pasture",
+        "source": NaN,
+        "unit": "ggN2O",
+        "year": 2017
+    },
+    "E_TCH4i2017": {
+        "data": {
+            "Cattle": 34.2779,
+            "Mules, Horse and Asses***": 16.3761,
+            "Poultry Birds*": 11.3657,
+            "Sheep and Goats": 2.8186,
+            "Swine": 17.2103
+        },
+        "id": "E_TCH4i",
+        "name": "CH4 Emissions manure treated",
+        "source": NaN,
+        "unit": "ggCH4",
+        "year": 2017
+    },
+    "E_Ti2017": {
+        "data": {
+            "Cattle": 0.2667,
+            "Mules, Horse and Asses***": 0.0313,
+            "Poultry Birds*": 1.1416,
+            "Sheep and Goats": 0.0103,
+            "Swine": 4.7943
+        },
+        "id": "E_Ti2017",
+        "name": "N2O emissions manure treated",
+        "source": NaN,
+        "unit": "ggN2O",
+        "year": 2017
+    },
+    "FCRi": {
+        "data": {
+            "Beef": 25.0,
+            "Eggs": 2.3,
+            "Other meat*": 15.0,
+            "Pork": 6.4,
+            "Poultry": 3.3,
+            "Whole Milk": 0.7
+        },
+        "id": "FCRi",
+        "name": "feed conversion ratio ",
+        "source": "http://www.fao.org/faostat/en/#data/FBS",
+        "unit": "kg DM feed/ kg EW",
+        "year": 2017
     },
     "FDKC2017_i": {
         "data": {
@@ -63,7 +227,8 @@
         "id": "FDKC2017_i",
         "name": "food supply quantity",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "kcal/capita/day"
+        "unit": "kcal/capita/day",
+        "year": 2017
     },
     "FDKG2017_i": {
         "data": {
@@ -96,7 +261,8 @@
         "id": "FDKG2017_i",
         "name": "food supply ",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "kg/capita/year"
+        "unit": "kg/capita/year",
+        "year": 2017
     },
     "FDi2017": {
         "data": {
@@ -129,7 +295,18 @@
         "id": "FDi2017",
         "name": "feed demand",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "1000 t"
+        "unit": "1000 t",
+        "year": 2017
+    },
+    "FE_2017": {
+        "data": {
+            "value": 8.1765
+        },
+        "id": "FE_2017",
+        "name": "Fertilizer N2O emissions",
+        "source": NaN,
+        "unit": "gg N2O",
+        "year": 2017
     },
     "FEi": {
         "data": {
@@ -162,7 +339,8 @@
         "id": "FEi",
         "name": "food exports",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "1000 t"
+        "unit": "1000 t",
+        "year": 2017
     },
     "FIi": {
         "data": {
@@ -195,7 +373,8 @@
         "id": "FIi",
         "name": "food imports",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "1000 t"
+        "unit": "1000 t",
+        "year": 2017
     },
     "FLO2017i": {
         "data": {
@@ -228,7 +407,18 @@
         "id": "FLO2017i",
         "name": "food losses",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "1000 t"
+        "unit": "1000 t",
+        "year": 2017
+    },
+    "FNO2017": {
+        "data": {
+            "value": 54657
+        },
+        "id": "FNO2017",
+        "name": "Total fodder nitrogen output",
+        "source": NaN,
+        "unit": "t N",
+        "year": 2017
     },
     "FPi": {
         "data": {
@@ -261,7 +451,18 @@
         "id": "FPi",
         "name": "production",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "1000 t"
+        "unit": "1000 t",
+        "year": 2017
+    },
+    "FU2017": {
+        "data": {
+            "value": 392698000
+        },
+        "id": "FU2017",
+        "name": "Total fertilizer use",
+        "source": NaN,
+        "unit": "t",
+        "year": 2017
     },
     "FWCRi": {
         "data": {
@@ -294,7 +495,8 @@
         "id": "FWCRi",
         "name": "waste reduction policy consumption",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "kcal/capita/day"
+        "unit": "kcal/capita/day",
+        "year": 2017
     },
     "FWPPi": {
         "data": {
@@ -327,7 +529,78 @@
         "id": "FWPPi",
         "name": "food waste reduction policy",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "%"
+        "unit": "%",
+        "year": 2017
+    },
+    "GWPCH4": {
+        "data": {
+            "value": 21
+        },
+        "id": "GWPCH4",
+        "name": "GWP conversion CO2eq",
+        "source": NaN,
+        "unit": "CH4/CO2",
+        "year": 2017
+    },
+    "GWPN2O": {
+        "data": {
+            "value": 310
+        },
+        "id": "GWPN2O",
+        "name": "GWP conversion CO2eq",
+        "source": NaN,
+        "unit": "N2O/CO2",
+        "year": 2017
+    },
+    "HR": {
+        "data": {
+            "value": 76.2
+        },
+        "id": "HR",
+        "name": "Harvest rate",
+        "source": NaN,
+        "unit": "%",
+        "year": 2017
+    },
+    "IN_O": {
+        "data": {
+            "value": 85978000
+        },
+        "id": "IN_O",
+        "name": "Other N Inputs",
+        "source": NaN,
+        "unit": "kgN",
+        "year": 2017
+    },
+    "LU2017i": {
+        "data": {
+            "Agricultural land": 106964.0,
+            "Agriculture": 106964.0,
+            "Arable land": 23905.0,
+            "Coastal waters": 0.0,
+            "Country area": 196437.5,
+            "Cropland": 26574.0,
+            "Exclusive Economic Zone (EEZ)": 0.0,
+            "Forest land": 66075.38,
+            "Inland waters": 2043.0,
+            "Land area": 194395.0,
+            "Land under perm. meadows and pastures": 80390.0,
+            "Land under permanent crops": 2669.0,
+            "Land under protective cover": 0.0,
+            "Land under temp. meadows and pastures": 0.0,
+            "Land under temporary crops": 0.0,
+            "Land with temporary fallow": 5080.0,
+            "Naturally regenerating forest": 65984.91,
+            "Other land": 21355.62,
+            "Perm. meadows & pastures - Cultivated": 2538.0,
+            "Perm. meadows & pastures - Nat. growing": 77852.0,
+            "Planted Forest": 90.47
+        },
+        "id": "LU2017i",
+        "name": "land use",
+        "source": NaN,
+        "unit": "1000 ha",
+        "year": 2017
     },
     "NFDi": {
         "data": {
@@ -360,7 +633,48 @@
         "id": "NFDi",
         "name": "non-food demand",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "1000 t"
+        "unit": "1000 t",
+        "year": 2017
+    },
+    "NFI": {
+        "data": {
+            "value": 5.7
+        },
+        "id": "NFI",
+        "name": "Net natural forest increment rate",
+        "source": NaN,
+        "unit": "m3/ha",
+        "year": 2017
+    },
+    "OEi": {
+        "data": {
+            "value": 1710.1189
+        },
+        "id": "Oei",
+        "name": "other emissions",
+        "source": NaN,
+        "unit": "gg CO2eq",
+        "year": 2017
+    },
+    "OUT_O": {
+        "data": {
+            "value": 8417000
+        },
+        "id": "OUT_O",
+        "name": "other output",
+        "source": NaN,
+        "unit": "kgN",
+        "year": 2017
+    },
+    "P": {
+        "data": {
+            "NaN": NaN
+        },
+        "id": "P",
+        "name": "Total population",
+        "source": NaN,
+        "unit": "capita",
+        "year": 2017
     },
     "PDi": {
         "data": {
@@ -393,7 +707,8 @@
         "id": "PDi",
         "name": "processed demand",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "1000 t"
+        "unit": "1000 t",
+        "year": 2017
     },
     "RDi": {
         "data": {
@@ -426,7 +741,8 @@
         "id": "RDi",
         "name": "residual demand",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "1000 t"
+        "unit": "1000 t",
+        "year": 2017
     },
     "SDi": {
         "data": {
@@ -459,7 +775,8 @@
         "id": "SDi",
         "name": "seed demand",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "1000 t"
+        "unit": "1000 t",
+        "year": 2017
     },
     "SVi": {
         "data": {
@@ -492,6 +809,133 @@
         "id": "SVi",
         "name": "stock variation",
         "source": "http://www.fao.org/faostat/en/#data/FBS",
-        "unit": "1000 t"
+        "unit": "1000 t",
+        "year": 2017
+    },
+    "TAHi2017": {
+        "data": {
+            "Asses": 3282872.0,
+            "Camelids, other\t": NaN,
+            "Camels": NaN,
+            "Cattle, Dairy": 2506130.0,
+            "Cattle, Non-Dairy": 31771738.0,
+            "Goats": 8725172.0,
+            "Horses": 6380140.0,
+            "Mules": 3286838.0,
+            "Pigs": 17210269.0,
+            "Poultry Birds": 568284.0,
+            "Rabbits and hares": 1401.0,
+            "Rodents, other": NaN,
+            "Sheep": 8902451.0
+        },
+        "id": "TAHi2017",
+        "name": "total animals",
+        "source": "http://www.fao.org/faostat/en/#data/GE",
+        "unit": "heads",
+        "year": 2017
+    },
+    "TCD2017": {
+        "data": {
+            "value": 0
+        },
+        "id": "TCD2017",
+        "name": "Total cropland demand",
+        "source": NaN,
+        "unit": "1ooo ha",
+        "year": 2017
+    },
+    "TCL2017i": {
+        "data": {
+            "Cereals, Total": 9865991,
+            "Fibre Crops Primary": 232209,
+            "Fruit Primary": 1445862,
+            "Oilcrops": 922606,
+            "Pulses, Total": 1763465,
+            "Roots and Tubers, Total": 72372,
+            "Sugar Crops Primary": 772048,
+            "Treenuts, Total": 154741,
+            "Vegetables Primary": 704758
+        },
+        "id": "TCL2017i",
+        "name": "land used for crops",
+        "source": NaN,
+        "unit": "ha",
+        "year": 2017
+    },
+    "TMPi2017": {
+        "data": {
+            "Cattle": 1448945534.0,
+            "Mules, Horse and Asses***": 398348730.6,
+            "Poultry Birds*": 250507286.8,
+            "Sheep and Goats": 237340835.3,
+            "Swine": 258204976.4
+        },
+        "id": "TMPi2017",
+        "name": "Vector manure production",
+        "source": NaN,
+        "unit": "kgN",
+        "year": 2017
+    },
+    "TM_AS2017i": {
+        "data": {
+            "Cattle": 99950613.54,
+            "Mules, Horse and Asses***": 3983487.306,
+            "Poultry Birds*": 145294226.3,
+            "Sheep and Goats": 1308906.678,
+            "Swine": 237769713.3
+        },
+        "id": "TM_AS2017i",
+        "name": "Total manure applied to soil",
+        "source": NaN,
+        "unit": "kgN",
+        "year": 2017
+    },
+    "TM_LP2017i": {
+        "data": {
+            "Cattle": 1323809437.0,
+            "Mules, Horse and Asses***": 141963089.6,
+            "Poultry Birds*": 105213060.4,
+            "Sheep and Goats": 236031928.7,
+            "Swine": 0.0
+        },
+        "id": "TM_LP2017i",
+        "name": "Total manure left on pasture",
+        "source": NaN,
+        "unit": "kgN",
+        "year": 2017
+    },
+    "TM_T2017i": {
+        "data": {
+            "Cattle": 125136097.3,
+            "Mules, Horse and Asses***": 3983487.306,
+            "Poultry Birds*": 145294226.3,
+            "Sheep and Goats": 1308906.678,
+            "Swine": 258204976.4
+        },
+        "id": "TM_T2017i",
+        "name": "Total manure treated",
+        "source": NaN,
+        "unit": "kgN",
+        "year": 2017
+    },
+    "WC_CH4": {
+        "data": {
+            "value": 1.335847988
+        },
+        "id": "WC_CH4",
+        "name": "Conversion CH4",
+        "source": NaN,
+        "unit": "kg CH4-C to kg CH4",
+        "year": 2017
+    },
+    "WC_N2O": {
+        "data": {
+            "value": 1.571033862
+        },
+        "id": "WC_N2O",
+        "name": "Conversion N2O",
+        "source": NaN,
+        "unit": "kg N2O-N to kg N2O",
+        "year": 2017
     }
 }
