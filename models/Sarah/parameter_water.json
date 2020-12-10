@@ -33,7 +33,7 @@
         "data": {
             "Value": 27400000
         },
-        "id": "ASTC",
+        "id": "ASCAPEX",
         "name": "Activated Sludge Capital Cost",
         "source": "Ke et al. 2016",
         "unit": "$",
@@ -53,7 +53,7 @@
         "data": {
             "Value": 0.35
         },
-        "id": "ASTC",
+        "id": "ASOPEX",
         "name": "Activated Sludge Operational Cost",
         "source": "Ke et al. 2016",
         "unit": "$/ton",
@@ -61,7 +61,7 @@
     },
     "ASTC": {
         "data": {
-            "Value": 3000
+            "Value": 30000
         },
         "id": "ASTC",
         "name": "Activated Sludge Water Treatment Capacity",

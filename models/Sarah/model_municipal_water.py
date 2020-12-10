@@ -16,15 +16,15 @@ MunicipalWaterNodes = [
      'id': 'MWU'},
 
     {'type': 'input',
-        'name': 'Water Supply Efficiency',  # can also be a parameter if we want to keep constant
-        'unit': '',
-        'id': 'WSE'},
+     'name': 'Water Supply Efficiency',  # can also be a parameter if we want to keep constant
+     'unit': '',
+     'id': 'WSE'},
 
     {'type': 'variable',
-        'name': 'Municipal Water Consumption',
-        'unit': 'm3/year',
-        'in': ['MWU', 'WSE'],
-        'computation': {'name': 'MWU * WSE', 'formula': lambda X: X['MWU'] * X['WSE']}, 'id': 'MWC'},
+     'name': 'Municipal Water Consumption',
+     'unit': 'm3/year',
+     'in': ['MWU', 'WSE'],
+     'computation': {'name': 'MWU * WSE', 'formula': lambda X: X['MWU'] * X['WSE']}, 'id': 'MWC'},
 
     # Identifying proportion of urban population with sanitation
     {'type': 'parameter',
@@ -40,9 +40,10 @@ MunicipalWaterNodes = [
     {'type': 'variable',
      # current only consider wastewater from urban areas, could include rural by using same methodology above
      'name': ' Urban Wastewater Collected',
-        'unit': 'm3',
-        'in': ['MWC', 'Upop', 'UAB1'],
-     'computation': {'name': '((MWC * Upop * UAB1)', 'formula': lambda X: X['MWC'] * X['Upop'] * X['UAB1']}, 'id': 'UW'},
+     'unit': 'm3',
+     'in': ['MWC', 'Upop', 'UAB1'],
+     'id': 'UW',
+     'computation': {'name': '((MWC * Upop * UAB1)', 'formula': lambda X: X['MWC'] * X['Upop'] * X['UAB1']}},
 
     # Wastewater treatment scenario
     {'type': 'input',
@@ -61,7 +62,8 @@ MunicipalWaterNodes = [
      'name': 'AS Treated Wastewater',
      'unit': 'kilotons',
      'in': ['ASF', 'ASTC', 'ASE'],
-     'computation': {'name': 'Facilities * ASTC * Sewage Efficiency ', 'formula': lambda X: X['ASF'] * X['ASTC'] * X['ASE']}, 'id': 'ASTW'},
+     'id': 'ASTW',
+     'computation': {'name': 'Facilities * ASTC * Sewage Efficiency ', 'formula': lambda X: X['ASF'] * X['ASTC'] * X['ASE']}},
 
     {'type': 'input',
      'name': 'Number of Biomembrane Treatment Facilities',
@@ -79,13 +81,15 @@ MunicipalWaterNodes = [
      'name': 'BM Treated Wastewater',
      'unit': 'kilotons',
      'in': ['BF', 'BMTC', 'BME'],
-     'computation': {'name': 'Facilities * BMTC * Sewage Efficiency', 'formula': lambda X: X['BF'] * X['BMTC'] * X['BME']}, 'id': 'BMTW'},
+     'id': 'BMTW',
+     'computation': {'name': 'Facilities * BMTC * Sewage Efficiency', 'formula': lambda X: X['BF'] * X['BMTC'] * X['BME']}},
 
     {'type': 'variable',
      'name': 'Total Treated Capacity',
      'unit': 'kilotons',
      'in': ['ASTW', 'BMTW'],
-     'computation': {'name': 'ASWT + BMTW', 'formula': lambda X: X['ASTW'] + X['BMTW']}, 'id': 'TTC'},
+     'id': 'TTC',
+     'computation': {'name': 'ASWT + BMTW', 'formula': lambda X: X['ASTW'] + X['BMTW']}},
 
 
     # converting from kiloton -> kg -> m3 - this will be the input for the Total Treated Wastewater in the Freshwater Availability part of the model
@@ -93,7 +97,8 @@ MunicipalWaterNodes = [
      'name': 'Total Treated Wastewater',
      'unit': 'm3/year',
      'in': ['TTC'],
-     'computation': {'name': '((TTC)*1000000)/1000', 'formula': lambda X: X['TTC'] * 1000000 / 1000}, 'id': 'TTW'},
+     'id': 'TTW',
+     'computation': {'name': '((TTC)*1000000)/1000', 'formula': lambda X: X['TTC'] * 1000000 / 1000}},
 
     # amount of investment required per technology
     {'type': 'parameter',
@@ -110,7 +115,8 @@ MunicipalWaterNodes = [
      'name': 'Potential AS Investment Cost',
      'unit': '$',
      'in': ['ASCAPEX', 'ASOPEX', 'ASTW'],
-     'computation': {'name': 'CAPEX + (OPEX*1000)*ASTW', 'formula': lambda X: X['ASCAPEX'] + X['ASOPEX'] * 1000 * X['ASTW']}, 'id': 'ASIC'},
+     'id': 'ASIC',
+     'computation': {'name': 'CAPEX + (OPEX*1000)*ASTW', 'formula': lambda X: X['ASCAPEX'] + X['ASOPEX'] * 1000 * X['ASTW']}},
 
     {'type': 'parameter',
         'name': 'BM Construction Cost',
@@ -124,20 +130,23 @@ MunicipalWaterNodes = [
      'name': 'Potential BM Investment Cost',
      'unit': '$',
      'in': ['BMCAPEX', 'BMOPEX', 'BMTW'],
-     'computation': {'name': 'CAPEX + (OPEX*1000)*BMTW', 'formula': lambda X: X['BMCAPEX'] + X['BMOPEX'] * 1000 * X['BMTW']}, 'id': 'BMIC'},
+     'id': 'BMIC',
+     'computation': {'name': 'CAPEX + (OPEX*1000)*BMTW', 'formula': lambda X: X['BMCAPEX'] + X['BMOPEX'] * 1000 * X['BMTW']}},
 
     {'type': 'output',
      'name': 'Potential Investment Cost',
      'unit': '$',
      'in': ['ASIC', 'BMIC'],
-     'computation': {'name': 'ASIC + BMIC', 'formula': lambda X: X['ASIC'] + X['BMIC']}, 'id': 'PIC'},
+     'id': 'PIC',
+     'computation': {'name': 'ASIC + BMIC', 'formula': lambda X: X['ASIC'] + X['BMIC']}},
 
     # amount of untreated wastewater and link to DALY
     {'type': 'variable',
      'name': 'Untreated Wastewater',
      'unit': 'kilotons',
      'in': ['TTW', 'UW'],
-     'computation': {'name': 'UW - TWW', 'formula': lambda X: X['UW'] - X['TTW']}, 'id': 'UTW'},
+     'id': 'UTW',
+     'computation': {'name': 'UW - TWW', 'formula': lambda X: X['UW'] - X['TTW']}},
 
     # for further discussion
     # how untreated wastewater increases the burden of disease -> social cost of pollution

@@ -1,6 +1,8 @@
 import networkx as nx
 import graphviz
 import logging
+from functools import partial, reduce
+
 
 logging.basicConfig(filename='example.log', level=logging.DEBUG)
 
@@ -46,6 +48,7 @@ class GraphModel(nx.DiGraph):
         super(GraphModel, self).__init__()
         self.make_graph(graph_specifications)
         self.node_ordering = self.get_computational_nodes_ordering()
+        self.model_function = model_function(self)
 
     def checks(self, nodes, edges):
         '''Checks if the graph is well defined.
@@ -97,19 +100,6 @@ class GraphModel(nx.DiGraph):
         ordering = [node for node in nx.topological_sort(self) if '_comp' in node]
         return ordering
 
-    def compute_node(self, node, X):
-        '''Compute the value for a node.
-
-        Args:
-            node(node): A computationnal node of the graph.
-            X(dict): The values of inputs, parameters, variables and outputs of the graph.
-
-        Returns:
-            The computation specified in the node using values in X.
-        '''
-        computation = node['formula']
-        return computation(X)
-
     def run(self, inputs, parameters):
         '''Run the GraphModel given inputs and parameters.
 
@@ -122,29 +112,6 @@ class GraphModel(nx.DiGraph):
         '''
         X = self.merge_inputs_parameters(inputs, parameters)
         X = self.model_function(X)
-        return X
-
-    def model_function(self, X):
-        '''The function computed by the model.
-
-        Args:
-            X(dict): The values of inputs, parameters, variables and outputs of the graph.
-        Returns:
-            X(dict): The values of inputs, parameters, variables and outputs of the graph.
-        '''
-        X = X.copy()
-        for node_id in self.node_ordering:
-            logging.debug(node_id)
-            #print(node_id)  # for debugging
-            node = self.nodes[node_id]
-            result = self.compute_node(node, X)
-            out = node['out']
-            X[out] = result
-            logging.debug(result)
-            logging.debug('-'*100)
-
-            #print(result)
-            #print()
         return X
 
     def draw(self, draw_properties=draw_properties):
@@ -356,3 +323,20 @@ class GraphParser():
                 edges += comp_edges
 
         return nodes, edges
+
+
+def compose(*functions):
+    return reduce(lambda f, g: lambda x: f(g(X=x)), functions, lambda x: x)
+
+
+def node_function(node, X):
+    X = X.copy()
+    function, out_node = node['formula'], node['out']
+    X[out_node] = function(X)
+    return X
+
+
+def model_function(G):
+    '''The function computed by the model'''
+    functions_list = [partial(node_function, node=G.nodes[node_id]) for node_id in G.node_ordering[::-1]]
+    return compose(*functions_list)
