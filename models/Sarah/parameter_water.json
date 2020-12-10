@@ -1,0 +1,340 @@
+{
+    "AGVA": {
+        "data": {
+            "Value": 5374740677.76024
+        },
+        "id": "AGVA",
+        "name": "Agricultural Value Added",
+        "source": "World Bank",
+        "unit": "$",
+        "year": 2017
+    },
+    "AIR": {
+        "data": {
+            "Value": 101400
+        },
+        "id": "AIR",
+        "name": "Area actually irrigated",
+        "source": "FAO",
+        "unit": "ha",
+        "year": 2017
+    },
+    "ARice": {
+        "data": {
+            "Value": 0
+        },
+        "id": "Arice",
+        "name": "Area of Rice Irrigation (Harvested Irrigated Temporary Crop Area: Rice)",
+        "source": "FAO",
+        "unit": "ha",
+        "year": 2017
+    },
+    "ASCAPEX": {
+        "data": {
+            "Value": 27400000
+        },
+        "id": "ASTC",
+        "name": "Activated Sludge Capital Cost",
+        "source": "Ke et al. 2016",
+        "unit": "$",
+        "year": NaN
+    },
+    "ASE": {
+        "data": {
+            "Value": 0.7333
+        },
+        "id": "ASE",
+        "name": "Activated Sludge Treatment Efficiency",
+        "source": "Ke et al. 2016",
+        "unit": "dimensionless",
+        "year": NaN
+    },
+    "ASOPEX": {
+        "data": {
+            "Value": 0.35
+        },
+        "id": "ASTC",
+        "name": "Activated Sludge Operational Cost",
+        "source": "Ke et al. 2016",
+        "unit": "$/ton",
+        "year": NaN
+    },
+    "ASTC": {
+        "data": {
+            "Value": 3000
+        },
+        "id": "ASTC",
+        "name": "Activated Sludge Water Treatment Capacity",
+        "source": "Ke et al. 2016",
+        "unit": "tonnes",
+        "year": NaN
+    },
+    "BMCAPEX": {
+        "data": {
+            "Value": 10700000
+        },
+        "id": "BMOPEX",
+        "name": "Bio-membrane Construction Cost",
+        "source": "Ke et al. 2016",
+        "unit": "$",
+        "year": NaN
+    },
+    "BME": {
+        "data": {
+            "Value": 0.85
+        },
+        "id": "BSE",
+        "name": "Ceramic Bio-Membrane Treatment Efficiency",
+        "source": "Ke et al. 2016",
+        "unit": "dimensionless",
+        "year": NaN
+    },
+    "BMOPEX": {
+        "data": {
+            "Value": 0.58
+        },
+        "id": "BMOPEX",
+        "name": "Bio-membrane Operational Cost",
+        "source": "Ke et al. 2016",
+        "unit": "$/ton",
+        "year": NaN
+    },
+    "BMTC": {
+        "data": {
+            "Value": 10950
+        },
+        "id": "BMTC",
+        "name": "Ceramic Bio-Membrane Treatment Efficiency",
+        "source": "Ke et al. 2016",
+        "unit": "tonnes",
+        "year": NaN
+    },
+    "CI": {
+        "data": {
+            "Value": 1
+        },
+        "id": "CI",
+        "name": "Cropping Intensity",
+        "source": "FAO",
+        "unit": "%",
+        "year": 2017
+    },
+    "DW": {
+        "data": {
+            "Value": 200000
+        },
+        "id": "DW",
+        "name": "Desalinated Water",
+        "source": "FAO AQUASTAT",
+        "unit": "m3/year",
+        "year": 2017
+    },
+    "EFR": {
+        "data": {
+            "Value": 46100000000
+        },
+        "id": "EFR",
+        "name": "Environmental Flow Requirement",
+        "source": "FAO AQUASTAT",
+        "unit": "m3/year",
+        "year": 2017
+    },
+    "ERWR": {
+        "data": {
+            "Value": 98000000000
+        },
+        "id": "ERWR",
+        "name": "External Renewable Water Resources",
+        "source": "FAO AQUASTAT",
+        "unit": "m3/year",
+        "year": 2017
+    },
+    "ETa": {
+        "data": {
+            "Value": 445
+        },
+        "id": "Eta",
+        "name": "Actual Evapotranspiration",
+        "source": "USGS ",
+        "unit": "mm.year",
+        "year": 2017
+    },
+    "ETo": {
+        "data": {
+            "Value": 835
+        },
+        "id": "ETo",
+        "name": "Yearly Reference Evapotranspiration (Global 10 arc minute)",
+        "source": "FAO",
+        "unit": "mm/year",
+        "year": "1961-1990"
+    },
+    "GDPC": {
+        "data": {
+            "Value": 14457.61
+        },
+        "id": "GDPC",
+        "name": "Gross Domestic Product per capita",
+        "source": "World Bank",
+        "unit": "US$ per person",
+        "year": 2017
+    },
+    "GW": {
+        "data": {
+            "Value": 6000000000
+        },
+        "id": "GW",
+        "name": "Groundwater (produced internally)",
+        "source": "FAO AQUASTAT",
+        "unit": "m3/year",
+        "year": 2017
+    },
+    "IGVA": {
+        "data": {
+            "Value": 36229461921.5353
+        },
+        "id": "IGVA",
+        "name": "Industrial Gross Vaue Added",
+        "source": "World Bank",
+        "unit": "$",
+        "year": 2017
+    },
+    "IWU": {
+        "data": {
+            "Value": 3358000000
+        },
+        "id": "IWU",
+        "name": "Industrial Water Withdrawal",
+        "source": "FAO AQUASTAT",
+        "unit": "m3/year",
+        "year": 2017
+    },
+    "KC": {
+        "data": {
+            "Fruits": 0.767266666666667,
+            "Maize ": 1.2,
+            "Pasture permanent": 0.625,
+            "Potatoes": 0.952,
+            "Pulses": 0.634,
+            "Rapeseed": 0.533333333333333,
+            "Sugar beet": 0.751666666666667,
+            "Sunflower": 0.35,
+            "Vegetables ": 0.85
+        },
+        "id": "KC",
+        "name": "Crop Coefficiencts",
+        "source": "FAO",
+        "unit": "-",
+        "year": "-"
+    },
+    "LWU": {
+        "data": {
+            "Value": 0
+        },
+        "id": "LWU",
+        "name": "Livestock Water Use",
+        "source": NaN,
+        "unit": "m3/year",
+        "year": 2017
+    },
+    "Overlap": {
+        "data": {
+            "Value": 6000000000
+        },
+        "id": "Overlap",
+        "name": "Overlap between surface water and groundwater",
+        "source": "FAO AQUASTAT",
+        "unit": "m3/year",
+        "year": 2017
+    },
+    "P": {
+        "data": {
+            "Value": 1.5
+        },
+        "id": "P",
+        "name": "Water Price",
+        "source": "IBNET",
+        "unit": "$US/15m3",
+        "year": 2017
+    },
+    "Pop": {
+        "data": {
+            "Value": 9787966
+        },
+        "id": "Pop",
+        "name": "Population",
+        "source": "World Bank",
+        "unit": "persons",
+        "year": 2017
+    },
+    "SGVA": {
+        "data": {
+            "Value": 77210620672.9018
+        },
+        "id": "SGVA",
+        "name": "Service Sector Gross Value Added ",
+        "source": "World Bank",
+        "unit": "$",
+        "year": 2017
+    },
+    "SW": {
+        "data": {
+            "Value": 6000000000
+        },
+        "id": "SW",
+        "name": "Surface Water (produced internally)",
+        "source": "FAO",
+        "unit": "m3/year",
+        "year": 2017
+    },
+    "TC": {
+        "data": {
+            "Value": 4500000
+        },
+        "id": "TC",
+        "name": "Total Cultivated Area ",
+        "source": "FAO",
+        "unit": "ha",
+        "year": 2016
+    },
+    "TW": {
+        "data": {
+            "Value": 200000
+        },
+        "id": "TW",
+        "name": "Treated Wastewater",
+        "source": "FAO AQUASTAT",
+        "unit": "m3/year",
+        "year": 2017
+    },
+    "UAB1": {
+        "data": {
+            "Value": 0.947
+        },
+        "id": "UAB1",
+        "name": "Urban proportion with access to sanitation ",
+        "source": "JMP UNICEF or from AB1 model ",
+        "unit": "dimensionless",
+        "year": 2017
+    },
+    "Upop": {
+        "data": {
+            "Value": 0.71
+        },
+        "id": "Upop",
+        "name": "Fraction of Urban to Total Population ",
+        "source": "JMP UNICEF",
+        "unit": "dimensionless",
+        "year": 2017
+    },
+    "WRR": {
+        "data": {
+            "Value": 0.63
+        },
+        "id": "WRR",
+        "name": "Water Requirement Ratio",
+        "source": "FAO",
+        "unit": "dimensionless",
+        "year": 2012
+    }
+}

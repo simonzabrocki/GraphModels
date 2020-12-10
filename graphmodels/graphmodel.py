@@ -1,6 +1,8 @@
 import networkx as nx
 import graphviz
+import logging
 
+logging.basicConfig(filename='example.log', level=logging.DEBUG)
 
 draw_properties = {
     'fillcolor': {'input': '#e76f51',
@@ -132,12 +134,17 @@ class GraphModel(nx.DiGraph):
         '''
         X = X.copy()
         for node_id in self.node_ordering:
-            print(node_id)  # for debugging
+            logging.debug(node_id)
+            #print(node_id)  # for debugging
             node = self.nodes[node_id]
             result = self.compute_node(node, X)
             out = node['out']
             X[out] = result
-            print(result)
+            logging.debug(result)
+            logging.debug('-'*100)
+
+            #print(result)
+            #print()
         return X
 
     def draw(self, draw_properties=draw_properties):

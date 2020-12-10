@@ -1,11 +1,18 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-# all water metrics from FAO data needed to be converted to 10^9 before modelling
 
-# Agricultural Water Use
-# for future projections we can assume there will not be a change in type of crops.
+__author__ = 'Sarah'
+__status__ = 'Validated'
 
-model_1 = [
+"""
+Agricultural Water Use
+
+All water metrics from FAO data needed to be converted to 10^9 before modelling
+For future projections we can assume there will not be a change in type of crops.
+"""
+
+
+AgriculturalWaterNodes = [
     {
         'type': 'input',
         'unit': '',

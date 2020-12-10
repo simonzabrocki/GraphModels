@@ -668,7 +668,7 @@
     },
     "P": {
         "data": {
-            "NaN": NaN
+            "value": 9729822
         },
         "id": "P",
         "name": "Total population",
