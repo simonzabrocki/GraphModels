@@ -1,0 +1,398 @@
+digraph {
+	graph [splines=ortho]
+	KC [label=KC color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Crop Factor Vector 
+ (KC) 
+ Fruits               0.767267
+Maize                1.200000
+Pasture permanent    0.625000
+Potatoes             0.952000
+Pulses               0.634000
+Rapeseed             0.533333
+Sugar beet           0.751667
+Sunflower            0.350000
+Vegetables           0.850000
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	CI [label=CI color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Cropping Intensity 
+ (CI) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	ETo [label=ETo color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Evapotranspiration 
+ (ETo) 
+ 835" peripheries=1 shape=rectangle style=filled]
+	ETc [label=ETc color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Potential Crop Evaporation Vector 
+ (ETc) 
+ Fruits                640.667667
+Maize                1002.000000
+Pasture permanent     521.875000
+Potatoes              794.920000
+Pulses                529.390000
+Rapeseed              445.333333
+Sugar beet            627.641667
+Sunflower             292.250000
+Vegetables            709.750000
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	ETc_comp [label=ETc_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="KC * CI * ETo" peripheries=1 shape=rectangle style=""]
+	ETa [label=ETa color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Actual Evapotranspiration 
+ (ETa) 
+ 445" peripheries=1 shape=rectangle style=filled]
+	ICU [label=ICU color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Irrigation Consumptive Use 
+ (ICU) 
+ Fruits               195.667667
+Maize                557.000000
+Pasture permanent     76.875000
+Potatoes             349.920000
+Pulses                84.390000
+Rapeseed               0.333333
+Sugar beet           182.641667
+Sunflower           -152.750000
+Vegetables           264.750000
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	ICU_comp [label=ICU_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="ETc - ETa" peripheries=1 shape=rectangle style=""]
+	AIR [label=AIR color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Area Actually Irrigated 
+ (AIR) 
+ 101400" peripheries=1 shape=rectangle style=filled]
+	ARice [label=ARice color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Area of Rice Paddy Irrigation 
+ (ARice) 
+ 0" peripheries=1 shape=rectangle style=filled]
+	IWR [label=IWR color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Irrigation Water Requirement 
+ (IWR) 
+ 158065125.40000004" peripheries=1 shape=rectangle style=filled]
+	IWR_comp [label=IWR_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(ICU*AIR) + (0.2*ARice) " peripheries=1 shape=rectangle style=""]
+	WRR [label=WRR color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Water Requirement Ratio 
+ (WRR) 
+ 0.63" peripheries=1 shape=rectangle style=filled]
+	IWW [label=IWW color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Irrigation Water Withdrawal 
+ (IWW) 
+ 250897024.4444445" peripheries=1 shape=rectangle style=filled]
+	IWW_comp [label=IWW_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="IWR/WRR" peripheries=1 shape=rectangle style=""]
+	LWU [label=LWU color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Livestock Water Use 
+ (LWU) 
+ 0" peripheries=1 shape=rectangle style=filled]
+	AWU [label=AWU color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Agricultural Water Withdrawal 
+ (AWU) 
+ 250897024.4444445" peripheries=1 shape=rectangle style=filled]
+	AWU_comp [label=AWU_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="IWW + LWU" peripheries=1 shape=rectangle style=""]
+	IWU [label=IWU color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Industrial Water Withdrawal 
+ (IWU) 
+ 3358000000" peripheries=1 shape=rectangle style=filled]
+	P [label=P color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Precipitation 
+ (P) 
+ 1.5" peripheries=1 shape=rectangle style=filled]
+	GDPC [label=GDPC color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="GDP per capita 
+ (GDPC) 
+ 14457.61" peripheries=1 shape=rectangle style=filled]
+	MWUD [label=MWUD color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Municipal Water Demand 
+ (MWUD) 
+ 72.36415453767154" peripheries=1 shape=rectangle style=filled]
+	MWUD_comp [label=MWUD_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="2.39 * GDPC^0.37 * Price^-0.33 " peripheries=1 shape=rectangle style=""]
+	Pop [label=Pop color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Population 
+ (Pop) 
+ 9787966" peripheries=1 shape=rectangle style=filled]
+	MWU [label=MWU color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Municipal Water Withdrawal 
+ (MWU) 
+ 708297884.2334747" peripheries=1 shape=rectangle style=filled]
+	MWU_comp [label=MWU_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="MWUD * Pop " peripheries=1 shape=rectangle style=""]
+	TWW [label=TWW color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Total Water Withdrawal 
+ (TWW) 
+ 4317194908.677919" peripheries=1 shape=rectangle style=filled]
+	TWW_comp [label=TWW_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="AWU + IWU + MWU" peripheries=1 shape=rectangle style=""]
+	TC [label=TC color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Total Cultivated Land 
+ (TC) 
+ 4500000" peripheries=1 shape=rectangle style=filled]
+	Ai [label=Ai color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Proportion of Irrigated Land 
+ (Ai) 
+ 0.022533333333333332" peripheries=1 shape=rectangle style=filled]
+	Ai_comp [label=Ai_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="AIR/TC" peripheries=1 shape=rectangle style=""]
+	Cr [label=Cr color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Corrective coefficient 
+ (Cr) 
+ 0.9914292959175048" peripheries=1 shape=rectangle style=filled]
+	Cr_comp [label=Cr_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="1/(1+(Ai/(1-Ai)*0.375)" peripheries=1 shape=rectangle style=""]
+	AGVA [label=AGVA color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Agricultural Gross Value Added 
+ (AGVA) 
+ 5374740677.76024" peripheries=1 shape=rectangle style=filled]
+	WUEa [label=WUEa color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Agricultural Water Use Efficiency 
+ (WUEa) 
+ 0.18360246388427226" peripheries=1 shape=rectangle style=filled]
+	WUEa_comp [label=WUEa_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="AGVA * (1-Cr)/AWU" peripheries=1 shape=rectangle style=""]
+	IGVA [label=IGVA color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Industrial Gross Value Added 
+ (IGVA) 
+ 36229461921.5353" peripheries=1 shape=rectangle style=filled]
+	WUEi [label=WUEi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Industrial Water Use Efficiency 
+ (WUEi) 
+ 10.788999976633502" peripheries=1 shape=rectangle style=filled]
+	WUEi_comp [label=WUEi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="IGVA/IWU" peripheries=1 shape=rectangle style=""]
+	SGVA [label=SGVA color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Service Sector Gross Value Added 
+ (SGVA) 
+ 77210620672.9018" peripheries=1 shape=rectangle style=filled]
+	WUEs [label=WUEs color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Service Sector Water Use Efficiency 
+ (WUEs) 
+ 109.0086846107972" peripheries=1 shape=rectangle style=filled]
+	WUEs_comp [label=WUEs_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SGVA/MWU" peripheries=1 shape=rectangle style=""]
+	Pa [label=Pa color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Proportion of Agricultural Water Use 
+ (Pa) 
+ 0.058115751026232496" peripheries=1 shape=rectangle style=filled]
+	Pa_comp [label=Pa_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="AWU/TWW" peripheries=1 shape=rectangle style=""]
+	Pi [label=Pi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Proportion of Industrial Water Use 
+ (Pi) 
+ 0.7778198740228619" peripheries=1 shape=rectangle style=filled]
+	Pi_comp [label=Pi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="IWU/TWW" peripheries=1 shape=rectangle style=""]
+	Ps [label=Ps color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Proportion of Municipal Water Use 
+ (Ps) 
+ 0.1640643749509056" peripheries=1 shape=rectangle style=filled]
+	Ps_comp [label=Ps_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="MWU/TWW" peripheries=1 shape=rectangle style=""]
+	"EW 1" [label="EW 1" color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Total Water Use Efficiency 
+ (EW 1) 
+ 26.287010502627474" peripheries=1 shape=rectangle style=filled]
+	"EW 1_comp" [label="EW 1_comp" color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="WUEa*Pa + WUEi*Pi + WUEs*Ps" peripheries=1 shape=rectangle style=""]
+	ET [label=ET color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Evapotranspiration 
+ (ET) 
+ 0" peripheries=1 shape=rectangle style=filled]
+	A [label=A color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Catchment Size 
+ (A) 
+ 0" peripheries=1 shape=rectangle style=filled]
+	S [label=S color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Change in Surface Water Storage 
+ (S) 
+ 0.0" peripheries=1 shape=rectangle style=filled]
+	S_comp [label=S_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(P - ET)*A" peripheries=1 shape=rectangle style=""]
+	SW [label=SW color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Surface Water 
+ (SW) 
+ 6000000000" peripheries=1 shape=rectangle style=filled]
+	GW [label=GW color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Groundwater Water 
+ (GW) 
+ 6000000000" peripheries=1 shape=rectangle style=filled]
+	Overlap [label=Overlap color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Overlap (Surface - Groundwater) 
+ (Overlap) 
+ 6000000000" peripheries=1 shape=rectangle style=filled]
+	IRWR [label=IRWR color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Internal Renewable Water Resources 
+ (IRWR) 
+ 6000000000.0" peripheries=1 shape=rectangle style=filled]
+	IRWR_comp [label=IRWR_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="GW + (SW + S) - Overlap" peripheries=1 shape=rectangle style=""]
+	ERWR [label=ERWR color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="External Renewable Water Resources 
+ (ERWR) 
+ 98000000000" peripheries=1 shape=rectangle style=filled]
+	TRF [label=TRF color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total Renewable Freshwater 
+ (TRF) 
+ 104000000000.0" peripheries=1 shape=rectangle style=filled]
+	TRF_comp [label=TRF_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="IRWR + ERWR" peripheries=1 shape=rectangle style=""]
+	DW [label=DW color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Desalination Water 
+ (DW) 
+ 200000" peripheries=1 shape=rectangle style=filled]
+	TW [label=TW color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Treated Wastewater 
+ (TW) 
+ 200000" peripheries=1 shape=rectangle style=filled]
+	TNCW [label=TNCW color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total Non Conventional Water 
+ (TNCW) 
+ 400000" peripheries=1 shape=rectangle style=filled]
+	TNCW_comp [label=TNCW_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="DW + TW" peripheries=1 shape=rectangle style=""]
+	TFA [label=TFA color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total Freshwater Available 
+ (TFA) 
+ 104000400000.0" peripheries=1 shape=rectangle style=filled]
+	TFA_comp [label=TFA_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="TRF + TNCW" peripheries=1 shape=rectangle style=""]
+	EFR [label=EFR color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Environmental Flow Requirement 
+ (EFR) 
+ 46100000000" peripheries=1 shape=rectangle style=filled]
+	EW2 [label=EW2 color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Share of Freshwater Withdrawal to Freshwater Availability 
+ (EW2) 
+ 7.456243667881257" peripheries=1 shape=rectangle style=filled]
+	EW2_comp [label=EW2_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="TWW/(TFA-EFR)*100" peripheries=1 shape=rectangle style=""]
+	"Natural EW2" [label="Natural EW2" color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Share of Freshwater Withdrawal to Freshwater Availability 
+ (Natural EW2) 
+ 7.456295179063764" peripheries=1 shape=rectangle style=filled]
+	"Natural EW2_comp" [label="Natural EW2_comp" color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="TWW/(TRF-EFR)*100" peripheries=1 shape=rectangle style=""]
+	WSE [label=WSE color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Water Supply Efficiency 
+ (WSE) 
+ 0.85" peripheries=1 shape=rectangle style=filled]
+	MWC [label=MWC color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Municipal Water Consumption 
+ (MWC) 
+ 602053201.5984535" peripheries=1 shape=rectangle style=filled]
+	MWC_comp [label=MWC_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="MWU * WSE" peripheries=1 shape=rectangle style=""]
+	Upop [label=Upop color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Fraction of Urban to Total Pop 
+ (Upop) 
+ 0.71" peripheries=1 shape=rectangle style=filled]
+	UAB1 [label=UAB1 color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="AB1 Urban Access to Sanitation 
+ (UAB1) 
+ 0.947" peripheries=1 shape=rectangle style=filled]
+	UW [label=UW color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label=" Urban Wastewater Collected 
+ (UW) 
+ 404802511.1587522" peripheries=1 shape=rectangle style=filled]
+	UW_comp [label=UW_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="((MWC * Upop * UAB1)" peripheries=1 shape=rectangle style=""]
+	ASF [label=ASF color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Number of Activated Sludge Treatment Facilities 
+ (ASF) 
+ 3" peripheries=1 shape=rectangle style=filled]
+	ASTC [label=ASTC color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Activated Sludge Treatment Capacity 
+ (ASTC) 
+ 30000" peripheries=1 shape=rectangle style=filled]
+	ASE [label=ASE color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="AS Sewage Efficiency 
+ (ASE) 
+ 0.7333" peripheries=1 shape=rectangle style=filled]
+	ASTW [label=ASTW color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="AS Treated Wastewater 
+ (ASTW) 
+ 65997.0" peripheries=1 shape=rectangle style=filled]
+	ASTW_comp [label=ASTW_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="Facilities * ASTC * Sewage Efficiency " peripheries=1 shape=rectangle style=""]
+	BF [label=BF color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Number of Biomembrane Treatment Facilities 
+ (BF) 
+ 6" peripheries=1 shape=rectangle style=filled]
+	BMTC [label=BMTC color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Biomembrane Treatment Capacity 
+ (BMTC) 
+ 10950" peripheries=1 shape=rectangle style=filled]
+	BME [label=BME color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="BM Sewage Efficiency 
+ (BME) 
+ 0.85" peripheries=1 shape=rectangle style=filled]
+	BMTW [label=BMTW color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="BM Treated Wastewater 
+ (BMTW) 
+ 55845.0" peripheries=1 shape=rectangle style=filled]
+	BMTW_comp [label=BMTW_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="Facilities * BMTC * Sewage Efficiency" peripheries=1 shape=rectangle style=""]
+	TTC [label=TTC color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total Treated Capacity 
+ (TTC) 
+ 121842.0" peripheries=1 shape=rectangle style=filled]
+	TTC_comp [label=TTC_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="ASWT + BMTW" peripheries=1 shape=rectangle style=""]
+	TTW [label=TTW color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Total Treated Wastewater 
+ (TTW) 
+ 121842000.0" peripheries=1 shape=rectangle style=filled]
+	TTW_comp [label=TTW_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="((TTC)*1000000)/1000" peripheries=1 shape=rectangle style=""]
+	ASCAPEX [label=ASCAPEX color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="AS Construction Cost 
+ (ASCAPEX) 
+ 27400000" peripheries=1 shape=rectangle style=filled]
+	ASOPEX [label=ASOPEX color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="AS Operational Cost Vector 
+ (ASOPEX) 
+ 0.35" peripheries=1 shape=rectangle style=filled]
+	ASIC [label=ASIC color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Potential AS Investment Cost 
+ (ASIC) 
+ 50498950.0" peripheries=1 shape=rectangle style=filled]
+	ASIC_comp [label=ASIC_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="CAPEX + (OPEX*1000)*ASTW" peripheries=1 shape=rectangle style=""]
+	BMCAPEX [label=BMCAPEX color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="BM Construction Cost 
+ (BMCAPEX) 
+ 10700000" peripheries=1 shape=rectangle style=filled]
+	BMOPEX [label=BMOPEX color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="AS Operational Cost Vector 
+ (BMOPEX) 
+ 0.58" peripheries=1 shape=rectangle style=filled]
+	BMIC [label=BMIC color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Potential BM Investment Cost 
+ (BMIC) 
+ 43090100.0" peripheries=1 shape=rectangle style=filled]
+	BMIC_comp [label=BMIC_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="CAPEX + (OPEX*1000)*BMTW" peripheries=1 shape=rectangle style=""]
+	PIC [label=PIC color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Potential Investment Cost 
+ (PIC) 
+ 93589050.0" peripheries=1 shape=rectangle style=filled]
+	PIC_comp [label=PIC_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="ASIC + BMIC" peripheries=1 shape=rectangle style=""]
+	UTW [label=UTW color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Untreated Wastewater 
+ (UTW) 
+ 282960511.1587522" peripheries=1 shape=rectangle style=filled]
+	UTW_comp [label=UTW_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="UW - TWW" peripheries=1 shape=rectangle style=""]
+	KC -> ETc_comp [color="#A9A9A9"]
+	CI -> ETc_comp [color="#A9A9A9"]
+	ETo -> ETc_comp [color="#A9A9A9"]
+	ETc -> ICU_comp [color="#A9A9A9"]
+	ETc_comp -> ETc [color="#A9A9A9"]
+	ETa -> ICU_comp [color="#A9A9A9"]
+	ICU -> IWR_comp [color="#A9A9A9"]
+	ICU_comp -> ICU [color="#A9A9A9"]
+	AIR -> IWR_comp [color="#A9A9A9"]
+	AIR -> Ai_comp [color="#A9A9A9"]
+	ARice -> IWR_comp [color="#A9A9A9"]
+	IWR -> IWW_comp [color="#A9A9A9"]
+	IWR_comp -> IWR [color="#A9A9A9"]
+	WRR -> IWW_comp [color="#A9A9A9"]
+	IWW -> AWU_comp [color="#A9A9A9"]
+	IWW_comp -> IWW [color="#A9A9A9"]
+	LWU -> AWU_comp [color="#A9A9A9"]
+	AWU -> TWW_comp [color="#A9A9A9"]
+	AWU -> WUEa_comp [color="#A9A9A9"]
+	AWU -> Pa_comp [color="#A9A9A9"]
+	AWU_comp -> AWU [color="#A9A9A9"]
+	IWU -> TWW_comp [color="#A9A9A9"]
+	IWU -> WUEi_comp [color="#A9A9A9"]
+	IWU -> Pi_comp [color="#A9A9A9"]
+	P -> MWUD_comp [color="#A9A9A9"]
+	P -> S_comp [color="#A9A9A9"]
+	GDPC -> MWUD_comp [color="#A9A9A9"]
+	MWUD -> MWU_comp [color="#A9A9A9"]
+	MWUD_comp -> MWUD [color="#A9A9A9"]
+	Pop -> MWU_comp [color="#A9A9A9"]
+	MWU -> TWW_comp [color="#A9A9A9"]
+	MWU -> WUEs_comp [color="#A9A9A9"]
+	MWU -> Ps_comp [color="#A9A9A9"]
+	MWU -> MWC_comp [color="#A9A9A9"]
+	MWU_comp -> MWU [color="#A9A9A9"]
+	TWW -> Pa_comp [color="#A9A9A9"]
+	TWW -> Pi_comp [color="#A9A9A9"]
+	TWW -> Ps_comp [color="#A9A9A9"]
+	TWW -> EW2_comp [color="#A9A9A9"]
+	TWW -> "Natural EW2_comp" [color="#A9A9A9"]
+	TWW_comp -> TWW [color="#A9A9A9"]
+	TC -> Ai_comp [color="#A9A9A9"]
+	Ai -> Cr_comp [color="#A9A9A9"]
+	Ai_comp -> Ai [color="#A9A9A9"]
+	Cr -> WUEa_comp [color="#A9A9A9"]
+	Cr_comp -> Cr [color="#A9A9A9"]
+	AGVA -> WUEa_comp [color="#A9A9A9"]
+	WUEa -> "EW 1_comp" [color="#A9A9A9"]
+	WUEa_comp -> WUEa [color="#A9A9A9"]
+	IGVA -> WUEi_comp [color="#A9A9A9"]
+	WUEi -> "EW 1_comp" [color="#A9A9A9"]
+	WUEi_comp -> WUEi [color="#A9A9A9"]
+	SGVA -> WUEs_comp [color="#A9A9A9"]
+	WUEs -> "EW 1_comp" [color="#A9A9A9"]
+	WUEs_comp -> WUEs [color="#A9A9A9"]
+	Pa -> "EW 1_comp" [color="#A9A9A9"]
+	Pa_comp -> Pa [color="#A9A9A9"]
+	Pi -> "EW 1_comp" [color="#A9A9A9"]
+	Pi_comp -> Pi [color="#A9A9A9"]
+	Ps -> "EW 1_comp" [color="#A9A9A9"]
+	Ps_comp -> Ps [color="#A9A9A9"]
+	"EW 1_comp" -> "EW 1" [color="#A9A9A9"]
+	ET -> S_comp [color="#A9A9A9"]
+	A -> S_comp [color="#A9A9A9"]
+	S -> IRWR_comp [color="#A9A9A9"]
+	S_comp -> S [color="#A9A9A9"]
+	SW -> IRWR_comp [color="#A9A9A9"]
+	GW -> IRWR_comp [color="#A9A9A9"]
+	Overlap -> IRWR_comp [color="#A9A9A9"]
+	IRWR -> TRF_comp [color="#A9A9A9"]
+	IRWR_comp -> IRWR [color="#A9A9A9"]
+	ERWR -> TRF_comp [color="#A9A9A9"]
+	TRF -> TFA_comp [color="#A9A9A9"]
+	TRF -> "Natural EW2_comp" [color="#A9A9A9"]
+	TRF_comp -> TRF [color="#A9A9A9"]
+	DW -> TNCW_comp [color="#A9A9A9"]
+	TW -> TNCW_comp [color="#A9A9A9"]
+	TNCW -> TFA_comp [color="#A9A9A9"]
+	TNCW_comp -> TNCW [color="#A9A9A9"]
+	TFA -> EW2_comp [color="#A9A9A9"]
+	TFA_comp -> TFA [color="#A9A9A9"]
+	EFR -> EW2_comp [color="#A9A9A9"]
+	EFR -> "Natural EW2_comp" [color="#A9A9A9"]
+	EW2_comp -> EW2 [color="#A9A9A9"]
+	"Natural EW2_comp" -> "Natural EW2" [color="#A9A9A9"]
+	WSE -> MWC_comp [color="#A9A9A9"]
+	MWC -> UW_comp [color="#A9A9A9"]
+	MWC_comp -> MWC [color="#A9A9A9"]
+	Upop -> UW_comp [color="#A9A9A9"]
+	UAB1 -> UW_comp [color="#A9A9A9"]
+	UW -> UTW_comp [color="#A9A9A9"]
+	UW_comp -> UW [color="#A9A9A9"]
+	ASF -> ASTW_comp [color="#A9A9A9"]
+	ASTC -> ASTW_comp [color="#A9A9A9"]
+	ASE -> ASTW_comp [color="#A9A9A9"]
+	ASTW -> TTC_comp [color="#A9A9A9"]
+	ASTW -> ASIC_comp [color="#A9A9A9"]
+	ASTW_comp -> ASTW [color="#A9A9A9"]
+	BF -> BMTW_comp [color="#A9A9A9"]
+	BMTC -> BMTW_comp [color="#A9A9A9"]
+	BME -> BMTW_comp [color="#A9A9A9"]
+	BMTW -> TTC_comp [color="#A9A9A9"]
+	BMTW -> BMIC_comp [color="#A9A9A9"]
+	BMTW_comp -> BMTW [color="#A9A9A9"]
+	TTC -> TTW_comp [color="#A9A9A9"]
+	TTC_comp -> TTC [color="#A9A9A9"]
+	TTW -> UTW_comp [color="#A9A9A9"]
+	TTW_comp -> TTW [color="#A9A9A9"]
+	ASCAPEX -> ASIC_comp [color="#A9A9A9"]
+	ASOPEX -> ASIC_comp [color="#A9A9A9"]
+	ASIC -> PIC_comp [color="#A9A9A9"]
+	ASIC_comp -> ASIC [color="#A9A9A9"]
+	BMCAPEX -> BMIC_comp [color="#A9A9A9"]
+	BMOPEX -> BMIC_comp [color="#A9A9A9"]
+	BMIC -> PIC_comp [color="#A9A9A9"]
+	BMIC_comp -> BMIC [color="#A9A9A9"]
+	PIC_comp -> PIC [color="#A9A9A9"]
+	UTW_comp -> UTW [color="#A9A9A9"]
+}
