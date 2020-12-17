@@ -1,0 +1,186 @@
+digraph {
+	graph [splines=ortho]
+	CRfd [label=CRfd color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="feed/forage distribution (correction) 
+ (CRfd)" peripheries=1 shape=rectangle style=filled]
+	CRfd_comp [label=CRfd_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SUM(TAFDi2017)/sum(FDi2017)" peripheries=1 shape=rectangle style=""]
+	TFFD_2017 [label=TFFD_2017 color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total fodder/forage demand 
+ (TFFD_2017)" peripheries=1 shape=rectangle style=filled]
+	TFFD_2017_comp [label=TFFD_2017_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SUM(TAFDi2017_cal) - SUM(FDi2017)" peripheries=1 shape=rectangle style=""]
+	FDi2017 [label=FDi2017 color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector feed demand 
+ (FDi2017)" peripheries=1 shape=rectangle style=filled]
+	TAFDi2017_cal [label=TAFDi2017_cal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="vector total animal feed demand 
+ (TAFDi2017_cal)" peripheries=1 shape=rectangle style=filled]
+	TAFDi2017_cal_comp [label=TAFDi2017_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(FRCi*AYi2017*ANPi_cal)/1000000" peripheries=1 shape=rectangle style=""]
+	AYi2017 [label=AYi2017 color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector of animal yields 
+ (AYi2017)" peripheries=1 shape=rectangle style=filled]
+	FCRi [label=FCRi color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="feed conversion ratio (kg/animal) 
+ (FCRi)" peripheries=1 shape=rectangle style=filled]
+	ANPi_cal [label=ANPi_cal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector animals needed for production 
+ (ANPi_cal)" peripheries=1 shape=rectangle style=filled]
+	ANPi_cal_comp [label=ANPi_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(FDi_an2017*1000000)/AYi2017" peripheries=1 shape=rectangle style=""]
+	FDi_an2017 [label=FDi_an2017 color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="selection animal-based food groups 
+ (FDi_an2017)" peripheries=1 shape=rectangle style=filled]
+	FDi_an2017_comp [label=FDi_an2017_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="Selection animal-based food groups" peripheries=1 shape=rectangle style=""]
+	FDTi_animal2017 [label=FDTi_animal2017 color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Vector total food demand (animals/other) 
+ (FDTi_animal2017)" peripheries=1 shape=rectangle style=filled]
+	FDTi_animal2017_comp [label=FDTi_animal2017_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FPi selection animal products" peripheries=1 shape=rectangle style=""]
+	FPi [label=FPi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector food production 
+ (FPi)" peripheries=1 shape=rectangle style=filled]
+	CD_corr [label=CD_corr color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="correction parameter crop demand (calibrated for 2017) 
+ (CD_corr)" peripheries=1 shape=rectangle style=filled]
+	CD_corr_comp [label=CD_corr_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="" peripheries=1 shape=rectangle style=""]
+	TCropDi_cal [label=TCropDi_cal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector total cropland demand 
+ (TCropDi_cal)" peripheries=1 shape=rectangle style=filled]
+	TCropDi_cal_comp [label=TCropDi_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(FDTi_conv_cal*1000000/(CYi/10)" peripheries=1 shape=rectangle style=""]
+	FDTi_conv_cal [label=FDTi_conv_cal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector total food demand (aggregated for each crop group) 
+ (FDTi_conv_cal)" peripheries=1 shape=rectangle style=filled]
+	FDTi_conv_cal_comp [label=FDTi_conv_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="" peripheries=1 shape=rectangle style=""]
+	TCL2017i [label=TCL2017i color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector land used for crops in 2017 
+ (TCL2017i)" peripheries=1 shape=rectangle style=filled]
+	FDKG2017_i [label=FDKG2017_i color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector KG food demand 
+ (FDKG2017_i)" peripheries=1 shape=rectangle style=filled]
+	FDKC2017_i [label=FDKC2017_i color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector of KCAL food demand 
+ (FDKC2017_i)" peripheries=1 shape=rectangle style=filled]
+	CYi [label=CYi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector crop yields 
+ (CYi)" peripheries=1 shape=rectangle style=filled]
+	KKRi [label=KKRi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector Kcal/kg ratio 2017 
+ (KKRi)" peripheries=1 shape=rectangle style=filled]
+	KKRi_comp [label=KKRi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FDKC2017_i/(FDKG2017_i/365)" peripheries=1 shape=rectangle style=""]
+	SSRi [label=SSRi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Self-sufficiency ratio 
+ (SSRi)" peripheries=1 shape=rectangle style=filled]
+	SSRi_comp [label=SSRi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="100*FPi/(FPi-FEi+FIi)" peripheries=1 shape=rectangle style=""]
+	FEi [label=FEi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector food exports 
+ (FEi)" peripheries=1 shape=rectangle style=filled]
+	FIi [label=FIi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector food imports 
+ (FIi)" peripheries=1 shape=rectangle style=filled]
+	P_2017 [label=P_2017 color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Total population 
+ (P_2017)" peripheries=1 shape=rectangle style=filled]
+	FLO2017i [label=FLO2017i color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Food losses 
+ (FLO2017i)" peripheries=1 shape=rectangle style=filled]
+	FWP2017i_cal [label=FWP2017i_cal color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector food waste 2017 
+ (FWP2017i_cal)" peripheries=1 shape=rectangle style=filled]
+	FWP2017i_cal_comp [label=FWP2017i_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(FLO2017i*KKRi*(1000000/365))/P_2017" peripheries=1 shape=rectangle style=""]
+	ANPi_calc [label=ANPi_calc color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector animals needed for production 
+ (ANPi_calc)" peripheries=1 shape=rectangle style=filled]
+	ANPi_calc_comp [label=ANPi_calc_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(FDi_an2017*1000000)/AYi2017" peripheries=1 shape=rectangle style=""]
+	FDi_cal [label=FDi_cal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector total domestic food production 
+ (FDi_cal)" peripheries=1 shape=rectangle style=filled]
+	FDi_cal_comp [label=FDi_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(TCDi_cal * SSRi/100 * 365)/KKRi" peripheries=1 shape=rectangle style=""]
+	OFi [label=OFi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Other food demand 
+ (OFi)" peripheries=1 shape=rectangle style=filled]
+	OFi_comp [label=OFi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SDi+NFDi+PDi+RDi+SVi" peripheries=1 shape=rectangle style=""]
+	SDi [label=SDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector seed demand 
+ (SDi)" peripheries=1 shape=rectangle style=filled]
+	NFDi [label=NFDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector non-food demand 
+ (NFDi)" peripheries=1 shape=rectangle style=filled]
+	PDi [label=PDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector processed demand 
+ (PDi)" peripheries=1 shape=rectangle style=filled]
+	RDi [label=RDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector residual demand 
+ (RDi)" peripheries=1 shape=rectangle style=filled]
+	SVi [label=SVi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector stock variation 
+ (SVi)" peripheries=1 shape=rectangle style=filled]
+	TCDi_cal [label=TCDi_cal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total calorie demand per food group calibrated for 2017 
+ (TCDi_cal)" peripheries=1 shape=rectangle style=filled]
+	TCDi_cal_comp [label=TCDi_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="P_2017*(FDKC2017_i+FWP2017i_cal)" peripheries=1 shape=rectangle style=""]
+	AFDi [label=AFDi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector total animal feed demand 
+ (AFDi)" peripheries=1 shape=rectangle style=filled]
+	AFDi_comp [label=AFDi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FMi * FD" peripheries=1 shape=rectangle style=""]
+	FMi [label=FMi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Feed mix fraction 
+ (FMi)" peripheries=1 shape=rectangle style=filled]
+	FMi_comp [label=FMi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FDi2017/SUM(FDI2017)" peripheries=1 shape=rectangle style=""]
+	FD [label=FD color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total crop-feed demand 
+ (FD)" peripheries=1 shape=rectangle style=filled]
+	FD_comp [label=FD_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SUM(TAFDi)/CRfd" peripheries=1 shape=rectangle style=""]
+	TAFDi [label=TAFDi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="vector total animal feed demand 
+ (TAFDi)" peripheries=1 shape=rectangle style=filled]
+	TAFDi_comp [label=TAFDi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(FRCi*AYi2017*ANPi_calc)/1000000" peripheries=1 shape=rectangle style=""]
+	FDTi_crops_cal [label=FDTi_crops_cal color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Vector total food demand (crops) 
+ (FDTi_crops_cal)" peripheries=1 shape=rectangle style=filled]
+	FDTi_crops_cal_comp [label=FDTi_crops_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SSRi/100*(OFi+AFDi)+FDi" peripheries=1 shape=rectangle style=""]
+	FDTi_animal [label=FDTi_animal color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Vector total food demand (animals/other) 
+ (FDTi_animal)" peripheries=1 shape=rectangle style=filled]
+	FDTi_animal_comp [label=FDTi_animal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SSRi/100*(OFi+AFDi)+FDi" peripheries=1 shape=rectangle style=""]
+	FDTi_total_cal [label=FDTi_total_cal color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Vector total food demand all 
+ (FDTi_total_cal)" peripheries=1 shape=rectangle style=filled]
+	FDTi_total_cal_comp [label=FDTi_total_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FDTi_animal+FDTi_crops_cal" peripheries=1 shape=rectangle style=""]
+	CRfd -> FD_comp [color="#A9A9A9"]
+	CRfd_comp -> CRfd [color="#A9A9A9"]
+	TFFD_2017_comp -> TFFD_2017 [color="#A9A9A9"]
+	FDi2017 -> CRfd_comp [color="#A9A9A9"]
+	FDi2017 -> TFFD_2017_comp [color="#A9A9A9"]
+	FDi2017 -> FMi_comp [color="#A9A9A9"]
+	FDi2017 -> FDTi_animal_comp [color="#A9A9A9"]
+	TAFDi2017_cal -> CRfd_comp [color="#A9A9A9"]
+	TAFDi2017_cal -> TFFD_2017_comp [color="#A9A9A9"]
+	TAFDi2017_cal_comp -> TAFDi2017_cal [color="#A9A9A9"]
+	AYi2017 -> TAFDi2017_cal_comp [color="#A9A9A9"]
+	AYi2017 -> ANPi_cal_comp [color="#A9A9A9"]
+	AYi2017 -> ANPi_calc_comp [color="#A9A9A9"]
+	AYi2017 -> TAFDi_comp [color="#A9A9A9"]
+	FCRi -> TAFDi2017_cal_comp [color="#A9A9A9"]
+	FCRi -> TAFDi_comp [color="#A9A9A9"]
+	ANPi_cal -> TAFDi2017_cal_comp [color="#A9A9A9"]
+	ANPi_cal_comp -> ANPi_cal [color="#A9A9A9"]
+	FDi_an2017 -> ANPi_cal_comp [color="#A9A9A9"]
+	FDi_an2017 -> ANPi_calc_comp [color="#A9A9A9"]
+	FDi_an2017_comp -> FDi_an2017 [color="#A9A9A9"]
+	FDTi_animal2017 -> FDi_an2017_comp [color="#A9A9A9"]
+	FDTi_animal2017_comp -> FDTi_animal2017 [color="#A9A9A9"]
+	FPi -> FDTi_animal2017_comp [color="#A9A9A9"]
+	FPi -> SSRi_comp [color="#A9A9A9"]
+	CD_corr_comp -> CD_corr [color="#A9A9A9"]
+	TCropDi_cal -> CD_corr_comp [color="#A9A9A9"]
+	TCropDi_cal_comp -> TCropDi_cal [color="#A9A9A9"]
+	FDTi_conv_cal -> TCropDi_cal_comp [color="#A9A9A9"]
+	FDTi_conv_cal_comp -> FDTi_conv_cal [color="#A9A9A9"]
+	TCL2017i -> CD_corr_comp [color="#A9A9A9"]
+	TCL2017i -> FDTi_conv_cal_comp [color="#A9A9A9"]
+	FDKG2017_i -> KKRi_comp [color="#A9A9A9"]
+	FDKC2017_i -> KKRi_comp [color="#A9A9A9"]
+	FDKC2017_i -> TCDi_cal_comp [color="#A9A9A9"]
+	CYi -> TCropDi_cal_comp [color="#A9A9A9"]
+	CYi -> FDTi_conv_cal_comp [color="#A9A9A9"]
+	KKRi -> FWP2017i_cal_comp [color="#A9A9A9"]
+	KKRi -> FDi_cal_comp [color="#A9A9A9"]
+	KKRi_comp -> KKRi [color="#A9A9A9"]
+	SSRi -> FDi_cal_comp [color="#A9A9A9"]
+	SSRi -> FDTi_crops_cal_comp [color="#A9A9A9"]
+	SSRi -> FDTi_animal_comp [color="#A9A9A9"]
+	SSRi_comp -> SSRi [color="#A9A9A9"]
+	FEi -> SSRi_comp [color="#A9A9A9"]
+	FIi -> SSRi_comp [color="#A9A9A9"]
+	P_2017 -> FWP2017i_cal_comp [color="#A9A9A9"]
+	P_2017 -> TCDi_cal_comp [color="#A9A9A9"]
+	FLO2017i -> FWP2017i_cal_comp [color="#A9A9A9"]
+	FWP2017i_cal -> TCDi_cal_comp [color="#A9A9A9"]
+	FWP2017i_cal_comp -> FWP2017i_cal [color="#A9A9A9"]
+	ANPi_calc -> TAFDi_comp [color="#A9A9A9"]
+	ANPi_calc_comp -> ANPi_calc [color="#A9A9A9"]
+	FDi_cal -> FDTi_crops_cal_comp [color="#A9A9A9"]
+	FDi_cal -> FDTi_animal_comp [color="#A9A9A9"]
+	FDi_cal_comp -> FDi_cal [color="#A9A9A9"]
+	OFi -> FDTi_crops_cal_comp [color="#A9A9A9"]
+	OFi -> FDTi_animal_comp [color="#A9A9A9"]
+	OFi_comp -> OFi [color="#A9A9A9"]
+	SDi -> OFi_comp [color="#A9A9A9"]
+	NFDi -> OFi_comp [color="#A9A9A9"]
+	PDi -> OFi_comp [color="#A9A9A9"]
+	RDi -> OFi_comp [color="#A9A9A9"]
+	SVi -> OFi_comp [color="#A9A9A9"]
+	TCDi_cal -> FDi_cal_comp [color="#A9A9A9"]
+	TCDi_cal_comp -> TCDi_cal [color="#A9A9A9"]
+	AFDi -> FDTi_crops_cal_comp [color="#A9A9A9"]
+	AFDi_comp -> AFDi [color="#A9A9A9"]
+	FMi -> AFDi_comp [color="#A9A9A9"]
+	FMi_comp -> FMi [color="#A9A9A9"]
+	FD -> AFDi_comp [color="#A9A9A9"]
+	FD_comp -> FD [color="#A9A9A9"]
+	TAFDi -> FD_comp [color="#A9A9A9"]
+	TAFDi_comp -> TAFDi [color="#A9A9A9"]
+	FDTi_crops_cal -> FDTi_total_cal_comp [color="#A9A9A9"]
+	FDTi_crops_cal_comp -> FDTi_crops_cal [color="#A9A9A9"]
+	FDTi_animal -> FDTi_total_cal_comp [color="#A9A9A9"]
+	FDTi_animal_comp -> FDTi_animal [color="#A9A9A9"]
+	FDTi_total_cal -> FDTi_conv_cal_comp [color="#A9A9A9"]
+	FDTi_total_cal_comp -> FDTi_total_cal [color="#A9A9A9"]
+}

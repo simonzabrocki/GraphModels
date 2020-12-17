@@ -1,0 +1,866 @@
+digraph {
+	graph [splines=ortho]
+	CRfd [label=CRfd color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="feed/forage distribution (correction) 
+ (CRfd) 
+ 57.73399613186706" peripheries=1 shape=rectangle style=filled]
+	CRfd_comp [label=CRfd_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SUM(TAFDi)/sum(FDi)" peripheries=1 shape=rectangle style=""]
+	TFFD_ [label=TFFD_ color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total fodder/forage demand 
+ (TFFD_) 
+ 256324.19452377537" peripheries=1 shape=rectangle style=filled]
+	TFFD__comp [label=TFFD__comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SUM(TAFDi_cal) - SUM(FDi)" peripheries=1 shape=rectangle style=""]
+	FDi [label=FDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector feed demand 
+ (FDi) 
+ Cereals - Excluding Beer    4160
+Starchy Roots                  9
+Sugar Crops                    0
+Sugar & Sweeteners             1
+Pulses                         4
+Treenuts                       0
+Oilcrops                      88
+Vegetable Oils                 0
+Vegetables                   104
+Fruits - Excluding Wine        2
+Stimulants                     0
+Spices                         0
+Alcoholic Beverages            0
+Bovine meat                    0
+Mutton & Goat meat             0
+Pigmeat                        0
+Poultry meat                   0
+Meat, other                    0
+Offals                         0
+Animal fats                    0
+Eggs                           1
+Milk - Excluding Butter      139
+Fish, Seafood                 10
+Aquatic Products, Other        0
+Miscellaneous                  0
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	TAFDi_cal [label=TAFDi_cal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="vector total animal feed demand 
+ (TAFDi_cal) 
+ Bovine meat                   764.047942
+Pigmeat                      1888.228658
+Poultry meat                 1258.928039
+Eggs                       255901.783175
+Milk - Excluding Butter      1271.478916
+Meat, other                  -242.272208
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	TAFDi_cal_comp [label=TAFDi_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(FRCi*AYi*ANPi_cal)/1000000" peripheries=1 shape=rectangle style=""]
+	AYi [label=AYi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector of animal yields 
+ (AYi) 
+ Bovine meat                 254.600000
+Pigmeat                      93.000000
+Poultry meat                  2.408100
+Eggs                         11.853000
+Milk - Excluding Butter    7097.100000
+Meat, other                   1.913614
+Meat, goat                   12.300000
+Meat, horse                 265.600000
+Meat, sheep                  17.600000
+Meat, rabbit                  1.412500
+NaN                           0.000000
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	FCRi [label=FCRi color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="feed conversion ratio (kg/animal) 
+ (FCRi) 
+ Bovine meat                  25.000
+Pigmeat                       4.202
+Poultry meat                  3.300
+Eggs                       2020.300
+Milk - Excluding Butter       0.700
+Meat, other                  15.000
+Meat, goat                    0.000
+Meat, horse                   0.000
+Meat, sheep                   0.000
+Meat, rabbit                  0.000
+NaN                           0.000
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	ANPi_cal [label=ANPi_cal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector animals needed for production 
+ (ANPi_cal) 
+ Bovine meat                1.200390e+05
+Pigmeat                    4.831874e+06
+Poultry meat               1.584209e+08
+Eggs                       1.068634e+07
+Milk - Excluding Butter    2.559353e+05
+Meat, other               -8.440303e+06
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	ANPi_cal_comp [label=ANPi_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(FDi_an*1000000)/AYi" peripheries=1 shape=rectangle style=""]
+	FDi_an [label=FDi_an color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="selection animal-based food groups 
+ (FDi_an) 
+ [  30.56191769  449.36426903  381.49334521  126.66523941 1816.3984517
+  -16.15148052]" peripheries=1 shape=rectangle style=filled]
+	FDi_an_comp [label=FDi_an_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="Selection animal-based food groups" peripheries=1 shape=rectangle style=""]
+	FDTi_animal [label=FDTi_animal color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Vector total food demand (animals/other) 
+ (FDTi_animal) 
+ Bovine meat                  30.561918
+Mutton & Goat meat            1.362175
+Pigmeat                     449.364269
+Poultry meat                381.493345
+Meat, other                 -17.513656
+Offals                             NaN
+Animal fats                 137.857779
+Eggs                        126.665239
+Milk - Excluding Butter    1816.398452
+Fish, Seafood                20.720413
+Aquatic Products, Other            NaN
+Miscellaneous                -0.000000
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	FDTi_animal_comp [label=FDTi_animal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SSRi/100*(OFi+AFDi)+FDi" peripheries=1 shape=rectangle style=""]
+	FPi [label=FPi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector food production 
+ (FPi) 
+ Cereals - Excluding Beer    14032
+Starchy Roots                 403
+Sugar Crops                  1076
+Sugar & Sweeteners            730
+Pulses                         51
+Treenuts                        8
+Oilcrops                     2957
+Vegetable Oils                852
+Vegetables                   1458
+Fruits - Excluding Wine      1131
+Stimulants                      0
+Spices                         31
+Alcoholic Beverages          1408
+Bovine meat                    30
+Mutton & Goat meat              2
+Pigmeat                       470
+Poultry meat                  493
+Meat, other                     6
+Offals                         37
+Animal fats                   150
+Eggs                          139
+Milk - Excluding Butter      1924
+Fish, Seafood                  24
+Aquatic Products, Other         0
+Miscellaneous                   0
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	CD_corr [label=CD_corr color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="correction parameter crop demand (calibrated for ) 
+ (CD_corr) 
+ 1.1695572833254293" peripheries=1 shape=rectangle style=filled]
+	CD_corr_comp [label=CD_corr_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="" peripheries=1 shape=rectangle style=""]
+	TCropDi_cal [label=TCropDi_cal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector total cropland demand 
+ (TCropDi_cal) 
+ Cereals - Excluding Beer    2.404737e+06
+Fruits - Excluding Wine     1.216459e+05
+Oilcrops                    1.038197e+06
+Pulses                      2.028630e+04
+Starchy Roots               1.636980e+04
+Sugar Crops                          NaN
+Treenuts                    6.632529e+03
+Vegetables                  8.815778e+04
+Fibre Crops Primary         2.440000e+02
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	TCropDi_cal_comp [label=TCropDi_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(FDTi_conv_cal*1000000/(CYi/10)" peripheries=1 shape=rectangle style=""]
+	FDTi_conv_cal [label=FDTi_conv_cal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector total food demand (aggregated for each crop group) 
+ (FDTi_conv_cal) 
+ Cereals - Excluding Beer    14032.845229
+Fruits - Excluding Wine      1132.000319
+Oilcrops                     2958.549123
+Pulses                         51.476479
+Starchy Roots                 402.994958
+Sugar Crops                          NaN
+Treenuts                        9.448700
+Vegetables                   1460.051501
+Fibre Crops Primary             0.292239
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	FDTi_conv_cal_comp [label=FDTi_conv_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="" peripheries=1 shape=rectangle style=""]
+	TCLi [label=TCLi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector land used for crops in  
+ (TCLi) 
+ Cereals - Excluding Beer    2402083
+Fruits - Excluding Wine      155914
+Oilcrops                    1109160
+Pulses                        19894
+Starchy Roots                 16364
+Sugar Crops                   15941
+Treenuts                       5813
+Vegetables                    87104
+Fibre Crops Primary             244
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	FDKGi [label=FDKGi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector KG food demand 
+ (FDKGi) 
+ Cereals - Excluding Beer    116.28
+Starchy Roots                46.66
+Sugar Crops                   0.00
+Sugar & Sweeteners           38.96
+Pulses                        2.92
+Treenuts                      0.28
+Oilcrops                      1.04
+Vegetable Oils               11.05
+Vegetables                   86.99
+Fruits - Excluding Wine      47.26
+Stimulants                    1.58
+Spices                        2.76
+Alcoholic Beverages         103.45
+Bovine meat                   4.19
+Mutton & Goat meat            0.14
+Pigmeat                      49.82
+Poultry meat                 25.27
+Meat, other                   0.30
+Offals                        0.08
+Animal fats                  16.23
+Eggs                         13.61
+Milk - Excluding Butter     190.82
+Fish, Seafood                 6.30
+Aquatic Products, Other       0.01
+Miscellaneous                 0.06
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	FDKCi [label=FDKCi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector of KCAL food demand 
+ (FDKCi) 
+ Cereals - Excluding Beer    882
+Starchy Roots                88
+Sugar Crops                   0
+Sugar & Sweeteners          351
+Pulses                       27
+Treenuts                      2
+Oilcrops                     13
+Vegetable Oils              492
+Vegetables                   69
+Fruits - Excluding Wine      68
+Stimulants                   28
+Spices                       10
+Alcoholic Beverages         200
+Bovine meat                  13
+Mutton & Goat meat            1
+Pigmeat                     269
+Poultry meat                104
+Meat, other                   1
+Offals                        0
+Animal fats                 347
+Eggs                         53
+Milk - Excluding Butter     254
+Fish, Seafood                13
+Aquatic Products, Other       0
+Miscellaneous                 1
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	CYi [label=CYi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector crop yields 
+ (CYi) 
+ Cereals - Excluding Beer     58355
+Fruits - Excluding Wine      93057
+Oilcrops                     28497
+Pulses                       25375
+Starchy Roots               246182
+Sugar Crops                 674754
+Treenuts                     14246
+Vegetables                  165618
+Fibre Crops Primary          11977
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	KKRi [label=KKRi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector Kcal/kg ratio  
+ (KKRi) 
+ Cereals - Excluding Beer     2768.575851
+Starchy Roots                 688.384055
+Sugar Crops                          NaN
+Sugar & Sweeteners           3288.372690
+Pulses                       3375.000000
+Treenuts                     2607.142857
+Oilcrops                     4562.500000
+Vegetable Oils              16251.583710
+Vegetables                    289.516036
+Fruits - Excluding Wine       525.179856
+Stimulants                   6468.354430
+Spices                       1322.463768
+Alcoholic Beverages           705.654906
+Bovine meat                  1132.458234
+Mutton & Goat meat           2607.142857
+Pigmeat                      1970.794862
+Poultry meat                 1502.176494
+Meat, other                  1216.666667
+Offals                          0.000000
+Animal fats                  7803.758472
+Eggs                         1421.381337
+Milk - Excluding Butter       485.850540
+Fish, Seafood                 753.174603
+Aquatic Products, Other         0.000000
+Miscellaneous                6083.333333
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	KKRi_comp [label=KKRi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FDKCi/(FDKGi/365)" peripheries=1 shape=rectangle style=""]
+	SSRi [label=SSRi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Self-sufficiency ratio 
+ (SSRi) 
+ Cereals - Excluding Beer    220.282575
+Starchy Roots                77.500000
+Sugar Crops                 111.966701
+Sugar & Sweeteners          156.316916
+Pulses                      115.909091
+Treenuts                    200.000000
+Oilcrops                    138.436330
+Vegetable Oils              273.954984
+Vegetables                  146.827795
+Fruits - Excluding Wine     120.319149
+Stimulants                   -0.000000
+Spices                       86.111111
+Alcoholic Beverages         150.749465
+Bovine meat                  73.170732
+Mutton & Goat meat          100.000000
+Pigmeat                      92.702170
+Poultry meat                144.574780
+Meat, other                -600.000000
+Offals                     -185.000000
+Animal fats                  86.206897
+Eggs                         90.849673
+Milk - Excluding Butter      95.769039
+Fish, Seafood                33.802817
+Aquatic Products, Other            NaN
+Miscellaneous                -0.000000
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	SSRi_comp [label=SSRi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="100*FPi/(FPi-FEi+FIi)" peripheries=1 shape=rectangle style=""]
+	FEi [label=FEi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector food exports 
+ (FEi) 
+ Cereals - Excluding Beer    8279
+Starchy Roots                 13
+Sugar Crops                  118
+Sugar & Sweeteners           831
+Pulses                        26
+Treenuts                      12
+Oilcrops                    1256
+Vegetable Oils               660
+Vegetables                   747
+Fruits - Excluding Wine      491
+Stimulants                    67
+Spices                         3
+Alcoholic Beverages          653
+Bovine meat                   16
+Mutton & Goat meat             0
+Pigmeat                      200
+Poultry meat                 210
+Meat, other                   10
+Offals                        78
+Animal fats                   28
+Eggs                           9
+Milk - Excluding Butter      619
+Fish, Seafood                  9
+Aquatic Products, Other        0
+Miscellaneous                  1
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	FIi [label=FIi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector food imports 
+ (FIi) 
+ Cereals - Excluding Beer    617
+Starchy Roots               130
+Sugar Crops                   3
+Sugar & Sweeteners          568
+Pulses                       19
+Treenuts                      8
+Oilcrops                    435
+Vegetable Oils              119
+Vegetables                  282
+Fruits - Excluding Wine     300
+Stimulants                   65
+Spices                        8
+Alcoholic Beverages         179
+Bovine meat                  27
+Mutton & Goat meat            0
+Pigmeat                     237
+Poultry meat                 58
+Meat, other                   3
+Offals                       21
+Animal fats                  52
+Eggs                         23
+Milk - Excluding Butter     704
+Fish, Seafood                56
+Aquatic Products, Other       0
+Miscellaneous                 0
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	P [label=P color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Total population 
+ (P) 
+ 9729822" peripheries=1 shape=rectangle style=filled]
+	FLOi [label=FLOi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Food losses 
+ (FLOi) 
+ Cereals - Excluding Beer    119
+Starchy Roots                14
+Sugar Crops                  54
+Sugar & Sweeteners            1
+Pulses                        3
+Treenuts                      1
+Oilcrops                     14
+Vegetable Oils                0
+Vegetables                   58
+Fruits - Excluding Wine      27
+Stimulants                    0
+Spices                        3
+Alcoholic Beverages           1
+Bovine meat                   1
+Mutton & Goat meat            0
+Pigmeat                       0
+Poultry meat                 18
+Meat, other                   0
+Offals                        0
+Animal fats                   2
+Eggs                          7
+Milk - Excluding Butter      40
+Fish, Seafood                 0
+Aquatic Products, Other       0
+Miscellaneous                 0
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	FWPi_cal [label=FWPi_cal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector food waste  
+ (FWPi_cal) 
+ Cereals - Excluding Beer    92.769588
+Starchy Roots                2.713695
+Sugar Crops                       NaN
+Sugar & Sweeteners           0.925941
+Pulses                       2.851000
+Treenuts                     0.734120
+Oilcrops                    17.985941
+Vegetable Oils               0.000000
+Vegetables                   4.728276
+Fruits - Excluding Wine      3.992768
+Stimulants                   0.000000
+Spices                       1.117139
+Alcoholic Beverages          0.198699
+Bovine meat                  0.318878
+Mutton & Goat meat           0.000000
+Pigmeat                      0.000000
+Poultry meat                 7.613699
+Meat, other                  0.000000
+Offals                       0.000000
+Animal fats                  4.394769
+Eggs                         2.801631
+Milk - Excluding Butter      5.472237
+Fish, Seafood                0.000000
+Aquatic Products, Other      0.000000
+Miscellaneous                0.000000
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	FWPi_cal_comp [label=FWPi_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(FLOi*KKRi*(1000000/365))/P" peripheries=1 shape=rectangle style=""]
+	ANPi_calc [label=ANPi_calc color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector animals needed for production 
+ (ANPi_calc) 
+ Bovine meat                1.200390e+05
+Pigmeat                    4.831874e+06
+Poultry meat               1.584209e+08
+Eggs                       1.068634e+07
+Milk - Excluding Butter    2.559353e+05
+Meat, other               -8.440303e+06
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	ANPi_calc_comp [label=ANPi_calc_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(FDi_an*1000000)/AYi" peripheries=1 shape=rectangle style=""]
+	FDi_cal [label=FDi_cal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector total domestic food production 
+ (FDi_cal) 
+ Cereals - Excluding Beer    2.754377e+09
+Starchy Roots               3.626950e+08
+Sugar Crops                          NaN
+Sugar & Sweeteners          5.941197e+08
+Pulses                      3.640830e+07
+Treenuts                    7.448700e+06
+Oilcrops                    3.338948e+07
+Vegetable Oils              2.945414e+08
+Vegetables                  1.327906e+09
+Fruits - Excluding Wine     5.857514e+08
+Stimulants                 -0.000000e+00
+Spices                      2.570788e+07
+Alcoholic Beverages         1.518876e+09
+Bovine meat                 3.056192e+07
+Mutton & Goat meat          1.362175e+06
+Pigmeat                     4.493642e+08
+Poultry meat                3.814932e+08
+Meat, other                -1.751368e+07
+Offals                               NaN
+Animal fats                 1.378578e+08
+Eggs                        1.266652e+08
+Milk - Excluding Butter     1.816398e+09
+Fish, Seafood               2.072041e+07
+Aquatic Products, Other              NaN
+Miscellaneous              -0.000000e+00
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	FDi_cal_comp [label=FDi_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(TCDi_cal * SSRi/100 * 365)/KKRi" peripheries=1 shape=rectangle style=""]
+	OFi [label=OFi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Other food demand 
+ (OFi) 
+ Cereals - Excluding Beer     960
+Starchy Roots                 43
+Sugar Crops                  908
+Sugar & Sweeteners            87
+Pulses                         9
+Treenuts                       1
+Oilcrops                    2025
+Vegetable Oils               204
+Vegetables                   -14
+Fruits - Excluding Wine      452
+Stimulants                   -17
+Spices                         7
+Alcoholic Beverages          -73
+Bovine meat                    0
+Mutton & Goat meat             0
+Pigmeat                       22
+Poultry meat                  77
+Meat, other                   -4
+Offals                       -20
+Animal fats                   13
+Eggs                          11
+Milk - Excluding Butter      -28
+Fish, Seafood                  0
+Aquatic Products, Other        0
+Miscellaneous                136
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	OFi_comp [label=OFi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SDi+NFDi+PDi+RDi+SVi" peripheries=1 shape=rectangle style=""]
+	SDi [label=SDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector seed demand 
+ (SDi) 
+ Cereals - Excluding Beer    389
+Starchy Roots                41
+Sugar Crops                   0
+Sugar & Sweeteners            0
+Pulses                        6
+Treenuts                      0
+Oilcrops                     17
+Vegetable Oils                0
+Vegetables                    0
+Fruits - Excluding Wine       0
+Stimulants                    0
+Spices                        0
+Alcoholic Beverages           0
+Bovine meat                   0
+Mutton & Goat meat            0
+Pigmeat                       0
+Poultry meat                  0
+Meat, other                   0
+Offals                        0
+Animal fats                   0
+Eggs                         12
+Milk - Excluding Butter       0
+Fish, Seafood                 0
+Aquatic Products, Other       0
+Miscellaneous                 0
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	NFDi [label=NFDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector non-food demand 
+ (NFDi) 
+ Cereals - Excluding Beer    105
+Starchy Roots                56
+Sugar Crops                   0
+Sugar & Sweeteners           17
+Pulses                        0
+Treenuts                      0
+Oilcrops                      3
+Vegetable Oils               94
+Vegetables                    0
+Fruits - Excluding Wine       3
+Stimulants                    0
+Spices                        0
+Alcoholic Beverages           1
+Bovine meat                   0
+Mutton & Goat meat            0
+Pigmeat                       0
+Poultry meat                  0
+Meat, other                   0
+Offals                        0
+Animal fats                   6
+Eggs                          0
+Milk - Excluding Butter       1
+Fish, Seafood                 0
+Aquatic Products, Other       0
+Miscellaneous                 0
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	PDi [label=PDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector processed demand 
+ (PDi) 
+ Cereals - Excluding Beer    1375
+Starchy Roots                  0
+Sugar Crops                  952
+Sugar & Sweeteners            22
+Pulses                         0
+Treenuts                       0
+Oilcrops                    1990
+Vegetable Oils                56
+Vegetables                    23
+Fruits - Excluding Wine      545
+Stimulants                     1
+Spices                         0
+Alcoholic Beverages            0
+Bovine meat                    0
+Mutton & Goat meat             0
+Pigmeat                        0
+Poultry meat                  16
+Meat, other                    0
+Offals                         0
+Animal fats                    1
+Eggs                           0
+Milk - Excluding Butter        0
+Fish, Seafood                  0
+Aquatic Products, Other        0
+Miscellaneous                152
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	RDi [label=RDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector residual demand 
+ (RDi) 
+ Cereals - Excluding Beer     -5
+Starchy Roots                 0
+Sugar Crops                 -44
+Sugar & Sweeteners           61
+Pulses                        0
+Treenuts                      0
+Oilcrops                    -52
+Vegetable Oils                0
+Vegetables                   -3
+Fruits - Excluding Wine     -67
+Stimulants                  -21
+Spices                        0
+Alcoholic Beverages        -125
+Bovine meat                   0
+Mutton & Goat meat            0
+Pigmeat                       0
+Poultry meat                -13
+Meat, other                  -4
+Offals                      -20
+Animal fats                   0
+Eggs                         -1
+Milk - Excluding Butter     -49
+Fish, Seafood                 0
+Aquatic Products, Other       0
+Miscellaneous               -16
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	SVi [label=SVi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector stock variation 
+ (SVi) 
+ Cereals - Excluding Beer   -904
+Starchy Roots               -54
+Sugar Crops                   0
+Sugar & Sweeteners          -13
+Pulses                        3
+Treenuts                      1
+Oilcrops                     67
+Vegetable Oils               54
+Vegetables                  -34
+Fruits - Excluding Wine     -29
+Stimulants                    3
+Spices                        7
+Alcoholic Beverages          51
+Bovine meat                   0
+Mutton & Goat meat            0
+Pigmeat                      22
+Poultry meat                 74
+Meat, other                   0
+Offals                        0
+Animal fats                   6
+Eggs                          0
+Milk - Excluding Butter      20
+Fish, Seafood                 0
+Aquatic Products, Other       0
+Miscellaneous                 0
+dtype: int64" peripheries=1 shape=rectangle style=filled]
+	TCDi_cal [label=TCDi_cal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total calorie demand per food group calibrated for  
+ (TCDi_cal) 
+ Cereals - Excluding Beer    9.484335e+09
+Starchy Roots               8.826281e+08
+Sugar Crops                          NaN
+Sugar & Sweeteners          3.424177e+09
+Pulses                      2.904449e+08
+Treenuts                    2.660250e+07
+Oilcrops                    3.014877e+08
+Vegetable Oils              4.787072e+09
+Vegetables                  7.173630e+08
+Fruits - Excluding Wine     7.004768e+08
+Stimulants                  2.724350e+08
+Spices                      1.081678e+08
+Alcoholic Beverages         1.947898e+09
+Bovine meat                 1.295903e+08
+Mutton & Goat meat          9.729822e+06
+Pigmeat                     2.617322e+09
+Poultry meat                1.085981e+09
+Meat, other                 9.729822e+06
+Offals                      0.000000e+00
+Animal fats                 3.419009e+09
+Eggs                        5.429399e+08
+Milk - Excluding Butter     2.524619e+09
+Fish, Seafood               1.264877e+08
+Aquatic Products, Other     0.000000e+00
+Miscellaneous               9.729822e+06
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	TCDi_cal_comp [label=TCDi_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="P*(FDKCi+FWPi_cal)" peripheries=1 shape=rectangle style=""]
+	AFDi [label=AFDi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector total animal feed demand 
+ (AFDi) 
+ Cereals - Excluding Beer    4160.0
+Starchy Roots                  9.0
+Sugar Crops                    0.0
+Sugar & Sweeteners             1.0
+Pulses                         4.0
+Treenuts                       0.0
+Oilcrops                      88.0
+Vegetable Oils                 0.0
+Vegetables                   104.0
+Fruits - Excluding Wine        2.0
+Stimulants                     0.0
+Spices                         0.0
+Alcoholic Beverages            0.0
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	AFDi_comp [label=AFDi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FMi * FD" peripheries=1 shape=rectangle style=""]
+	FMi [label=FMi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Feed mix fraction 
+ (FMi) 
+ Cereals - Excluding Beer    0.920761
+Starchy Roots               0.001992
+Sugar Crops                 0.000000
+Sugar & Sweeteners          0.000221
+Pulses                      0.000885
+Treenuts                    0.000000
+Oilcrops                    0.019478
+Vegetable Oils              0.000000
+Vegetables                  0.023019
+Fruits - Excluding Wine     0.000443
+Stimulants                  0.000000
+Spices                      0.000000
+Alcoholic Beverages         0.000000
+Bovine meat                 0.000000
+Mutton & Goat meat          0.000000
+Pigmeat                     0.000000
+Poultry meat                0.000000
+Meat, other                 0.000000
+Offals                      0.000000
+Animal fats                 0.000000
+Eggs                        0.000221
+Milk - Excluding Butter     0.030766
+Fish, Seafood               0.002213
+Aquatic Products, Other     0.000000
+Miscellaneous               0.000000
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	FMi_comp [label=FMi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FDi/SUM(FDI)" peripheries=1 shape=rectangle style=""]
+	FD [label=FD color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total crop-feed demand 
+ (FD) 
+ 4518.0" peripheries=1 shape=rectangle style=filled]
+	FD_comp [label=FD_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SUM(TAFDi)/CRfd" peripheries=1 shape=rectangle style=""]
+	LUi [label=LUi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label=" 
+ (LUi) 
+ Country area                               9303.00
+Land area                                  9126.00
+Agriculture                                5564.00
+Agricultural land                          5303.00
+Cropland                                   4499.00
+Arable land                                4323.00
+Land under temporary crops                 4077.00
+Land under temp. meadows and pastures        57.00
+Land with temporary fallow                  189.00
+Land under permanent crops                  176.00
+Land under perm. meadows and pastures       804.00
+Perm. meadows & pastures - Cultivated         0.00
+Perm. meadows & pastures - Nat. growing       0.00
+Land under protective cover                 261.00
+Forest land                                2057.27
+Naturally regenerating forest              1269.91
+Planted Forest                              787.36
+Other land                                 1504.73
+Inland waters                               177.00
+Coastal waters                                0.00
+Exclusive Economic Zone (EEZ)                 0.00
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	TAFDi [label=TAFDi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="vector total animal feed demand 
+ (TAFDi) 
+ Bovine meat                   764.047942
+Pigmeat                      1888.228658
+Poultry meat                 1258.928039
+Eggs                       255901.783175
+Milk - Excluding Butter      1271.478916
+Meat, other                  -242.272208
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	TAFDi_comp [label=TAFDi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(FRCi*AYi*ANPi_calc)/1000000" peripheries=1 shape=rectangle style=""]
+	FDTi_crops_cal [label=FDTi_crops_cal color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Vector total food demand (crops) 
+ (FDTi_crops_cal) 
+ Cereals - Excluding Beer    14032.845229
+Starchy Roots                 402.994958
+Sugar Crops                          NaN
+Sugar & Sweeteners            731.678633
+Pulses                         51.476479
+Treenuts                        9.448700
+Oilcrops                     2958.549123
+Vegetable Oils                853.409589
+Vegetables                   1460.051501
+Fruits - Excluding Wine      1132.000319
+Stimulants                      0.000000
+Spices                         31.735655
+Alcoholic Beverages          1408.829252
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	FDTi_crops_cal_comp [label=FDTi_crops_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SSRi/100*(OFi+AFDi)+FDi" peripheries=1 shape=rectangle style=""]
+	FDTi_total_cal [label=FDTi_total_cal color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Vector total food demand all 
+ (FDTi_total_cal) 
+ Cereals - Excluding Beer    14032.845229
+Starchy Roots                 402.994958
+Sugar Crops                          NaN
+Sugar & Sweeteners            731.678633
+Pulses                         51.476479
+Treenuts                        9.448700
+Oilcrops                     2958.549123
+Vegetable Oils                853.409589
+Vegetables                   1460.051501
+Fruits - Excluding Wine      1132.000319
+Stimulants                      0.000000
+Spices                         31.735655
+Alcoholic Beverages          1408.829252
+Bovine meat                    30.561918
+Mutton & Goat meat              1.362175
+Pigmeat                       449.364269
+Poultry meat                  381.493345
+Meat, other                   -17.513656
+Offals                               NaN
+Animal fats                   137.857779
+Eggs                          126.665239
+Milk - Excluding Butter      1816.398452
+Fish, Seafood                  20.720413
+Aquatic Products, Other              NaN
+Miscellaneous                  -0.000000
+dtype: float64" peripheries=1 shape=rectangle style=filled]
+	FDTi_total_cal_comp [label=FDTi_total_cal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="concatenate FDTi_animal and FDTi_crops_cal" peripheries=1 shape=rectangle style=""]
+	CRfd -> FD_comp [color="#A9A9A9"]
+	CRfd_comp -> CRfd [color="#A9A9A9"]
+	TFFD__comp -> TFFD_ [color="#A9A9A9"]
+	FDi -> CRfd_comp [color="#A9A9A9"]
+	FDi -> TFFD__comp [color="#A9A9A9"]
+	FDi -> FMi_comp [color="#A9A9A9"]
+	FDi -> FDTi_animal_comp [color="#A9A9A9"]
+	TAFDi_cal -> CRfd_comp [color="#A9A9A9"]
+	TAFDi_cal -> TFFD__comp [color="#A9A9A9"]
+	TAFDi_cal_comp -> TAFDi_cal [color="#A9A9A9"]
+	AYi -> TAFDi_cal_comp [color="#A9A9A9"]
+	AYi -> ANPi_cal_comp [color="#A9A9A9"]
+	AYi -> ANPi_calc_comp [color="#A9A9A9"]
+	AYi -> TAFDi_comp [color="#A9A9A9"]
+	FCRi -> TAFDi_cal_comp [color="#A9A9A9"]
+	FCRi -> TAFDi_comp [color="#A9A9A9"]
+	ANPi_cal -> TAFDi_cal_comp [color="#A9A9A9"]
+	ANPi_cal_comp -> ANPi_cal [color="#A9A9A9"]
+	FDi_an -> ANPi_cal_comp [color="#A9A9A9"]
+	FDi_an -> ANPi_calc_comp [color="#A9A9A9"]
+	FDi_an_comp -> FDi_an [color="#A9A9A9"]
+	FDTi_animal -> FDi_an_comp [color="#A9A9A9"]
+	FDTi_animal -> FDTi_total_cal_comp [color="#A9A9A9"]
+	FDTi_animal_comp -> FDTi_animal [color="#A9A9A9"]
+	FPi -> FDTi_animal_comp [color="#A9A9A9"]
+	FPi -> SSRi_comp [color="#A9A9A9"]
+	CD_corr_comp -> CD_corr [color="#A9A9A9"]
+	TCropDi_cal -> CD_corr_comp [color="#A9A9A9"]
+	TCropDi_cal_comp -> TCropDi_cal [color="#A9A9A9"]
+	FDTi_conv_cal -> TCropDi_cal_comp [color="#A9A9A9"]
+	FDTi_conv_cal_comp -> FDTi_conv_cal [color="#A9A9A9"]
+	TCLi -> CD_corr_comp [color="#A9A9A9"]
+	TCLi -> FDTi_conv_cal_comp [color="#A9A9A9"]
+	FDKGi -> KKRi_comp [color="#A9A9A9"]
+	FDKCi -> KKRi_comp [color="#A9A9A9"]
+	FDKCi -> TCDi_cal_comp [color="#A9A9A9"]
+	CYi -> TCropDi_cal_comp [color="#A9A9A9"]
+	CYi -> FDTi_conv_cal_comp [color="#A9A9A9"]
+	KKRi -> FWPi_cal_comp [color="#A9A9A9"]
+	KKRi -> FDi_cal_comp [color="#A9A9A9"]
+	KKRi_comp -> KKRi [color="#A9A9A9"]
+	SSRi -> FDi_cal_comp [color="#A9A9A9"]
+	SSRi -> FDTi_crops_cal_comp [color="#A9A9A9"]
+	SSRi -> FDTi_animal_comp [color="#A9A9A9"]
+	SSRi_comp -> SSRi [color="#A9A9A9"]
+	FEi -> SSRi_comp [color="#A9A9A9"]
+	FIi -> SSRi_comp [color="#A9A9A9"]
+	P -> FWPi_cal_comp [color="#A9A9A9"]
+	P -> TCDi_cal_comp [color="#A9A9A9"]
+	FLOi -> FWPi_cal_comp [color="#A9A9A9"]
+	FWPi_cal -> TCDi_cal_comp [color="#A9A9A9"]
+	FWPi_cal_comp -> FWPi_cal [color="#A9A9A9"]
+	ANPi_calc -> TAFDi_comp [color="#A9A9A9"]
+	ANPi_calc_comp -> ANPi_calc [color="#A9A9A9"]
+	FDi_cal -> FDTi_crops_cal_comp [color="#A9A9A9"]
+	FDi_cal -> FDTi_animal_comp [color="#A9A9A9"]
+	FDi_cal_comp -> FDi_cal [color="#A9A9A9"]
+	OFi -> FDTi_crops_cal_comp [color="#A9A9A9"]
+	OFi -> FDTi_animal_comp [color="#A9A9A9"]
+	OFi_comp -> OFi [color="#A9A9A9"]
+	SDi -> OFi_comp [color="#A9A9A9"]
+	NFDi -> OFi_comp [color="#A9A9A9"]
+	PDi -> OFi_comp [color="#A9A9A9"]
+	RDi -> OFi_comp [color="#A9A9A9"]
+	SVi -> OFi_comp [color="#A9A9A9"]
+	TCDi_cal -> FDi_cal_comp [color="#A9A9A9"]
+	TCDi_cal_comp -> TCDi_cal [color="#A9A9A9"]
+	AFDi -> FDTi_crops_cal_comp [color="#A9A9A9"]
+	AFDi_comp -> AFDi [color="#A9A9A9"]
+	FMi -> AFDi_comp [color="#A9A9A9"]
+	FMi_comp -> FMi [color="#A9A9A9"]
+	FD -> AFDi_comp [color="#A9A9A9"]
+	FD_comp -> FD [color="#A9A9A9"]
+	TAFDi -> FD_comp [color="#A9A9A9"]
+	TAFDi_comp -> TAFDi [color="#A9A9A9"]
+	FDTi_crops_cal -> FDTi_total_cal_comp [color="#A9A9A9"]
+	FDTi_crops_cal_comp -> FDTi_crops_cal [color="#A9A9A9"]
+	FDTi_total_cal -> FDTi_conv_cal_comp [color="#A9A9A9"]
+	FDTi_total_cal_comp -> FDTi_total_cal [color="#A9A9A9"]
+}
