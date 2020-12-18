@@ -1,0 +1,93 @@
+digraph {
+	graph [splines=ortho]
+	TCDi [label=TCDi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total calorie demand per food group 
+ (TCDi)" peripheries=1 shape=rectangle style=filled]
+	TCDi_comp [label=TCDi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="P*(FDKCi+FWi-FWCRi)" peripheries=1 shape=rectangle style=""]
+	FWCRi [label=FWCRi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Waste reduction policy consumption per food group 
+ (FWCRi)" peripheries=1 shape=rectangle style=filled]
+	FWPPi [label=FWPPi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Waste reduction policy production per food group 
+ (FWPPi)" peripheries=1 shape=rectangle style=filled]
+	FWi [label=FWi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Food waste per food group 
+ (FWi)" peripheries=1 shape=rectangle style=filled]
+	FWi_comp [label=FWi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FWPi_baseline * FWPPi" peripheries=1 shape=rectangle style=""]
+	FWPi_baseline [label=FWPi_baseline color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Food waste baseline per food group 
+ (FWPi_baseline)" peripheries=1 shape=rectangle style=filled]
+	FWPi_baseline_comp [label=FWPi_baseline_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FLOi * KKRi / P" peripheries=1 shape=rectangle style=""]
+	FLOi [label=FLOi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Food losses per food group 
+ (FLOi)" peripheries=1 shape=rectangle style=filled]
+	KKRi [label=KKRi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Kcal/1000 tons ratio per food group 
+ (KKRi)" peripheries=1 shape=rectangle style=filled]
+	KKRi_comp [label=KKRi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FDKGi / FDKCi" peripheries=1 shape=rectangle style=""]
+	FDKGi [label=FDKGi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Kg food demand per year per food group 
+ (FDKGi)" peripheries=1 shape=rectangle style=filled]
+	FDKCi [label=FDKCi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Kcal food demand per day per food group 
+ (FDKCi)" peripheries=1 shape=rectangle style=filled]
+	P [label=P color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Total population 
+ (P)" peripheries=1 shape=rectangle style=filled]
+	SSRi [label=SSRi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Self-sufficiency ratio per food group 
+ (SSRi)" peripheries=1 shape=rectangle style=filled]
+	SSRi_comp [label=SSRi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FPi / (FPi - FEi + FIi)" peripheries=1 shape=rectangle style=""]
+	FPi [label=FPi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Food production per food group 
+ (FPi)" peripheries=1 shape=rectangle style=filled]
+	FEi [label=FEi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Food exports per food group 
+ (FEi)" peripheries=1 shape=rectangle style=filled]
+	FIi [label=FIi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Food imports per food group 
+ (FIi)" peripheries=1 shape=rectangle style=filled]
+	FDi [label=FDi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total domestic food production per food group 
+ (FDi)" peripheries=1 shape=rectangle style=filled]
+	FDi_comp [label=FDi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="TCDi * SSRi / KKRi" peripheries=1 shape=rectangle style=""]
+	FDi_baseline [label=FDi_baseline color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Feed demand per group 
+ (FDi_baseline)" peripheries=1 shape=rectangle style=filled]
+	OFi [label=OFi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Other food demand 
+ (OFi)" peripheries=1 shape=rectangle style=filled]
+	OFi_comp [label=OFi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SDi + NFDi + PDi + RDi + SVi" peripheries=1 shape=rectangle style=""]
+	SDi [label=SDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Seed demand per food group 
+ (SDi)" peripheries=1 shape=rectangle style=filled]
+	NFDi [label=NFDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Non-food demand per food group 
+ (NFDi)" peripheries=1 shape=rectangle style=filled]
+	PDi [label=PDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Processed demand per food group 
+ (PDi)" peripheries=1 shape=rectangle style=filled]
+	RDi [label=RDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Residual demand per food group 
+ (RDi)" peripheries=1 shape=rectangle style=filled]
+	SVi [label=SVi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Stock variation per food group 
+ (SVi)" peripheries=1 shape=rectangle style=filled]
+	FDTi [label=FDTi color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Total food demand per food group (crops) 
+ (FDTi)" peripheries=1 shape=rectangle style=filled]
+	FDTi_comp [label=FDTi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SSRi * (OFi + FDi_baseline) + FDi" peripheries=1 shape=rectangle style=""]
+	FCRi [label=FCRi color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Feed conversion ratio (kg/animal) 
+ (FCRi)" peripheries=1 shape=rectangle style=filled]
+	TCDi -> FDi_comp [color="#A9A9A9"]
+	TCDi_comp -> TCDi [color="#A9A9A9"]
+	FWCRi -> TCDi_comp [color="#A9A9A9"]
+	FWPPi -> FWi_comp [color="#A9A9A9"]
+	FWi -> TCDi_comp [color="#A9A9A9"]
+	FWi_comp -> FWi [color="#A9A9A9"]
+	FWPi_baseline -> FWi_comp [color="#A9A9A9"]
+	FWPi_baseline_comp -> FWPi_baseline [color="#A9A9A9"]
+	FLOi -> FWPi_baseline_comp [color="#A9A9A9"]
+	KKRi -> FWPi_baseline_comp [color="#A9A9A9"]
+	KKRi -> FDi_comp [color="#A9A9A9"]
+	KKRi_comp -> KKRi [color="#A9A9A9"]
+	FDKGi -> KKRi_comp [color="#A9A9A9"]
+	FDKCi -> TCDi_comp [color="#A9A9A9"]
+	FDKCi -> KKRi_comp [color="#A9A9A9"]
+	P -> TCDi_comp [color="#A9A9A9"]
+	P -> FWPi_baseline_comp [color="#A9A9A9"]
+	SSRi -> FDi_comp [color="#A9A9A9"]
+	SSRi -> FDTi_comp [color="#A9A9A9"]
+	SSRi_comp -> SSRi [color="#A9A9A9"]
+	FPi -> SSRi_comp [color="#A9A9A9"]
+	FEi -> SSRi_comp [color="#A9A9A9"]
+	FIi -> SSRi_comp [color="#A9A9A9"]
+	FDi -> FDTi_comp [color="#A9A9A9"]
+	FDi_comp -> FDi [color="#A9A9A9"]
+	FDi_baseline -> FDTi_comp [color="#A9A9A9"]
+	OFi -> FDTi_comp [color="#A9A9A9"]
+	OFi_comp -> OFi [color="#A9A9A9"]
+	SDi -> OFi_comp [color="#A9A9A9"]
+	NFDi -> OFi_comp [color="#A9A9A9"]
+	PDi -> OFi_comp [color="#A9A9A9"]
+	RDi -> OFi_comp [color="#A9A9A9"]
+	SVi -> OFi_comp [color="#A9A9A9"]
+	FDTi_comp -> FDTi [color="#A9A9A9"]
+}

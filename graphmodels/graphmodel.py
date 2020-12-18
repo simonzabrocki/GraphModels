@@ -49,6 +49,7 @@ class GraphModel(nx.DiGraph):
         self.make_graph(graph_specifications)
         self.node_ordering = self.get_computational_nodes_ordering()
         self.model_function = model_function(self)
+        self.graph_specifications = graph_specifications
 
     def checks(self, nodes, edges):
         '''Checks if the graph is well defined.
@@ -100,17 +101,16 @@ class GraphModel(nx.DiGraph):
         ordering = [node for node in nx.topological_sort(self) if '_comp' in node]
         return ordering
 
-    def run(self, inputs, parameters):
+    def run(self, X):
         '''Run the GraphModel given inputs and parameters.
 
         Args:
-            inputs(dict): dictionnary of input values.
-            parameters(dict): dictionnary of parameter values.
+            X(dict): dictionnary of input values.
 
         Returns:
-            X(dict): The values of inputs, parameters, variables and outputs of the graph.
+            X(dict): The values of inputs, variables and outputs of the graph.
         '''
-        X = self.merge_inputs_parameters(inputs, parameters)
+        #X = self.merge_inputs_parameters(inputs, parameters)
         X = self.model_function(X)
         return X
 
