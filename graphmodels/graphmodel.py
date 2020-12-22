@@ -1,3 +1,8 @@
+"""
+Graph Model
+"""
+__author__ = 'Simon'
+
 import networkx as nx
 import graphviz
 import logging
@@ -78,22 +83,8 @@ class GraphModel(nx.DiGraph):
         self.add_edges_from(edges)
         return None
 
-    def merge_inputs_parameters(self, inputs, parameters):
-        '''Merge inputs and parameters in a single dict
-
-        Args:
-            inputs(dict): dictionnary of input values.
-            parameters(dict): dictionnary of parameter values.
-
-        Returns:
-            X(dict): dictionnary of inputs, parameters, variables, outputs
-        '''
-        X = inputs.copy()
-        X.update(parameters)
-        return X
-
     def get_computational_nodes_ordering(self):
-        '''Returns the sorted computationnal nodes.
+        '''Returns the sorted list of computationnal nodes.
 
         Returns:
             ordering(list): List of ordered computationnal nodes.
@@ -105,10 +96,10 @@ class GraphModel(nx.DiGraph):
         '''Run the GraphModel given inputs and parameters.
 
         Args:
-            X(dict): dictionnary of input values.
+            X(dict): dictionnary of input and parameters.
 
         Returns:
-            X(dict): The values of inputs, variables and outputs of the graph.
+            X(dict): inputs, variables and outputs of the graph.
         '''
         X = self.model_function(X)
         return X
