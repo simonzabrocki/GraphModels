@@ -14,11 +14,6 @@ The program parses a graph_specifications list. It is a **list** of **nodes** th
 <font color='red'>THE FORMATTING IS ESSENTIAL</font>
 
 
-The list is as follow:
-```python
-graph_specifications = [node_1, node_2, node_3]
-```
-
 ## Nodes definitions
 
 Each node is defined by a **dictionary** of properties:
@@ -47,6 +42,77 @@ node_2 = {'type': 'variable',
           }
 ```
 
-#### Computation definition
+**Note:** In order to define computational nodes, a computation must be defined.A computation dictionary must include a name for the computation (for visual purposes) as well as a formula for the computation. **The formula must take a dictionary X as input**. This dictionary X is the "state of the system" up to this point of the graph. It contains all the parameters, inputs, and variables computed previously.
 
-In order to define computational nodes, a computation must be defined by a computation dictionary including a name for the computation (for visual purposes) as well as a formula for the computation.
+
+## Full example
+
+```python
+from graphmodels.graphmodel import GraphModel
+
+graph_specifications = [
+    {'type': 'input',
+     'unit': '',
+     'id': 'In 1',
+     'name': 'Input 1',
+     },
+    {'type': 'parameter',
+     'unit': '',
+     'id': 'Par 1',
+     'name': 'Parameter 1',
+     },
+    {'type': 'variable',
+     'id': 'Var 1',
+     'name': 'Variable 1',
+     'unit': '',
+     'in': ['Par 1', 'In 1'],
+     'computation': {'name': 'Par 1 * In 1',
+                     'formula': lambda X: X['Par 1'] * X['In 1']}
+     },
+    {'type': 'parameter',
+     'unit': '',
+     'id': 'Par 3',
+     'name': 'Parameter 3',
+     },
+    {'type': 'output',
+     'id': 'Out 1',
+     'name': 'Output 1',
+     'unit': '',
+     'in': ['Var 1', 'Var 2', 'Par 3'],
+     'computation': {'name': 'Var 1 + Var 2 + Par 3',
+                     'formula': lambda X: X['Var 1'] + X['Var 2'] + X['Par 3']}
+     },
+    {'type': 'input',
+     'unit': '',
+     'id': 'In 2',
+     'name': 'Input 2',
+     },
+    {'type': 'parameter',
+     'unit': '',
+     'id': 'Par 2',
+     'name': 'Parameter 2',
+     },
+    {'type': 'variable',
+     'id': 'Var 2',
+     'name': 'Variable 2',
+     'unit': '',
+     'in': ['Par 2', 'In 2'],
+     'computation': {'name': 'Par 2 / In 2',
+                     'formula': lambda X: X['Par 2'] / X['In 2']}
+     },
+]
+
+
+inputs_parameters = {
+    'In 1': 5,
+    'In 2': 4,
+    'Par 1': 3,
+    'Par 2': 5,
+    'Par 3': 5
+}
+
+
+Model = GraphModel(graph_specifications)
+
+Model.run(inputs_parameters)
+```
