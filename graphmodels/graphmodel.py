@@ -110,7 +110,6 @@ class GraphModel(nx.DiGraph):
         Returns:
             X(dict): The values of inputs, variables and outputs of the graph.
         '''
-        #X = self.merge_inputs_parameters(inputs, parameters)
         X = self.model_function(X)
         return X
 
@@ -139,6 +138,7 @@ class GraphDrawer():
     Attributes:
         draw_properties(dict): dictionnary of properties for the graph plot.
     '''
+
     def __init__(self, draw_properties):
         '''Initialize the GraphDrawer
 
@@ -247,6 +247,7 @@ class GraphDrawer():
 class GraphParser():
     '''A class to parse the specification of a graph
     '''
+
     def __init__(self):
         '''
         Initialize a parser.
@@ -338,5 +339,6 @@ def node_function(node, X):
 
 def model_function(G):
     '''The function computed by the model'''
-    functions_list = [partial(node_function, node=G.nodes[node_id]) for node_id in G.node_ordering[::-1]]
+    functions_list = [partial(node_function, node=G.nodes[node_id])
+                      for node_id in G.node_ordering[::-1]]
     return compose(*functions_list)

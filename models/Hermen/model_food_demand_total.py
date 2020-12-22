@@ -105,14 +105,11 @@ FDTi_nodes = [
      'in': ['KKRi', 'SSRi', 'TCDi'],
      'computation': {'name': 'TCDi * SSRi / KKRi',
                      'formula': lambda X: X['TCDi'] * X['SSRi'] / X['KKRi']}
-
-
      },
     {'type': 'input',
      'unit': '1000 t',
      'id': 'FDi_baseline',
      'name': 'Feed demand per group',
-
      },
     {'type': 'variable',
      'unit': '1000 t',
