@@ -1,0 +1,26 @@
+digraph {
+	graph [splines=ortho]
+	FDTi [label=FDTi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Total food demand per food group 
+ (FDTi)" peripheries=1 shape=rectangle style=filled]
+	CYi [label=CYi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Crop yields per crop type 
+ (CYi)" peripheries=1 shape=rectangle style=filled]
+	TCLD [label=TCLD color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total crop land demand 
+ (TCLD)" peripheries=1 shape=rectangle style=filled]
+	TCLD_comp [label=TCLD_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FDTi * CYi" peripheries=1 shape=rectangle style=""]
+	LUi_baseline [label=LUi_baseline color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Land use per group 
+ (LUi_baseline)" peripheries=1 shape=rectangle style=filled]
+	TCLD_baseline [label=TCLD_baseline color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total crop land demand (baseline) 
+ (TCLD_baseline)" peripheries=1 shape=rectangle style=filled]
+	TCLD_baseline_comp [label=TCLD_baseline_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="LU_Cropland - LU_Land_under_permanent_crops" peripheries=1 shape=rectangle style=""]
+	CD_corr [label=CD_corr color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Correction parameter crop demand 
+ (CD_corr)" peripheries=1 shape=rectangle style=filled]
+	CD_corr_comp [label=CD_corr_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="TCLD_baseline / TCLD" peripheries=1 shape=rectangle style=""]
+	FDTi -> TCLD_comp [color="#A9A9A9"]
+	CYi -> TCLD_comp [color="#A9A9A9"]
+	TCLD -> CD_corr_comp [color="#A9A9A9"]
+	TCLD_comp -> TCLD [color="#A9A9A9"]
+	LUi_baseline -> TCLD_baseline_comp [color="#A9A9A9"]
+	TCLD_baseline -> CD_corr_comp [color="#A9A9A9"]
+	TCLD_baseline_comp -> TCLD_baseline [color="#A9A9A9"]
+	CD_corr_comp -> CD_corr [color="#A9A9A9"]
+}
