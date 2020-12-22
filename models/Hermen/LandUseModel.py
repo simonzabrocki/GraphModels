@@ -9,10 +9,10 @@ TO DO.
 import pandas as pd
 
 from graphmodels.graphmodel import GraphModel
-from models.Hermen.model_crop_demand_correction import CD_corr_model
-from models.Hermen.model_feed_forage_distribution import CRfd_model
-from models.Hermen.model_food_demand_total import FDTi_model
-from models.Hermen.model_food_demand_crops import FDi_crops_model
+from .model_crop_demand_correction import CD_corr_model
+from .model_feed_forage_distribution import CRfd_model
+from .model_food_demand_total import FDTi_model
+from .model_food_demand_crops import FDi_crops_model
 
 
 animal_group = ['Bovine meat', 'Pigmeat', 'Poultry meat',
