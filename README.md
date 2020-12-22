@@ -5,14 +5,13 @@ A framework to compute Green Growth models using computational graphs.
 
 # INSTALLATION
 
-TO DO
+TO DO: add on pip
 
 # HOW TO
 
 The program parses a graph_specifications list. It is a **list** of **nodes** that fully defines the graph. This graph is then used to build a **model function**. This function takes a **set of inputs and parameters** and returns the **set of all the variables and outputs** computed by the model as well as the input and parameters.
 
 <font color='red'>THE FORMATTING IS ESSENTIAL</font>
-
 
 ## Nodes definitions
 

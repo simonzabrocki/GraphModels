@@ -121,7 +121,7 @@ class GraphModel(nx.DiGraph):
         '''
         return GraphDrawer(draw_properties).draw(self)
 
-    def draw_computation(self, inputs, parameters, draw_properties=draw_properties):
+    def draw_computation(self, inputs_parameters, draw_properties=draw_properties):
         '''Draw the graph with the computated values.
 
         Args:
@@ -129,7 +129,7 @@ class GraphModel(nx.DiGraph):
             inputs(dict): dictionnary of input values.
             parameters(dict): dictionnary of parameter values.
         '''
-        return GraphDrawer(draw_properties).draw_computation(self, inputs, parameters)
+        return GraphDrawer(draw_properties).draw_computation(self, inputs_parameters)
 
 
 class GraphDrawer():
@@ -222,7 +222,7 @@ class GraphDrawer():
             self.draw_edge(dot, a, b, draw_properties)
         return dot
 
-    def draw_computation(self, G, inputs, parameters):
+    def draw_computation(self, G, inputs_parameters):
         '''Draw a full Graph Model with the computed values:
 
         Args:
@@ -233,7 +233,7 @@ class GraphDrawer():
         Returns:
             dot(obj): The plot object of the graph.
         '''
-        X = G.run(inputs, parameters)
+        X = G.run(inputs_parameters)
         for node_id in X:
             G.nodes[node_id]['value'] = X[node_id]
         dot = self.draw(G)
