@@ -12,7 +12,7 @@ digraph {
 	TCLD_baseline [label=TCLD_baseline color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total crop land demand (baseline) 
  (TCLD_baseline)" peripheries=1 shape=rectangle style=filled]
 	TCLD_baseline_comp [label=TCLD_baseline_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="LU_Cropland - LU_Land_under_permanent_crops" peripheries=1 shape=rectangle style=""]
-	CD_corr [label=CD_corr color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Correction parameter crop demand 
+	CD_corr [label=CD_corr color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Correction parameter crop type 
  (CD_corr)" peripheries=1 shape=rectangle style=filled]
 	CD_corr_comp [label=CD_corr_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="TCLD_baseline / TCLD" peripheries=1 shape=rectangle style=""]
 	FDTi -> TCLD_comp [color="#A9A9A9"]
