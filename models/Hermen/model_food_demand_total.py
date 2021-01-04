@@ -10,14 +10,15 @@ TO DO.
 
 from graphmodels.graphmodel import GraphModel
 
+
 FDTi_nodes = [
     {'type': 'variable',
      'unit': 'kcal/day',
      'id': 'TCDi',
      'name': 'Total calorie demand per food group',
      'in': ['P', 'FWi', 'FWCRi', 'FDKCi'],
-     'computation': {'name': 'P*(FDKCi+FWi-FWCRi)',
-                     'formula': lambda X: X['P'] * (X['FDKCi'] + X['FWi'] - X['FWCRi'])}
+     'computation': {'name': 'P*(FDKCi + FWi / 365 - FWCRi)',
+                     'formula': lambda X: X['P'] * (X['FDKCi'] + X['FWi'] / 365 - X['FWCRi'])}
      },
     {'type': 'input',
      'unit': 'kcal/cap/day',
@@ -59,7 +60,7 @@ FDTi_nodes = [
                      'formula': lambda X: X['FDKCi'] / (X['FDKGi'] * 1e-6)}
      },
     {'type': 'input',
-     'unit': 'kg/capita/yr',
+     'unit': 'kg/capita/day',
      'id': 'FDKGi',
      'name': 'Kg food demand per year per food group',
      },
@@ -103,8 +104,8 @@ FDTi_nodes = [
      'id': 'FDi',
      'name': 'Total domestic food production per food group',
      'in': ['KKRi', 'SSRi', 'TCDi'],
-     'computation': {'name': 'TCDi * SSRi / KKRi',
-                     'formula': lambda X: X['TCDi'] * X['SSRi'] / X['KKRi']}
+     'computation': {'name': 'TCDi * SSRi / KKRi * 365',
+                     'formula': lambda X: X['TCDi'] * X['SSRi'] / X['KKRi'] * 365}
      },
     {'type': 'input',
      'unit': '1000 t',

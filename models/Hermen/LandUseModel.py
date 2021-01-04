@@ -15,8 +15,8 @@ from .model_food_demand_total import FDTi_model
 from .model_food_demand_crops import FDi_crops_model
 
 
-animal_group = ['Bovine meat', 'Pigmeat', 'Poultry meat',
-                'Eggs', 'Milk - Excluding Butter', 'Meat, other']
+animal_group = ['Bovine Meat', 'Pigmeat', 'Poultry Meat',
+                'Eggs', 'Milk - Excluding Butter', 'Meat, Other']
 
 crop_group = ['Cereals - Excluding Beer', 'Starchy Roots', 'Sugar Crops',
               'Sugar & Sweeteners', 'Pulses', 'Treenuts', 'Oilcrops',
@@ -83,7 +83,7 @@ LU_nodes = [
         'unit': '',
         'type': 'variable',
         'in': ['FDTi', 'inputs_animal_and_crops'],
-        'computation': {'name': 'compute CRfd', 'formula': lambda X: compute_CD_corr(X)}
+        'computation': {'name': 'compute CD_corr', 'formula': lambda X: compute_CD_corr(X)}
     },
 
 ]
