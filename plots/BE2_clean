@@ -1,0 +1,103 @@
+digraph {
+	graph [splines=ortho]
+	TLA [label=TLA color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Total land area 
+ (TLA)" peripheries=1 shape=rectangle style=filled]
+	FL_t [label=FL_t color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Forest land stock 
+ (FL_t)" peripheries=1 shape=rectangle style=filled]
+	IL_t [label=IL_t color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Inactive land stock 
+ (IL_t)" peripheries=1 shape=rectangle style=filled]
+	R_rate [label=R_rate color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Rate of reforestation 
+ (R_rate)" peripheries=1 shape=rectangle style=filled]
+	RF_land [label=RF_land color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Reforestation of land 
+ (RF_land)" peripheries=1 shape=rectangle style=filled]
+	RF_land_comp [label=RF_land_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="R_rate * IL_t" peripheries=1 shape=rectangle style=""]
+	FL_RF [label=FL_RF color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Forest land stock after reforestation policy 
+ (FL_RF)" peripheries=1 shape=rectangle style=filled]
+	FL_RF_comp [label=FL_RF_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FL + RF_land" peripheries=1 shape=rectangle style=""]
+	IL_RF [label=IL_RF color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Inactive land stock after reforestation policy 
+ (IL_RF)" peripheries=1 shape=rectangle style=filled]
+	IL_RF_comp [label=IL_RF_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="IL_t - RF_land" peripheries=1 shape=rectangle style=""]
+	BE2 [label=BE2 color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Share of forest area to total land area 
+ (BE2)" peripheries=1 shape=rectangle style=filled]
+	BE2_comp [label=BE2_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="100 * (FL_RF / TLA)" peripheries=1 shape=rectangle style=""]
+	chCL [label=chCL color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Change in cropland 
+ (chCL)" peripheries=1 shape=rectangle style=filled]
+	CL_t_minus_1 [label=CL_t_minus_1 color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Cropland t-1 
+ (CL_t_minus_1)" peripheries=1 shape=rectangle style=filled]
+	IL_t_minus_1 [label=IL_t_minus_1 color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Inactive land t-1 
+ (IL_t_minus_1)" peripheries=1 shape=rectangle style=filled]
+	FL_t_minus_1 [label=FL_t_minus_1 color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Forest land t-1 
+ (FL_t_minus_1)" peripheries=1 shape=rectangle style=filled]
+	CL_t [label=CL_t color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Cropland stock 
+ (CL_t)" peripheries=1 shape=rectangle style=filled]
+	CL_t_comp [label=CL_t_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="CL_t_minus_1 + chCL" peripheries=1 shape=rectangle style=""]
+	IL_t_comp [label=IL_t_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="IL_computation(chCL, CL_t_minus_1) " peripheries=1 shape=rectangle style=""]
+	FL_t_comp [label=FL_t_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FL_computation(chCL, FL_t_minus_1, IL_t)" peripheries=1 shape=rectangle style=""]
+	FDTi_crops [label=FDTi_crops color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total food demand per food group (crops) 
+ (FDTi_crops)" peripheries=1 shape=rectangle style=filled]
+	CYi [label=CYi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Crop yields per crop type 
+ (CYi)" peripheries=1 shape=rectangle style=filled]
+	TCLD_baseline [label=TCLD_baseline color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Total crop land demand (baseline) 
+ (TCLD_baseline)" peripheries=1 shape=rectangle style=filled]
+	CD_corr [label=CD_corr color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Correction parameter crop demand 
+ (CD_corr)" peripheries=1 shape=rectangle style=filled]
+	TCLD [label=TCLD color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total cropland demand 
+ (TCLD)" peripheries=1 shape=rectangle style=filled]
+	TCLD_comp [label=TCLD_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="sum(FDTi_crops / CYi) * CD_corr" peripheries=1 shape=rectangle style=""]
+	chCL_comp [label=chCL_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="TCLD-TCLD_baseline" peripheries=1 shape=rectangle style=""]
+	food_balance_sheet [label=food_balance_sheet color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="All inputs (animals and crops) 
+ (food_balance_sheet)" peripheries=1 shape=rectangle style=filled]
+	FDTi_animal [label=FDTi_animal color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total food demand per food group (animals) 
+ (FDTi_animal)" peripheries=1 shape=rectangle style=filled]
+	FDTi_animal_comp [label=FDTi_animal_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="compute FDTi_animal" peripheries=1 shape=rectangle style=""]
+	FDi_crops [label=FDi_crops color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total domestic food production per food group (crops) 
+ (FDi_crops)" peripheries=1 shape=rectangle style=filled]
+	FDi_crops_comp [label=FDi_crops_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="compute FDi_crops" peripheries=1 shape=rectangle style=""]
+	FDTi_crops_comp [label=FDTi_crops_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="compute FDTi_crops" peripheries=1 shape=rectangle style=""]
+	FDTi [label=FDTi color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Total food demand per food group 
+ (FDTi)" peripheries=1 shape=rectangle style=filled]
+	FDTi_comp [label=FDTi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="concatenate FDTi_crops and FDTi_animal" peripheries=1 shape=rectangle style=""]
+	CRfd [label=CRfd color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Feed/forage distribution (correction) 
+ (CRfd)" peripheries=1 shape=rectangle style=filled]
+	TLA -> BE2_comp [color="#A9A9A9"]
+	FL_t -> FL_RF_comp [color="#A9A9A9"]
+	IL_t -> RF_land_comp [color="#A9A9A9"]
+	IL_t -> IL_RF_comp [color="#A9A9A9"]
+	IL_t -> FL_t_comp [color="#A9A9A9"]
+	R_rate -> RF_land_comp [color="#A9A9A9"]
+	RF_land -> FL_RF_comp [color="#A9A9A9"]
+	RF_land -> IL_RF_comp [color="#A9A9A9"]
+	RF_land_comp -> RF_land [color="#A9A9A9"]
+	FL_RF -> BE2_comp [color="#A9A9A9"]
+	FL_RF_comp -> FL_RF [color="#A9A9A9"]
+	IL_RF_comp -> IL_RF [color="#A9A9A9"]
+	BE2_comp -> BE2 [color="#A9A9A9"]
+	chCL -> CL_t_comp [color="#A9A9A9"]
+	chCL -> IL_t_comp [color="#A9A9A9"]
+	chCL -> FL_t_comp [color="#A9A9A9"]
+	CL_t_minus_1 -> CL_t_comp [color="#A9A9A9"]
+	IL_t_minus_1 -> IL_t_comp [color="#A9A9A9"]
+	FL_t_minus_1 -> FL_t_comp [color="#A9A9A9"]
+	CL_t_comp -> CL_t [color="#A9A9A9"]
+	IL_t_comp -> IL_t [color="#A9A9A9"]
+	FL_t_comp -> FL_t [color="#A9A9A9"]
+	FDTi_crops -> TCLD_comp [color="#A9A9A9"]
+	FDTi_crops -> FDTi_comp [color="#A9A9A9"]
+	CYi -> TCLD_comp [color="#A9A9A9"]
+	TCLD_baseline -> chCL_comp [color="#A9A9A9"]
+	CD_corr -> TCLD_comp [color="#A9A9A9"]
+	TCLD -> chCL_comp [color="#A9A9A9"]
+	TCLD_comp -> TCLD [color="#A9A9A9"]
+	chCL_comp -> chCL [color="#A9A9A9"]
+	food_balance_sheet -> FDTi_animal_comp [color="#A9A9A9"]
+	food_balance_sheet -> FDi_crops_comp [color="#A9A9A9"]
+	food_balance_sheet -> FDTi_crops_comp [color="#A9A9A9"]
+	FDTi_animal -> FDi_crops_comp [color="#A9A9A9"]
+	FDTi_animal -> FDTi_comp [color="#A9A9A9"]
+	FDTi_animal_comp -> FDTi_animal [color="#A9A9A9"]
+	FDi_crops -> FDTi_crops_comp [color="#A9A9A9"]
+	FDi_crops_comp -> FDi_crops [color="#A9A9A9"]
+	FDTi_crops_comp -> FDTi_crops [color="#A9A9A9"]
+	FDTi_comp -> FDTi [color="#A9A9A9"]
+	CRfd -> FDi_crops_comp [color="#A9A9A9"]
+}

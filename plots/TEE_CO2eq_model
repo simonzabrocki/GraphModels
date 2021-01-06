@@ -1,0 +1,29 @@
+digraph {
+	graph [splines=ortho]
+	TAHi [label=TAHi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector total animals (2017) 
+ (TAHi)" peripheries=1 shape=rectangle style=filled]
+	EECH4 [label=EECH4 color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector enteric CH4 2017 
+ (EECH4)" peripheries=1 shape=rectangle style=filled]
+	EF_EEi [label=EF_EEi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Emission factor enteric (CH4) 
+ (EF_EEi)" peripheries=1 shape=rectangle style=filled]
+	EF_EEi_comp [label=EF_EEi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="EECH4/TAHi_2" peripheries=1 shape=rectangle style=""]
+	TAi [label=TAi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector total animal population corrected (heads) 
+ (TAi)" peripheries=1 shape=rectangle style=filled]
+	EE_CH4 [label=EE_CH4 color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector enteric emissions CH4 
+ (EE_CH4)" peripheries=1 shape=rectangle style=filled]
+	EE_CH4_comp [label=EE_CH4_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="TAi*EF_EEi" peripheries=1 shape=rectangle style=""]
+	GWPCH4 [label=GWPCH4 color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="GWP conversion CO2eq 
+ (GWPCH4)" peripheries=1 shape=rectangle style=filled]
+	TEE_CO2eq [label=TEE_CO2eq color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="CH4 emissions enteric in CO2eq 
+ (TEE_CO2eq)" peripheries=1 shape=rectangle style=filled]
+	TEE_CO2eq_comp [label=TEE_CO2eq_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SUM(EE_CH4) * GWPCH4 " peripheries=1 shape=rectangle style=""]
+	TAHi -> EF_EEi_comp [color="#A9A9A9"]
+	EECH4 -> EF_EEi_comp [color="#A9A9A9"]
+	EF_EEi -> EE_CH4_comp [color="#A9A9A9"]
+	EF_EEi_comp -> EF_EEi [color="#A9A9A9"]
+	TAi -> EE_CH4_comp [color="#A9A9A9"]
+	EE_CH4 -> TEE_CO2eq_comp [color="#A9A9A9"]
+	EE_CH4_comp -> EE_CH4 [color="#A9A9A9"]
+	GWPCH4 -> TEE_CO2eq_comp [color="#A9A9A9"]
+	TEE_CO2eq_comp -> TEE_CO2eq [color="#A9A9A9"]
+}

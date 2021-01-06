@@ -1,0 +1,43 @@
+digraph {
+	graph [splines=ortho]
+	TMPi_baseline [label=TMPi_baseline color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector manure production 2017 
+ (TMPi_baseline)" peripheries=1 shape=rectangle style=filled]
+	TMi [label=TMi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector total manure produced 
+ (TMi)" peripheries=1 shape=rectangle style=filled]
+	TM_ASi [label=TM_ASi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Total manure applied to soil 2017 (vector) 
+ (TM_ASi)" peripheries=1 shape=rectangle style=filled]
+	MM_ASi [label=MM_ASi color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="% total manure applied to soil 
+ (MM_ASi)" peripheries=1 shape=rectangle style=filled]
+	MM_ASi_comp [label=MM_ASi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="TM_ASi/TMPi_baseline" peripheries=1 shape=rectangle style=""]
+	MASi [label=MASi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Vector manure applied to soil 
+ (MASi)" peripheries=1 shape=rectangle style=filled]
+	MASi_comp [label=MASi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="TMi*MM_ASi" peripheries=1 shape=rectangle style=""]
+	E_ASi_baseline [label=E_ASi_baseline color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="N2O emissions applied to soil 2017 
+ (E_ASi_baseline)" peripheries=1 shape=rectangle style=filled]
+	EF_ASi [label=EF_ASi color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Vector Emission factors N2O applied to soil 
+ (EF_ASi)" peripheries=1 shape=rectangle style=filled]
+	EF_ASi_comp [label=EF_ASi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="E_ASi_baseline/TM_ASi" peripheries=1 shape=rectangle style=""]
+	E_ASi [label=E_ASi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="N2O Emissions manure applied to soil  
+ (E_ASi)" peripheries=1 shape=rectangle style=filled]
+	E_ASi_comp [label=E_ASi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(EF_ASi*MASi)" peripheries=1 shape=rectangle style=""]
+	GWPN2O [label=GWPN2O color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="GWP conversion CO2eq 
+ (GWPN2O)" peripheries=1 shape=rectangle style=filled]
+	TMA_CO2eq [label=TMA_CO2eq color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Emissions  manure applied to soil CO2eq 
+ (TMA_CO2eq)" peripheries=1 shape=rectangle style=filled]
+	TMA_CO2eq_comp [label=TMA_CO2eq_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SUM(E_ASi)*GWPN2O" peripheries=1 shape=rectangle style=""]
+	TMPi_baseline -> MM_ASi_comp [color="#A9A9A9"]
+	TMi -> MASi_comp [color="#A9A9A9"]
+	TM_ASi -> MM_ASi_comp [color="#A9A9A9"]
+	TM_ASi -> EF_ASi_comp [color="#A9A9A9"]
+	MM_ASi -> MASi_comp [color="#A9A9A9"]
+	MM_ASi_comp -> MM_ASi [color="#A9A9A9"]
+	MASi -> E_ASi_comp [color="#A9A9A9"]
+	MASi_comp -> MASi [color="#A9A9A9"]
+	E_ASi_baseline -> EF_ASi_comp [color="#A9A9A9"]
+	EF_ASi -> E_ASi_comp [color="#A9A9A9"]
+	EF_ASi_comp -> EF_ASi [color="#A9A9A9"]
+	E_ASi -> TMA_CO2eq_comp [color="#A9A9A9"]
+	E_ASi_comp -> E_ASi [color="#A9A9A9"]
+	GWPN2O -> TMA_CO2eq_comp [color="#A9A9A9"]
+	TMA_CO2eq_comp -> TMA_CO2eq [color="#A9A9A9"]
+}

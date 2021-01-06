@@ -24,7 +24,7 @@ crop_group = ['Cereals - Excluding Beer', 'Starchy Roots', 'Sugar Crops',
               'Stimulants', 'Spices', 'Alcoholic Beverages']
 
 
-LU_nodes = [
+FDTI_CD_corr_nodes = [
     {
         'id': 'inputs_animal_and_crops',
         'name': 'All inputs (animals and crops)',
@@ -113,8 +113,9 @@ def compute_FDTi_crops(X):
 def compute_FDi_crops(X):
     X = X.copy()
     X['FDi_baseline'] = X['FDi']
-    result = FDi_crops_model.run(X)['FDi_crops']
-    return result
+
+    result = FDi_crops_model.run(X)
+    return result['FDi_crops']
 
 
 def compute_CD_corr(X):
@@ -124,4 +125,4 @@ def compute_CD_corr(X):
     return result
 
 
-LandUseModel = GraphModel(LU_nodes)
+FDTi_CD_corr_model = GraphModel(FDTI_CD_corr_nodes)

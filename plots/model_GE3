@@ -1,0 +1,28 @@
+digraph {
+	graph [splines=ortho]
+	P [label=P color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Total population 
+ (P)" peripheries=1 shape=rectangle style=filled]
+	TEE_CO2eq [label=TEE_CO2eq color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="CH4 emissions enteric in CO2eq 
+ (TEE_CO2eq)" peripheries=1 shape=rectangle style=filled]
+	TMT_CO2eq [label=TMT_CO2eq color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Emissions manure treated in CO2eq 
+ (TMT_CO2eq)" peripheries=1 shape=rectangle style=filled]
+	TMA_CO2eq [label=TMA_CO2eq color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Emissions  manure applied to soil CO2eq 
+ (TMA_CO2eq)" peripheries=1 shape=rectangle style=filled]
+	TMP_CO2eq [label=TMP_CO2eq color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Emissions  manure left on pasture CO2eq 
+ (TMP_CO2eq)" peripheries=1 shape=rectangle style=filled]
+	FE_CO2eq [label=FE_CO2eq color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Emissions fertilizer CO2eq 
+ (FE_CO2eq)" peripheries=1 shape=rectangle style=filled]
+	OEi [label=OEi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Vector of other emissions 
+ (OEi)" peripheries=1 shape=rectangle style=filled]
+	GE3 [label=GE3 color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Ratio of non-CO2 emissions in agriculture to population 
+ (GE3)" peripheries=1 shape=rectangle style=filled]
+	GE3_comp [label=GE3_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="(SUM(OEI) + TEE_CO2eq + TMT_CO2eq + TMP_CO2eq + TMA_CO2eq) / P *1000" peripheries=1 shape=rectangle style=""]
+	P -> GE3_comp [color="#A9A9A9"]
+	TEE_CO2eq -> GE3_comp [color="#A9A9A9"]
+	TMT_CO2eq -> GE3_comp [color="#A9A9A9"]
+	TMA_CO2eq -> GE3_comp [color="#A9A9A9"]
+	TMP_CO2eq -> GE3_comp [color="#A9A9A9"]
+	FE_CO2eq -> GE3_comp [color="#A9A9A9"]
+	OEi -> GE3_comp [color="#A9A9A9"]
+	GE3_comp -> GE3 [color="#A9A9A9"]
+}

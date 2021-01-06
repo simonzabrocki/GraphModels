@@ -1,0 +1,30 @@
+digraph {
+	graph [splines=ortho]
+	chCL [label=chCL color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Change in cropland 
+ (chCL)" peripheries=1 shape=rectangle style=filled]
+	CL_t_minus_1 [label=CL_t_minus_1 color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Cropland t-1 
+ (CL_t_minus_1)" peripheries=1 shape=rectangle style=filled]
+	IL_t_minus_1 [label=IL_t_minus_1 color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Inactive land t-1 
+ (IL_t_minus_1)" peripheries=1 shape=rectangle style=filled]
+	FL_t_minus_1 [label=FL_t_minus_1 color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Forest land t-1 
+ (FL_t_minus_1)" peripheries=1 shape=rectangle style=filled]
+	CL_t [label=CL_t color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Cropland stock 
+ (CL_t)" peripheries=1 shape=rectangle style=filled]
+	CL_t_comp [label=CL_t_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="CL_t_minus_1 + chCL" peripheries=1 shape=rectangle style=""]
+	IL_t [label=IL_t color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Inactive land stock 
+ (IL_t)" peripheries=1 shape=rectangle style=filled]
+	IL_t_comp [label=IL_t_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="IL_computation(chCL, CL_t_minus_1) " peripheries=1 shape=rectangle style=""]
+	FL_t [label=FL_t color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Forest land stock 
+ (FL_t)" peripheries=1 shape=rectangle style=filled]
+	FL_t_comp [label=FL_t_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FL_computation(chCL, FL_t_minus_1, IL_t)" peripheries=1 shape=rectangle style=""]
+	chCL -> CL_t_comp [color="#A9A9A9"]
+	chCL -> IL_t_comp [color="#A9A9A9"]
+	chCL -> FL_t_comp [color="#A9A9A9"]
+	CL_t_minus_1 -> CL_t_comp [color="#A9A9A9"]
+	IL_t_minus_1 -> IL_t_comp [color="#A9A9A9"]
+	FL_t_minus_1 -> FL_t_comp [color="#A9A9A9"]
+	CL_t_comp -> CL_t [color="#A9A9A9"]
+	IL_t -> FL_t_comp [color="#A9A9A9"]
+	IL_t_comp -> IL_t [color="#A9A9A9"]
+	FL_t_comp -> FL_t [color="#A9A9A9"]
+}

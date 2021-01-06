@@ -1,0 +1,21 @@
+digraph {
+	graph [splines=ortho]
+	CRfd [label=CRfd color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Feed/forage distribution (correction) 
+ (CRfd)" peripheries=1 shape=rectangle style=filled]
+	CRfd_comp [label=CRfd_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="SUM(TAFDi) / sum(FDi)" peripheries=1 shape=rectangle style=""]
+	FDi [label=FDi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Total domestic food production per food group 
+ (FDi)" peripheries=1 shape=rectangle style=filled]
+	TAFDi [label=TAFDi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Total animal feed demand per food group (animals) 
+ (TAFDi)" peripheries=1 shape=rectangle style=filled]
+	TAFDi_comp [label=TAFDi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FRCi*FPi" peripheries=1 shape=rectangle style=""]
+	FCRi [label=FCRi color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Feed conversion ratio 
+ (FCRi)" peripheries=1 shape=rectangle style=filled]
+	FPi_animal [label=FPi_animal color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Food production per food group 
+ (FPi_animal)" peripheries=1 shape=rectangle style=filled]
+	CRfd_comp -> CRfd [color="#A9A9A9"]
+	FDi -> CRfd_comp [color="#A9A9A9"]
+	TAFDi -> CRfd_comp [color="#A9A9A9"]
+	TAFDi_comp -> TAFDi [color="#A9A9A9"]
+	FCRi -> TAFDi_comp [color="#A9A9A9"]
+	FPi_animal -> TAFDi_comp [color="#A9A9A9"]
+}
