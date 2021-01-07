@@ -469,4 +469,4 @@ BE2_partial_nodes = [
 model_BE2_partial = GraphModel(BE2_partial_nodes)
 
 
-model_BE2 = GraphModel(BE2_partial_nodes + CH_IL_FL_nodes + chCL_nodes + full_FDTi_nodes)
+model_BE2 = GraphModel(BE2_partial_nodes + CH_IL_FL_nodes + chCL_nodes + full_FDTi_nodes)#.run(X)
