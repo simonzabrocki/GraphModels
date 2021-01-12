@@ -229,14 +229,14 @@ def compute_FDTi_animal(X):
     X = X.copy()
     X['FDi_baseline'] = X['FDi']
     result = FDTi_model.run(X)['FDTi']
-    return result.loc[animal_group]
+    return result.loc[X['animal_group']]
 
 
 def compute_FDTi_crops(X):
     X = X.copy()
     X['FDi_baseline'] = X['FDi_crops']
     result = FDTi_model.run(X)['FDTi']
-    return result.loc[crop_group]
+    return result.loc[X['crop_group']]
 
 
 def compute_FDi_crops(X):
@@ -469,4 +469,4 @@ BE2_partial_nodes = [
 model_BE2_partial = GraphModel(BE2_partial_nodes)
 
 
-model_BE2 = GraphModel(BE2_partial_nodes + CH_IL_FL_nodes + chCL_nodes + full_FDTi_nodes)#.run(X)
+model_BE2 = GraphModel(BE2_partial_nodes + CH_IL_FL_nodes + chCL_nodes + full_FDTi_nodes)

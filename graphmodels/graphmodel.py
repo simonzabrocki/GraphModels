@@ -1,5 +1,5 @@
 """
-Graph Model
+Graph Model package to implement and vizualize green growth models
 """
 __author__ = 'Simon'
 
@@ -157,6 +157,9 @@ class GraphDrawer():
             if 'value' in node[1]:
                 value = node[1]['value']
                 label = f"{label} \n {value}"
+            if 'unit' in node[1]:
+                unit = node[1]['unit']
+                label = f"{label} \n {unit}"
         return label
 
     def draw_node(self, dot, node, draw_properties):

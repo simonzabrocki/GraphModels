@@ -28,7 +28,6 @@ FreshwaterAvailableNodes = [
      'in': ['P', 'ET', 'A'],
      'computation': {'name': '(P - ET)*A', 'formula': lambda X: (X['P'] - X['ET']) * X['A']},
      'id': 'S'},
-
     # Renewable Water Resources
     {'type': 'parameter',
         'unit': 'm3/year',
@@ -77,7 +76,6 @@ FreshwaterAvailableNodes = [
         'unit': 'm3/year',
         'in': ['TRF', 'TNCW'],
         'computation': {'name': 'TRF + TNCW', 'formula': lambda X: X['TRF'] + X['TNCW']}, 'id': 'TFA'},
-
     # calculation of EW 2
     # input from water use model
     {'type': 'input',

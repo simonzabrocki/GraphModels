@@ -43,7 +43,7 @@ MunicipalWaterNodes = [
      'unit': 'm3',
      'in': ['MWC', 'Upop', 'UAB1'],
      'id': 'UW',
-     'computation': {'name': '((MWC * Upop * UAB1)', 'formula': lambda X: X['MWC'] * X['Upop'] * X['UAB1']}},
+     'computation': {'name': 'MWC * Upop * UAB1', 'formula': lambda X: X['MWC'] * X['Upop'] * X['UAB1']}},
 
     # Wastewater treatment scenario
     {'type': 'input',
@@ -98,7 +98,7 @@ MunicipalWaterNodes = [
      'unit': 'm3/year',
      'in': ['TTC'],
      'id': 'TTW',
-     'computation': {'name': '((TTC)*1000000)/1000', 'formula': lambda X: X['TTC'] * 1000000 / 1000}},
+     'computation': {'name': 'TTC*1000000/1000', 'formula': lambda X: X['TTC'] * 1000000 / 1000}},
 
     # amount of investment required per technology
     {'type': 'parameter',
@@ -116,7 +116,7 @@ MunicipalWaterNodes = [
      'unit': '$',
      'in': ['ASCAPEX', 'ASOPEX', 'ASTW'],
      'id': 'ASIC',
-     'computation': {'name': 'CAPEX + (OPEX*1000)*ASTW', 'formula': lambda X: X['ASCAPEX'] + X['ASOPEX'] * 1000 * X['ASTW']}},
+     'computation': {'name': 'CAPEX + OPEX*1000*ASTW', 'formula': lambda X: X['ASCAPEX'] + X['ASOPEX'] * 1000 * X['ASTW']}},
 
     {'type': 'parameter',
         'name': 'BM Construction Cost',
@@ -131,7 +131,7 @@ MunicipalWaterNodes = [
      'unit': '$',
      'in': ['BMCAPEX', 'BMOPEX', 'BMTW'],
      'id': 'BMIC',
-     'computation': {'name': 'CAPEX + (OPEX*1000)*BMTW', 'formula': lambda X: X['BMCAPEX'] + X['BMOPEX'] * 1000 * X['BMTW']}},
+     'computation': {'name': 'CAPEX + OPEX*1000*BMTW', 'formula': lambda X: X['BMCAPEX'] + X['BMOPEX'] * 1000 * X['BMTW']}},
 
     {'type': 'output',
      'name': 'Potential Investment Cost',
