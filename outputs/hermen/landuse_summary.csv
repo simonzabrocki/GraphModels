@@ -1,0 +1,45 @@
+id,name,type,unit,computation
+TLA,Total land area,input,1000 ha,
+FL_t,Forest land stock,input,1000 ha,
+IL_t,Inactive land stock,input,1000 ha,
+R_rate,Rate of reforestation,parameter,%,
+RF_land,Reforestation of land,variable,1000 ha,R_rate * IL_t
+FL_RF,Forest land stock after reforestation policy,variable,1000 ha,FL + RF_land
+IL_RF,Inactive land stock after reforestation policy,variable,1000 ha,IL_t - RF_land
+BE2,Share of forest area to total land area,output,%,100 * (FL_RF / TLA)
+chCL,Change in cropland,input,1000 ha,
+CL_t_minus_1,Cropland t-1,input,1000 ha,
+IL_t_minus_1,Inactive land t-1,input,1000 ha,
+FL_t_minus_1,Forest land t-1,input,1000 ha,
+CL_t,Cropland stock,output,1000 ha,CL_t_minus_1 + chCL
+IL_t,Inactive land stock,output,1000 ha,"IL_computation(chCL, CL_t_minus_1) "
+FL_t,Forest land stock,output,1000 ha,"FL_computation(chCL, FL_t_minus_1, IL_t)"
+FDTi,Total food demand per food group,input,1000 tonnes,
+CYi,Crop yields per crop type,input,hg/ha,
+TCLD_baseline,Total crop land demand (baseline),input,ha,
+CD_corr,Correction parameter crop demand,parameter,1,
+TCLD,Total cropland demand,variable,ha,sum(FDTi_crops / CYi) * CD_corr
+chCL,Change in cropland,output,1000 ha,TCLD-TCLD_baseline
+TCDi,Total calorie demand per food group,variable,kcal/day,P*(FDKCi+FWi-FWCRi)
+FWCRi,Waste reduction policy consumption per food group,parameter,kcal/cap/day,
+FWPPi,Waste reduction policy production per food group,parameter,%,
+FWi,Food waste per food group,variable,kcal/cap/day,FWPi_baseline * FWPPi
+FWPi_baseline,Food waste baseline per food group,variable,kcal/cap/day,FLOi * KKRi / P
+FLOi,Food losses per food group,input,1000 tonnes,
+KKRi,kcal/1000 tonnes ratio per food group,variable,kcal/1000 tonnes,FDKGi / FDKCi
+FDKGi,Kg food demand per year per food group,input,kg/capita/day,
+FDKCi,kcal food demand per day per food group,input,kcal/capita/day,
+P,Total population,input,capita,
+SSRi,Self-sufficiency ratio per food group,variable,1,FPi / (FPi - FEi + FIi)
+FPi,Food production per food group,input,1000 tonnes,
+FEi,Food exports per food group,input,1000 tonnes,
+FIi,Food imports per food group,input,1000 tonnes,
+FDi,Total domestic food production per food group,variable,1000 tonnes,TCDi * SSRi / KKRi
+FDi_baseline,Feed demand per group,input,1000 tonnes,
+OFi,Other food demand,variable,1000 tonnes,SDi + NFDi + PDi + RDi + SVi
+SDi,Seed demand per food group,input,1000 tonnes,
+NFDi,Non-food demand per food group,input,1000 tonnes,
+PDi,Processed demand per food group,input,1000 tonnes,
+RDi,Residual demand per food group,input,1000 tonnes,
+SVi,Stock variation per food group,input,1000 tonnes,
+FDTi,Total food demand per food group,output,1000 tonnes,SSRi * (OFi + FDi_baseline) + FDi

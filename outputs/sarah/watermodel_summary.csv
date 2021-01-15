@@ -1,0 +1,76 @@
+id,name,type,unit,computation
+KC,Crop Factor Vector,input,,
+CI,Cropping Intensity,parameter,%,
+ETo,Evapotranspiration,input,mm/year,
+ETc,Potential Crop Evaporation Vector,variable,mm/year,KC * CI * ETo
+ETa,Actual Evapotranspiration,input,mm/year,
+ICU,Irrigation Consumptive Use,variable,mm/year,ETc - ETa
+AIR,Area Actually Irrigated,input,1000 ha,
+ARice,Area of Rice Paddy Irrigation,parameter,1000 ha,
+IWR,Irrigation Water Requirement,variable,m3/year,(ICU*AIR) + (0.2*ARice) 
+WRR,Water Requirement Ratio,parameter,,
+IWW,Irrigation Water Withdrawal,variable,m3/year,IWR/WRR
+LWU,Livestock Water Use,parameter,m3/year,
+AWU,Agricultural Water Withdrawal,variable,m3/year,IWW + LWU
+IWU,Industrial Water Withdrawal,input,m3/year,
+P,Water Price,input,$/15m3,
+GDPC,GDP per capita,parameter,$,
+MWUD,Municipal Water Demand,variable,m3/year/person,2.39 * GDPC^0.37 * Price^-0.33 
+Pop,Population,parameter,millions,
+MWU,Municipal Water Withdrawal,variable,m3/year,MWUD * Pop 
+TWW,Total Water Withdrawal,variable,m3/year,AWU + IWU + MWU
+TC,Total Cultivated Land,parameter,1000 ha,
+Ai,Proportion of Irrigated Land,variable,,AIR/TC
+Cr,Corrective coefficient,variable,,1/(1+(Ai/(1-Ai)*0.375)
+AGVA,Agricultural Gross Value Added,parameter,$,
+WUEa,Agricultural Water Use Efficiency,variable,$/m3,AGVA * (1-Cr)/AWU
+IGVA,Industrial Gross Value Added,parameter,$,
+WUEi,Industrial Water Use Efficiency,variable,$/m3,IGVA/IWU
+SGVA,Service Sector Gross Value Added,parameter,$,
+WUEs,Service Sector Water Use Efficiency,variable,$/m3,SGVA/MWU
+Pa,Proportion of Agricultural Water Use,variable,,AWU/TWW
+Pi,Proportion of Industrial Water Use,variable,,IWU/TWW
+Ps,Proportion of Municipal Water Use,variable,%,MWU/TWW
+EW 1,Total Water Use Efficiency,output,$/m3,WUEa*Pa + WUEi*Pi + WUEs*Ps
+P,Precipitation,input,mm/year,
+ET,Evapotranspiration,input,mm/year,
+A,Catchment Size,input,ha,
+S,Change in Surface Water Storage,variable,mm/year,(P - ET)*A
+SW,Surface Water,parameter,m3/year,
+GW,Groundwater Water,parameter,m3/year,
+Overlap,Overlap (Surface - Groundwater),parameter,m3/year,
+IRWR,Internal Renewable Water Resources,variable,m3/year,GW + (SW + S) - Overlap
+ERWR,External Renewable Water Resources,parameter,m3/year,
+TRF,Total Renewable Freshwater,variable,m3/year,IRWR + ERWR
+DW,Desalination Water,parameter,m3/year,
+TW,Treated Wastewater,parameter,m3/year,
+TNCW,Total Non Conventional Water,variable,m3/year,DW + TW
+TFA,Total Freshwater Available,variable,m3/year,TRF + TNCW
+TWW,Total Water Withdrawal,input,m3/year,
+EFR,Environmental Flow Requirement,parameter,m3/year,
+EW2,Share of Freshwater Withdrawal to Freshwater Availability,output,%,TWW/(TFA-EFR)*100
+Natural EW2,Share of Freshwater Withdrawal to Freshwater Availability,output,%,TWW/(TRF-EFR)*100
+MWU,Municipal Water Withdrawal,input,m3/year,
+WSE,Water Supply Efficiency,input,,
+MWC,Municipal Water Consumption,variable,m3/year,MWU * WSE
+Upop,Fraction of Urban to Total Pop,parameter,,
+UAB1,AB1 Urban Access to Sanitation,parameter,,
+UW, Urban Wastewater Collected,variable,m3,MWC * Upop * UAB1
+ASF,Number of Activated Sludge Treatment Facilities,input,,
+ASTC,Activated Sludge Treatment Capacity,parameter,1000 tonnes,
+ASE,AS Sewage Efficiency,parameter,,
+ASTW,AS Treated Wastewater,variable,1000 tonnes,Facilities * ASTC * Sewage Efficiency 
+BF,Number of Biomembrane Treatment Facilities,input,,
+BMTC,Biomembrane Treatment Capacity,parameter,1000 tonnes,
+BME,BM Sewage Efficiency,parameter,,
+BMTW,BM Treated Wastewater,variable,1000 tonnes,Facilities * BMTC * Sewage Efficiency
+TTC,Total Treated Capacity,variable,1000 tonnes,ASWT + BMTW
+TTW,Total Treated Wastewater,output,m3/year,TTC*1000000/1000
+ASCAPEX,AS Construction Cost,parameter,$,
+ASOPEX,AS Operational Cost Vector,parameter,$/ton,
+ASIC,Potential AS Investment Cost,variable,$,CAPEX + OPEX*1000*ASTW
+BMCAPEX,BM Construction Cost,parameter,$,
+BMOPEX,AS Operational Cost Vector,parameter,$/ton,
+BMIC,Potential BM Investment Cost,variable,$,CAPEX + OPEX*1000*BMTW
+PIC,Potential Investment Cost,output,$,ASIC + BMIC
+UTW,Untreated Wastewater,variable,1000 tonnes,UW - TWW

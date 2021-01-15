@@ -6,6 +6,8 @@ __author__ = 'Simon'
 import networkx as nx
 import graphviz
 import logging
+import numpy as np
+import pandas as pd
 from functools import partial, reduce
 
 
@@ -55,6 +57,7 @@ class GraphModel(nx.DiGraph):
         self.node_ordering = self.get_computational_nodes_ordering()
         self.model_function = model_function(self)
         self.graph_specifications = graph_specifications
+        self.summary_df = self.summary()
 
     def checks(self, nodes, edges):
         '''Checks if the graph is well defined.
@@ -82,6 +85,43 @@ class GraphModel(nx.DiGraph):
         self.add_nodes_from(nodes)
         self.add_edges_from(edges)
         return None
+
+    def get_node_by_type(self, node_type):
+        '''Returns the nodes of a given node_type'''
+        return [node_id for node_id, node in self.nodes.items() if node['type'] == node_type]
+
+    def inputs_(self):
+        return self.get_node_by_type('input')
+
+    def outputs_(self):
+        return self.get_node_by_type('output')
+
+    def variables_(self):
+        return self.get_node_by_type('variable')
+
+    def parameters_(self):
+        return self.get_node_by_type('parameter')
+
+    def summary(self):
+        '''Return a pandas dataframe to summarize the node of the graph as specified in the graph_specification.
+
+        TO IMPROVE.
+        '''
+        summary_df = pd.DataFrame()
+
+        for node in self.graph_specifications:
+
+            if 'computation' in node:
+                comp = node['computation']['name']
+            else:
+                comp = np.nan
+
+            row = pd.DataFrame({'name': node['name'], 'type': node['type'],
+                                'unit': node['unit'], 'computation': comp}, index=[node['id']])
+            summary_df = summary_df.append(row)
+
+        summary_df.index.name = 'id'
+        return summary_df
 
     def get_computational_nodes_ordering(self):
         '''Returns the sorted list of computationnal nodes.
