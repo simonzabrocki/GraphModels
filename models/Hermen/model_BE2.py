@@ -62,7 +62,7 @@ FDTi_nodes_bis = [
      },
     {'type': 'input',
      'unit': '1000 tonnes',
-     'id': 'FDi',
+     'id': 'FDPi',
      'name': 'Feed demand per group',
 
      },
@@ -103,9 +103,9 @@ FDTi_nodes_bis = [
      'id': 'FDTi',
      'name': 'Total food demand per food group',
      'unit': '1000 tonnes',
-     'in': ['FDPi', 'OFi', 'FDi', 'SSRi'],
+     'in': ['FDPi', 'OFi', 'FDPi', 'SSRi'],
      'computation': {'name': 'SSRi * (OFi + FDi) + FDPi',
-                     'formula': lambda X: X['SSRi'] * (X['OFi'] + X['FDi']) + X['FDPi']}
+                     'formula': lambda X: X['SSRi'] * (X['OFi'] + X['FDPi']) + X['FDPi']}
      },
     {'type': 'input',
      'unit': '1000 persons',
@@ -204,7 +204,7 @@ FDTi_nodes = [
 
     {'type': 'variable',
      'unit': '1000 tonnes',
-     'id': 'FDi',
+     'id': 'FDPi',
      'name': 'Total domestic food production per food group',
      'in': ['KKRi', 'SSRi', 'TCDi'],
      'computation': {'name': 'TCDi * SSRi / KKRi',
@@ -212,7 +212,7 @@ FDTi_nodes = [
      },
     {'type': 'input',
      'unit': '1000 tonnes',
-     'id': 'FDi_baseline',
+     'id': 'FDi',
      'name': 'Feed demand per group',
 
      },
@@ -253,9 +253,9 @@ FDTi_nodes = [
      'id': 'FDTi',
      'name': 'Total food demand per food group',
      'unit': '1000 tonnes',
-     'in': ['FDi', 'OFi', 'FDi_baseline', 'SSRi'],
+     'in': ['FDPi', 'OFi', 'FDi', 'SSRi'],
      'computation': {'name': 'SSRi * (OFi + FDi_baseline) + FDi',
-                     'formula': lambda X: X['SSRi'] * (X['OFi'] + X['FDi_baseline']) + X['FDi']}
+                     'formula': lambda X: X['SSRi'] * (X['OFi'] + X['FDi']) + X['FDPi']}
      },
 ]
 
@@ -324,7 +324,7 @@ FDi_crops_Model = GraphModel(FDi_nodes)
 
 def compute_FDTi_animal(X):
     X = X.copy()
-    X['FDi_baseline'] = X['FDi']
+    X['FDi'] = X['FDPi']
     result = FDTi_model.run(X)['FDTi']
     return result.loc[(slice(None), slice(None), X['animal_group'])]
 
@@ -332,14 +332,14 @@ def compute_FDTi_animal(X):
 def compute_FDTi_crops(X):
     X = X.copy()
     # to fix
-    X['FDi_baseline'] = pd.concat([X['FDi_crops'], pd.Series(0, index=X['FDTi_animal'].index)]).drop_duplicates()
+    X['FDi'] = pd.concat([X['FDi_crops'], pd.Series(0, index=X['FDTi_animal'].index)]).drop_duplicates()
     result = FDTi_model.run(X)['FDTi']
     return result.loc[(slice(None), slice(None), X['crop_group'])]
 
 
 def compute_FDi_crops(X):
     X = X.copy()
-    X['FDi_baseline'] = X['FDi']
+    X['FDi'] = X['FDPi']
     result = FDi_crops_Model.run(X)
     return result['FDi_crops']
 

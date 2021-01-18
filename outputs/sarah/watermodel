@@ -55,7 +55,7 @@ digraph {
  $" peripheries=1 shape=rectangle style=filled]
 	MWUD [label=MWUD color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Municipal Water Demand 
  (MWUD) 
- m3/year/person" peripheries=1 shape=rectangle style=filled]
+ m3/year/cap" peripheries=1 shape=rectangle style=filled]
 	MWUD_comp [label=MWUD_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="2.39 * GDPC^0.37 * Price^-0.33 " peripheries=1 shape=rectangle style=""]
 	Pop [label=Pop color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Population 
  (Pop) 

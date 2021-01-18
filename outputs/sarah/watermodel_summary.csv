@@ -15,7 +15,7 @@ AWU,Agricultural Water Withdrawal,variable,m3/year,IWW + LWU
 IWU,Industrial Water Withdrawal,input,m3/year,
 P,Water Price,input,$/15m3,
 GDPC,GDP per capita,parameter,$,
-MWUD,Municipal Water Demand,variable,m3/year/person,2.39 * GDPC^0.37 * Price^-0.33 
+MWUD,Municipal Water Demand,variable,m3/year/cap,2.39 * GDPC^0.37 * Price^-0.33 
 Pop,Population,parameter,millions,
 MWU,Municipal Water Withdrawal,variable,m3/year,MWUD * Pop 
 TWW,Total Water Withdrawal,variable,m3/year,AWU + IWU + MWU

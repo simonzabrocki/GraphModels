@@ -1,5 +1,9 @@
 """
 Graph Model package to implement and vizualize green growth models
+
+ROADMAP:
+- Add a concatenate function to properly concatenate models without duplicates
+- Automatically parse the computation to avoid having to type the name
 """
 __author__ = 'Simon'
 
