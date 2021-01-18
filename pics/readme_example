@@ -1,0 +1,40 @@
+digraph {
+	graph [splines=ortho]
+	In_1 [label=In_1 color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Input 1 
+ (In_1) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	Par_1 [label=Par_1 color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Parameter 1 
+ (Par_1) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	Var_1 [label=Var_1 color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Variable 1 
+ (Var_1) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	Var_1_comp [label=Var_1_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="Par_1 * In_1" peripheries=1 shape=rectangle style=""]
+	Par_3 [label=Par_3 color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Parameter 3 
+ (Par_3) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	Out_1 [label=Out_1 color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Output 1 
+ (Out_1) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	Out_1_comp [label=Out_1_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="Var_1 + Var_2 + Par_3" peripheries=1 shape=rectangle style=""]
+	In_2 [label=In_2 color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Input 2 
+ (In_2) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	Par_2 [label=Par_2 color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Variable 2 
+ (Par_2) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	Var_2 [label=Var_2 color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Output 1 
+ (Var_2) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	Var_2_comp [label=Var_2_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="Par_2 / In_2" peripheries=1 shape=rectangle style=""]
+	In_1 -> Var_1_comp [color="#A9A9A9"]
+	Par_1 -> Var_1_comp [color="#A9A9A9"]
+	Var_1 -> Out_1_comp [color="#A9A9A9"]
+	Var_1_comp -> Var_1 [color="#A9A9A9"]
+	Par_3 -> Out_1_comp [color="#A9A9A9"]
+	Out_1_comp -> Out_1 [color="#A9A9A9"]
+	In_2 -> Var_2_comp [color="#A9A9A9"]
+	Par_2 -> Var_2_comp [color="#A9A9A9"]
+	Var_2 -> Out_1_comp [color="#A9A9A9"]
+	Var_2_comp -> Var_2 [color="#A9A9A9"]
+}

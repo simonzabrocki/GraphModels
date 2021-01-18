@@ -109,4 +109,8 @@ print(Model.run(inputs_parameters))
 Model.draw()
 ```
 
+The output of the draw method is the following graph.
+
+![alt text](pics/readme_example.png)
+
 
