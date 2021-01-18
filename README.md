@@ -3,6 +3,7 @@
 # GraphModels
 A framework to compute an visualize GGGI models using computational graphs.
 
+
 # Purpose
 
 The purpose of this package is to simplify and standardize the implementation of functions used in Green Growth Institute's models. The package solves two problems. First, some contributors to models do not have the time or skills to spend time writting clean and uniform code to implement their ideas. Hence, this program acts as a template guiding collaborators. The coding skill required is minimal and allows for anyone to express their ideas meaningfully and quickly. Secondly, despite being mathematically simple, the models often involve a large number of inputs, variables and parameters with different units, sources and names. Graphs offer a simple way to vizualise and compute the models. Vizualisation is essential internally to create optimizated and logical functions. It is also essential for the credibility of the models, plotting graphs allow anyone to quickly follow and suggest improvement on the models.
@@ -108,9 +109,13 @@ print(Model.run(inputs_parameters))
 
 Model.draw()
 ```
-
 The output of the draw method is the following graph.
 
 ![alt text](pics/readme_example.png)
 
+**Important**: Formatting is essential, the program automatically parse the ids of the nodes and arguments of the function. In order for the graph to be build, the ids must be consistent across the graph. 
+
+# Author
+
+Simon Zabrocki - simon.zabrocki@gmail.com
 
