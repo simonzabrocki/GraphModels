@@ -4,7 +4,7 @@ __status__ = 'Pending Validation'
 """
 TO DO.
 """
-from graphmodels.graphmodel_exp import GraphModel, concatenate_graph_specs, converte_to_format
+from graphmodels.graphmodel_exp import GraphModel, concatenate_graph_specs
 import pandas as pd
 
 
@@ -122,6 +122,7 @@ chCL_nodes = {'FDTi': {'type': 'input',
 
 
 def FL(chCL, FL_t_minus_1, IL_t_minus_1):
+    '''To check'''
     df = pd.concat([chCL, FL_t_minus_1, IL_t_minus_1], axis=1).dropna()
     df.columns = ['chCL', 'FL_t_minus_1', 'IL_t_minus_1']
     df['FL'] = df['FL_t_minus_1']
@@ -132,6 +133,7 @@ def FL(chCL, FL_t_minus_1, IL_t_minus_1):
 
 
 def IL(chCL, IL_t_minus_1):
+    '''To check'''
     df = pd.concat([chCL, IL_t_minus_1], axis=1).dropna()
     df.columns = ['chCL', 'IL_t_minus_1']
     df['IL'] = df['IL_t_minus_1'] - df['chCL']
@@ -192,4 +194,4 @@ BE2_nodes = {'TLA': {'type': 'input', 'unit': '1000 ha', 'name': 'Total land are
 
 nodes = concatenate_graph_specs([chCL_nodes, FDTi_nodes, CH_IL_FL_nodes, BE2_nodes])
 
-Model = GraphModel(nodes)
+model_BE2 = GraphModel(nodes)
