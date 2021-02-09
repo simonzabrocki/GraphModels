@@ -22,7 +22,6 @@ import inspect
 import copy
 
 
-logging.basicConfig(filename='example.log', level=logging.DEBUG)
 
 draw_properties = {
     'fillcolor': {'input': '#e76f51',
