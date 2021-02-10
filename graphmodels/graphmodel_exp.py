@@ -2,9 +2,13 @@
 """
 Graph Model package to implement and vizualize green growth models
 
+WARNINGs:
+- As pandas explains, using loc[:, :, blabla] has really terrible performance, try to avoid
+
 ROADMAP:
 - Add a concatenate function to properly concatenate models without duplicates OK !
 - Automatically parse the computation to avoid having to type the name OK !
+
 
 - Cleanup the parser TODO
 - Rewrite parser and drawer as function rather than objects TODO

@@ -3,6 +3,13 @@ import plotly.express as px
 import numpy as np
 import pandas as pd
 
+'''
+TO IMPROVE
+Make the graph more flexible in terms of hoverdata etc, function has now weird parameters
+also plot_comp_base have reveresed agruments
+check model should plot the one that are not checked
+'''
+
 
 def check_model(Model, X, y_true):
     '''Run a model without scenario to check that the aggregation is correct
