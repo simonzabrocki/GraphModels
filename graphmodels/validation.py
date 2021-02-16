@@ -14,7 +14,7 @@ check model should plot the one that are not checked
 def check_model(Model, X, y_true):
     '''Run a model without scenario to check that the aggregation is correct
 
-    TO CLEAN UP
+    TO CLEAN UP: put result in dataframe
 
     '''
 

@@ -41,6 +41,12 @@ def parse_parameter_json(path):
         parameters = json.load(f)
     return parse_parameter_dict(parameters)
 
+
+def get_X_y_from_data(model, data_dict):
+    '''TO CLEAN UP'''
+    X = {key: data_dict[key] for key in model.inputs_() + model.parameters_()}
+    y = {key: data_dict[key] for key in model.variables_() + model.outputs_() if key in data_dict}
+    return X, y
 #
 # TODO Write the quick function for parse any excel template
 # xl = pd.ExcelFile("models/Sarah/EW Data Template .xlsx")

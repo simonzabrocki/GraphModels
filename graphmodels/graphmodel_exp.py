@@ -18,13 +18,11 @@ __author__ = 'Simon'
 
 import networkx as nx
 import graphviz
-import logging
 import numpy as np
 import pandas as pd
 from functools import partial, reduce
 import inspect
 import copy
-
 
 
 draw_properties = {
