@@ -4,7 +4,7 @@ __status__ = 'Pending Validation'
 """
 TO DO.
 """
-from graphmodels.graphmodel_exp import GraphModel, concatenate_graph_specs
+from graphmodels.graphmodel import GraphModel, concatenate_graph_specs
 
 # Conversions
 GWPN2O = 310

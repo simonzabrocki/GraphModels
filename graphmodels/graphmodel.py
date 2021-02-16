@@ -1,21 +1,29 @@
+# New model
 """
 Graph Model package to implement and vizualize green growth models
 
+WARNINGs:
+- As pandas explains, using loc[:, :, blabla] has really terrible performance, try to avoid
+
 ROADMAP:
-- Add a concatenate function to properly concatenate models without duplicates
-- Automatically parse the computation to avoid having to type the name
+- Add a concatenate function to properly concatenate models without duplicates OK !
+- Automatically parse the computation to avoid having to type the name OK !
+
+
+- Cleanup the parser TODO
+- Rewrite parser and drawer as function rather than objects TODO
+- Add on pip for easier use by the team + clean github repo
 """
 __author__ = 'Simon'
 
 import networkx as nx
 import graphviz
-import logging
 import numpy as np
 import pandas as pd
 from functools import partial, reduce
+import inspect
+import copy
 
-
-logging.basicConfig(filename='example.log', level=logging.DEBUG)
 
 draw_properties = {
     'fillcolor': {'input': '#e76f51',
@@ -54,14 +62,12 @@ class GraphModel(nx.DiGraph):
         '''Initialize a graph from a specification.
 
         Args:
-            graph_specifications(list): List of node specification.
+            graph_specifications(dict): dict of node specification.
         '''
         super(GraphModel, self).__init__()
         self.make_graph(graph_specifications)
         self.node_ordering = self.get_computational_nodes_ordering()
         self.model_function = model_function(self)
-        self.graph_specifications = graph_specifications
-        self.summary_df = self.summary()
 
     def checks(self, nodes, edges):
         '''Checks if the graph is well defined.
@@ -84,10 +90,11 @@ class GraphModel(nx.DiGraph):
         Returns:
             None, Initialize the graph object.
         '''
-        nodes, edges = GraphParser().parse(graph_nodes)
+        nodes, edges, summary_df = GraphParser().parse(graph_nodes)
         self.checks(nodes, edges)
         self.add_nodes_from(nodes)
         self.add_edges_from(edges)
+        self.summary_df = summary_df  # a bit clunky to put it here
         return None
 
     def get_node_by_type(self, node_type):
@@ -105,27 +112,6 @@ class GraphModel(nx.DiGraph):
 
     def parameters_(self):
         return self.get_node_by_type('parameter')
-
-    def summary(self):
-        '''Return a pandas dataframe to summarize the node of the graph as specified in the graph_specification.
-
-        TO IMPROVE.
-        '''
-        summary_df = pd.DataFrame()
-
-        for node in self.graph_specifications:
-
-            if 'computation' in node:
-                comp = node['computation']['name']
-            else:
-                comp = np.nan
-
-            row = pd.DataFrame({'name': node['name'], 'type': node['type'],
-                                'unit': node['unit'], 'computation': comp}, index=[node['id']])
-            summary_df = summary_df.append(row)
-
-        summary_df.index.name = 'id'
-        return summary_df
 
     def get_computational_nodes_ordering(self):
         '''Returns the sorted list of computationnal nodes.
@@ -146,6 +132,7 @@ class GraphModel(nx.DiGraph):
             X(dict): inputs, variables and outputs of the graph.
         '''
         X = self.model_function(X)
+
         return X
 
     def draw(self, draw_properties=draw_properties):
@@ -292,6 +279,18 @@ class GraphParser():
         '''
         return None
 
+    def format_node(self, node):
+        if 'computation' in node:
+            formula = node['computation']
+            computation_name = inspect.getsource(formula).split('**kwargs:')[-1].strip().strip('}')
+            node['computation'] = {'formula': formula, 'name': computation_name}
+            node['in'] = inspect.getfullargspec(formula).args
+
+            return node
+
+        else:
+            return node
+
     def parse_node(self, raw_node):
         '''Parse a node.
 
@@ -320,7 +319,9 @@ class GraphParser():
         node_param['out'] = raw_node['id']
         node_param['in'] = raw_node['in']
         node_param['type'] = 'computationnal'
+
         node = (node_id, node_param)
+
         return node
 
     def parse_computational_edges(self, comp_node):
@@ -343,15 +344,26 @@ class GraphParser():
         '''Parse the graph specification
 
         Args:
-            graph_specifications(List): list of nodes
+            graph_specifications(dict): dict of nodes
 
         Returns:
             nodes(List): list of parsed nodes.
             egdes(List): list of parsed edges.
+            summary_df(pd.DataFrame): DataFrame summarizing the graph
         '''
+
+        graph_specifications = copy.deepcopy(graph_specifications)
+
         edges, nodes = [], []
-        for raw_node in graph_specifications:
+
+        for node_id, raw_node in graph_specifications.items():
+            raw_node['id'] = node_id
+
+            # formats the node to match the previous framework.
+            raw_node = self.format_node(raw_node)
+
             node = self.parse_node(raw_node)
+
             nodes.append(node)
 
             if 'computation' in raw_node:
@@ -361,9 +373,34 @@ class GraphParser():
                 comp_edges = self.parse_computational_edges(node)
                 edges += comp_edges
 
-        return nodes, edges
+        return nodes, edges, self.summary(graph_specifications)
+
+    def summary(self, graph_specifications):
+        '''Return a pandas dataframe to summarize the node of the graph as specified in the graph_specification.
+
+        TO IMPROVE.
+        '''
+        summary_df = pd.DataFrame()
+
+        for node_id, node in graph_specifications.items():
+
+            node['id'] = node_id
+
+            if 'computation' in node:
+                comp = node['computation']['name']
+            else:
+                comp = np.nan
+
+            row = pd.DataFrame({'name': node['name'], 'type': node['type'],
+                                'unit': node['unit'], 'computation': comp}, index=[node['id']])
+            summary_df = summary_df.append(row)
+
+        summary_df.index.name = 'id'
+
+        return summary_df
 
 
+# Function composition
 def compose(*functions):
     return reduce(lambda f, g: lambda x: f(g(X=x)), functions, lambda x: x)
 
@@ -371,7 +408,7 @@ def compose(*functions):
 def node_function(node, X):
     X = X.copy()
     function, out_node = node['formula'], node['out']
-    X[out_node] = function(X)
+    X[out_node] = function(**X)
     return X
 
 
@@ -380,3 +417,77 @@ def model_function(G):
     functions_list = [partial(node_function, node=G.nodes[node_id])
                       for node_id in G.node_ordering[::-1]]
     return compose(*functions_list)
+
+
+# Node merging
+def get_duplicated_nodes(id_type_df):
+    duplicated_nodes = (id_type_df.groupby('id').count() > 1)
+    duplicated_nodes = duplicated_nodes[duplicated_nodes.type].index
+    return duplicated_nodes
+
+
+def get_id_type_df(list_of_graph_specs):
+    id_type_df = [[(d, node['type']) for d, node in graph_spec.items()]
+                  for graph_spec in list_of_graph_specs]
+    id_type_df = pd.DataFrame(sum(id_type_df, []), columns=['id', 'type'])
+    return id_type_df
+
+
+def merge_nodes(nodes_to_merge):
+    if 'computation' in nodes_to_merge.columns:
+        pass
+        nodes_to_merge.dropna()
+        computation = nodes_to_merge.dropna(subset=['computation']).computation.unique()[0]
+        unit = nodes_to_merge.unit.unique()[0]
+        name = nodes_to_merge.name.unique()[0]
+        return {'name': name, 'type': 'variable', 'unit': unit, 'computation': computation}
+    else:
+        return nodes_to_merge.drop_duplicates().to_dict(orient='records')[0]
+
+
+def concatenate_graph_specs(list_of_graph_specs):
+    '''Concatenate a list of graph specifications.
+
+    - Duplicated nodes are removed.
+    - Nodes that are inputs in some and outputs in other becomes variables.
+    '''
+    id_type_df = get_id_type_df(list_of_graph_specs)
+
+    duplicated_nodes = get_duplicated_nodes(id_type_df)
+
+    merged_nodes = {}
+
+    for node_id in duplicated_nodes:
+        nodes_to_merge = pd.DataFrame([nodes[node_id]
+                                       for nodes in list_of_graph_specs if node_id in nodes.keys()])
+
+        # Sanity check to make sure graphs are consistent
+        assert nodes_to_merge[['unit', 'name']].drop_duplicates(
+        ).shape[0] == 1, f'{node_id} has different name or unit across specifications'
+
+        merged_nodes[node_id] = merge_nodes(nodes_to_merge)
+
+    concatenated_specs = {}
+    for graph_specs in list_of_graph_specs:
+        concatenated_specs.update(graph_specs)
+    concatenated_specs.update(merged_nodes)
+
+    return concatenated_specs
+
+
+def converte_to_format(old_nodes):
+    new_nodes = {}
+
+    for node in old_nodes:
+        new_nodes[node['id']] = node.copy()
+
+#         if 'computation' in node:
+#             new_nodes[new_nodes['id']].pop('in', None)
+#             new_nodes[new_nodes['id']].pop('computation', None)
+
+        new_nodes[node['id']].pop('id', None)
+
+        if 'computation' in node:
+            new_nodes[node['id']]['computation'] = node['computation']['formula']
+            new_nodes[node['id']].pop('in', None)
+    return new_nodes

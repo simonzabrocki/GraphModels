@@ -47,16 +47,3 @@ def get_X_y_from_data(model, data_dict):
     X = {key: data_dict[key] for key in model.inputs_() + model.parameters_()}
     y = {key: data_dict[key] for key in model.variables_() + model.outputs_() if key in data_dict}
     return X, y
-#
-# TODO Write the quick function for parse any excel template
-# xl = pd.ExcelFile("models/Sarah/EW Data Template .xlsx")
-# parameters = [sheet for sheet in xl.sheet_names if 'meta' not in sheet]
-# data = {}
-# for param in parameters:
-#     if param not in ["Inventory", 'PLIR', 'PSIR', 'PSPIR', 'ESIR', 'ESPIR', 'ELIR']:
-#         #print(param)
-#         data[param] = {}
-#         data[param]['data'] = xl.parse(param, header=None, index_col=0)[1].to_dict()
-#         meta_params = xl.parse(f'{param}_metadata', header=None, index_col=0)[1].to_dict()
-#         data[param].update(meta_params)
-#

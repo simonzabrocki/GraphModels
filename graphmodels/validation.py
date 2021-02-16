@@ -47,7 +47,8 @@ def plot_computation_vs_baseline(baseline, computation):
 
 
 def check_variable_graph(Model, X, y_true, var):
-    """TO CLEAN UP"""
+    """TO CLEAN UP
+    """
     results = Model.run(X)
 
     computation = results[var]
