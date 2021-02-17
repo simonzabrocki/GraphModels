@@ -65,7 +65,7 @@ def model_MWU(GDPC, WP, Pop):
     also find way to link the regression data to those coefficient to improve reproducability
     '''
 
-    return np.exp(-0.9522 - 0.3174 * np.log(WP) + 0.5918827 * np.log(GDPC) + 0.9859812 * np.log(Pop)) * 1e-9    
+    return np.exp(-0.9522 - 0.3174 * np.log(WP) + 0.5918827 * np.log(GDPC) + 0.9859812 * np.log(Pop)) * 1e-9
 
 
 MWU_nodes = {'WP': {'type': 'input', 'name': 'Water Price', 'unit': '$/15m3'},
@@ -112,47 +112,45 @@ EW1_nodes = {'IWU': {'type': 'input',
                      'computation': lambda TWW, IGVA, SGVA, AGVA, **kwargs: 1e-9 * (IGVA + SGVA + AGVA) / TWW
                      }}
 
-
 EW2_nodes = {
     'IRWR': {'type': 'input',
-             'name': 'Internal Renewable Water Resources',
+                     'name': 'Internal Renewable Water Resources',
+                     'unit': 'm3/year'},
+    'ERWR': {'type': 'input',
              'unit': 'm3/year',
-             'ERWR': {'type': 'input',
-                      'unit': 'm3/year',
-                      'name': 'External Renewable Water Resources'},
-             'TRF': {'type': 'variable',
-                     'name': 'Total Renewable Freshwater',
-                     'unit': 'm3/year',
-                     'computation': lambda IRWR, ERWR, **kwargs: IRWR + ERWR
-                     },
-             'DW': {'type': 'parameter', 'unit': 'm3/year', 'name': 'Desalination Water'},
-             'TW': {'type': 'parameter', 'unit': 'm3/year', 'name': 'Treated Wastewater'},
-             'TNCW': {'type': 'variable',
-                      'name': 'Total Non Conventional Water',
-                      'unit': 'm3/year',
-                      'computation': lambda DW, TW, **kwargs: DW + TW
-                      },
-             'TFA': {'type': 'variable',
-                     'name': 'Total Freshwater Available',
-                     'unit': 'm3/year',
-                     'computation': lambda TRF, TNCW, **kwargs: TRF + TNCW
-                     },
-             'TWW': {'type': 'input', 'unit': 'm3/year', 'name': 'Total Water Withdrawal'},
-             'EFR': {'type': 'parameter',
-                     'unit': 'm3/year',
-                     'name': 'Environmental Flow Requirement'},
-             'EW2': {'type': 'output',
-                     'name': 'Share of Freshwater Withdrawal to Freshwater Availability',
-                     'unit': '%',
-                     'computation': lambda TWW, TFA, EFR, **kwargs: TWW / (TFA - EFR) * 1e2
-                     },
-             'Natural EW2': {'type': 'output',
-                             'name': 'Share of Freshwater Withdrawal to Freshwater Availability',
-                             'unit': '%',
-                             'computation': lambda TWW, TRF, EFR, **kwargs: TWW / (TRF - EFR) * 1e2
-                             }
-             }}
-
+             'name': 'External Renewable Water Resources'},
+    'TRF': {'type': 'variable',
+            'name': 'Total Renewable Freshwater',
+            'unit': 'm3/year',
+            'computation': lambda IRWR, ERWR, **kwargs: IRWR + ERWR
+            },
+    'DW': {'type': 'parameter', 'unit': 'm3/year', 'name': 'Desalination Water'},
+    'TW': {'type': 'parameter', 'unit': 'm3/year', 'name': 'Treated Wastewater'},
+    'TNCW': {'type': 'variable',
+             'name': 'Total Non Conventional Water',
+             'unit': 'm3/year',
+             'computation': lambda DW, TW, **kwargs: DW + TW
+             },
+    'TFA': {'type': 'variable',
+            'name': 'Total Freshwater Available',
+            'unit': 'm3/year',
+            'computation': lambda TRF, TNCW, **kwargs: TRF + TNCW
+            },
+    'TWW': {'type': 'input', 'unit': 'm3/year', 'name': 'Total Water Withdrawal'},
+    'EFR': {'type': 'parameter',
+            'unit': 'm3/year',
+            'name': 'Environmental Flow Requirement'},
+    'EW2': {'type': 'output',
+            'name': 'Share of Freshwater Withdrawal to Freshwater Availability',
+            'unit': '%',
+            'computation': lambda TWW, TFA, EFR, **kwargs: TWW / (TFA - EFR) * 1e2
+            },
+    'Natural EW2': {'type': 'output',
+                    'name': 'Share of Freshwater Withdrawal to Freshwater Availability',
+                    'unit': '%',
+                    'computation': lambda TWW, TRF, EFR, **kwargs: TWW / (TRF - EFR) * 1e2
+                    }
+}
 # models
 IWW_model = GraphModel(IWW_nodes)
 MWU_model = GraphModel(MWU_nodes)
