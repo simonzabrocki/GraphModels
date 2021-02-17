@@ -65,7 +65,7 @@ def model_MWU(GDPC, WP, Pop):
     also find way to link the regression data to those coefficient to improve reproducability
     '''
 
-    return np.exp(-21.9831 + - 0.2099 * np.log(WP) + 0.6379 * np.log(GDPC) + 1.6301 * np.log(Pop))
+    return np.exp(-0.9522 - 0.3174 * np.log(WP) + 0.5918827 * np.log(GDPC) + 0.9859812 * np.log(Pop)) * 1e-9    
 
 
 MWU_nodes = {'WP': {'type': 'input', 'name': 'Water Price', 'unit': '$/15m3'},

@@ -12,6 +12,47 @@ GWPCH4 = 21
 N2ON_to_NO2 = 1.57
 kg_to_Gg = 1e-6
 
+TMi_nodes = {'TAi': {'type': 'input', 'unit': 'head', 'name': 'Total animal population'},
+             'MYi': {'type': 'input', 'unit': 'kgN/head', 'name': 'Manure yields'},
+             'TMi': {'type': 'output',
+                     'unit': 'kgN',
+                     'name': 'Total Manure (N content)',
+                     'computation': lambda TAi, MYi, **kwargs: TAi * MYi
+                     }
+             }
+
+M_xi_nodes = {'TMi': {'type': 'input',
+                              'unit': 'kgN',
+                              'name': 'Total Manure (N content)'},
+              'MM_ASi': {'type': 'input',
+                         'unit': '1',
+                         'name': '% Manure applied to soils'},
+              'MM_LPi': {'type': 'input',
+                         'unit': '1',
+                         'name': '% Manure left on pasture'},
+              'MM_Ti': {'type': 'input',
+                        'unit': '1',
+                        'name': '% Manure left on treated'},
+              'M_Ti': {'type': 'output',
+                       'unit': 'kgN',
+                       'name': 'Manure treated (N content)',
+                       'computation': lambda MM_Ti, TMi, **kwargs: MM_Ti * TMi
+
+                       },
+              'M_LPi': {'type': 'output',
+                        'unit': 'kg',
+                        'name': 'Manure left on pasture (N content)',
+                        'computation': lambda MM_LPi, TMi, **kwargs: MM_LPi * TMi
+
+                        },
+              'M_ASi': {'type': 'output',
+                        'unit': 'kgN',
+                        'name': 'Manure applied to soils (N content)',
+                        'computation': lambda MM_ASi, TMi, **kwargs: MM_ASi * TMi
+
+                        }
+              }
+
 TMP_CO2eq_nodes = {'M_LPi': {'type': 'input',
                              'unit': 'kg',
                              'name': 'Manure left on pasture (N content)'},
@@ -97,20 +138,20 @@ FE_CO2eq_nodes = {
                  }
 }
 
-GE3_nodes = {'P': {'type': 'input', 'unit': 'population', 'name': 'Total population'},
-             'TEE_CO2eq': {'type': 'variable',
+GE3_nodes = {'Pop': {'type': 'input', 'unit': 'population', 'name': 'Total population'},
+             'TEE_CO2eq': {'type': 'input',
                            'unit': 'gigagrams (CO2eq)',
                            'name': 'Emissions (CO2eq) (Enteric)'},
-             'TMT_CO2eq': {'type': 'variable',
+             'TMT_CO2eq': {'type': 'input',
                            'unit': 'gigagrams (CO2eq)',
                            'name': 'Emissions (CO2eq) (Manure management)'},
-             'TMA_CO2eq': {'type': 'variable',
+             'TMA_CO2eq': {'type': 'input',
                            'unit': 'gigagrams (CO2eq)',
                            'name': 'Emissions (CO2eq) (Manure applied)'},
-             'TMP_CO2eq': {'type': 'variable',
+             'TMP_CO2eq': {'type': 'input',
                            'unit': 'gigagrams (CO2eq)',
                            'name': 'Emissions (CO2eq) (Manure on pasture)'},
-             'FE_CO2eq': {'type': 'variable',
+             'FE_CO2eq': {'type': 'input',
                           'unit': 'gigagrams (CO2eq)',
                           'name': 'Emissions (CO2eq) (Synthetic fertilizers)'},
              'OEi': {'type': 'input',
@@ -119,10 +160,31 @@ GE3_nodes = {'P': {'type': 'input', 'unit': 'population', 'name': 'Total populat
              'GE3': {'type': 'output',
                      'unit': 'gigagrams (CO2eq) / capita',
                      'name': 'Ratio of non-CO2 emissions in agriculture to population',
-                     'computation': lambda OEi, TEE_CO2eq, TMT_CO2eq, TMP_CO2eq, TMA_CO2eq, FE_CO2eq, P, **kwargs: (OEi + (TEE_CO2eq + TMT_CO2eq + TMP_CO2eq + TMA_CO2eq + FE_CO2eq).groupby(level=['Area', 'Year']).sum()) / P * 1e3}}
+                     'computation': lambda OEi, TEE_CO2eq, TMT_CO2eq, TMP_CO2eq, TMA_CO2eq, FE_CO2eq, Pop, **kwargs: (OEi + (TEE_CO2eq + TMT_CO2eq + TMP_CO2eq + TMA_CO2eq + FE_CO2eq).groupby(level=['Area', 'Year']).sum()) / Pop * 1e3}}
 
 
 nodes = concatenate_graph_specs(
-    [GE3_nodes, TEE_CO2eq_nodes, TMA_CO2eq_nodes, TMT_CO2eq_nodes, TMP_CO2eq_nodes, FE_CO2eq_nodes])
+    [GE3_nodes, TEE_CO2eq_nodes, TMA_CO2eq_nodes, TMT_CO2eq_nodes, TMP_CO2eq_nodes, FE_CO2eq_nodes, M_xi_nodes, TMi_nodes])
 
-model_GE3 = GraphModel(nodes)
+# models
+TMi_model = GraphModel(TMi_nodes)
+M_xi_model = GraphModel(M_xi_nodes)
+TMP_CO2eq_model = GraphModel(TMP_CO2eq_nodes)
+TMT_CO2eq_model = GraphModel(TMT_CO2eq_nodes)
+TMA_CO2eq_model = GraphModel(TMA_CO2eq_nodes)
+TEE_CO2eq_model = GraphModel(TEE_CO2eq_nodes)
+FE_CO2eq_model = GraphModel(FE_CO2eq_nodes)
+GE3_partial_model = GraphModel(GE3_nodes)
+
+GE3_model = GraphModel(nodes)
+
+GE3_models = {'TMi_model': TMi_model,
+              'M_xi_model': M_xi_model,
+              'TMP_CO2eq_model': TMP_CO2eq_model,
+              'TMT_CO2eq_model': TMT_CO2eq_model,
+              'TMA_CO2eq_model': TMA_CO2eq_model,
+              'TEE_CO2eq_model': TEE_CO2eq_model,
+              'FE_CO2eq_model': FE_CO2eq_model,
+              'GE3_partial_model': GE3_partial_model,
+              'GE3_model': GE3_model
+              }
