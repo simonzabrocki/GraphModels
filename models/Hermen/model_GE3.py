@@ -54,7 +54,7 @@ M_xi_nodes = {'TMi': {'type': 'input',
                          'name': '% Manure left on pasture'},
               'MM_Ti': {'type': 'input',
                         'unit': '1',
-                        'name': '% Manure left on treated'},
+                        'name': '% Manure treated'},
               'M_Ti': {'type': 'output',
                        'unit': 'kgN',
                        'name': 'Manure treated (N content)',
@@ -202,7 +202,7 @@ GE3_partial_model = GraphModel(GE3_nodes)
 GE3_model = GraphModel(nodes)
 
 GE3_models = {'TMi_model': TMi_model,
-              #'TAi_model': TAi_model,
+              # 'TAi_model': TAi_model,
               'M_xi_model': M_xi_model,
               'TMP_CO2eq_model': TMP_CO2eq_model,
               'TMT_CO2eq_model': TMT_CO2eq_model,

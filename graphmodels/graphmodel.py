@@ -23,6 +23,7 @@ import pandas as pd
 from functools import partial, reduce
 import inspect
 import copy
+import time
 
 
 draw_properties = {
@@ -131,7 +132,45 @@ class GraphModel(nx.DiGraph):
         Returns:
             X(dict): inputs, variables and outputs of the graph.
         '''
+
         X = self.model_function(X)
+
+        return X
+
+    def run_step_wise(self, X):
+        '''Debbugging function:
+        Run the GraphModel given inputs and parameters step by step.
+
+        Args:
+            X(dict): dictionnary of input and parameters.
+
+        Returns:
+            X(dict): inputs, variables and outputs of the graph.
+        '''
+        X = self.step_wise_model_function(X)
+        return X
+
+    def step_wise_model_function(self, X):
+        '''The function computed by the model.
+        Args:
+            X(dict): The values of inputs, parameters, variables and outputs of the graph.
+        Returns:
+            X(dict): The values of inputs, parameters, variables and outputs of the graph.
+        '''
+        X = X.copy()
+        for node_id in self.node_ordering:
+            start = time.time()
+            print(node_id, end=': ')
+
+            node = self.nodes[node_id]
+            computation = node['formula']
+
+            result = computation(**X)
+            out = node['out']
+            X[out] = result
+
+            end = time.time()
+            print(end - start)
 
         return X
 
