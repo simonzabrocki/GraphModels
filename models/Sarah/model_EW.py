@@ -14,7 +14,7 @@ mm_to_m = 1  # 1e-3 TO CHECK
 mmyear_to_m3year = 1  # from mm/year to m3/year as 1mm = 10m3/ha \n",
 
 # Nodes
-IWW_nodes = {'KC': {'type': 'parameter', 'unit': '1', 'name': 'Crop Factor Vector'},
+IWW_nodes = {'Kc': {'type': 'parameter', 'unit': '1', 'name': 'Crop Factor Vector'},
              'ICA': {'type': 'input', 'unit': '1000 ha', 'name': 'Irrigated crop Area'},
              'CI': {'type': 'variable',
                     'unit': '1',
@@ -25,7 +25,7 @@ IWW_nodes = {'KC': {'type': 'parameter', 'unit': '1', 'name': 'Crop Factor Vecto
              'ETc': {'type': 'variable',
                      'name': 'Potential Crop Evaporation Vector',
                      'unit': 'mm/year',
-                     'computation': lambda KC, CI, ETo, **kwargs: (KC * CI * ETo).groupby(level=['ISO', 'Year']).sum()
+                     'computation': lambda Kc, CI, ETo, **kwargs: (Kc * CI * ETo).groupby(level=['ISO', 'Year']).sum()
                      },
              'ETa': {'type': 'input',
                      'unit': 'mm/year',
@@ -33,7 +33,7 @@ IWW_nodes = {'KC': {'type': 'parameter', 'unit': '1', 'name': 'Crop Factor Vecto
              'ICU': {'type': 'variable',
                      'name': 'Irrigation Consumptive Use',
                      'unit': 'mm/year',
-                     'computation': lambda ETc, ETa, **kwargs: ETc - ETa
+                     'computation': lambda ETc, ETa, **kwargs: abs(ETc - ETa) # bug to fix
                      },
              'AIR': {'type': 'parameter',
                      'unit': '1000 ha',
