@@ -11,6 +11,7 @@ GWPN2O = 310
 GWPCH4 = 21
 N2ON_to_NO2 = 1.57
 kg_to_Gg = 1e-6
+ktonnes_to_hg = 1e-7
 
 TAi_nodes = {'FPi': {'type': 'input',
                      'unit': 'tonnes',
