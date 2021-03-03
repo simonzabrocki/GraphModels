@@ -1,6 +1,10 @@
+from graphmodels.graphmodel import GraphModel
+
+
 crop_group = ['Cereals - Excluding Beer', 'Starchy Roots', 'Sugar Crops', 'Sugar & Sweeteners', 'Pulses',
               'Treenuts', 'Oilcrops', 'Vegetable Oils', 'Vegetables', 'Fruits - Excluding Wine',
               'Stimulants', 'Spices']
+m3_to_tonnes = 1  # to check
 
 
 SL1_nodes = {'FDTi': {'type': 'variable',
@@ -30,7 +34,6 @@ SL1_nodes = {'FDTi': {'type': 'variable',
                      }
              }
 
-m3_to_tonnes = 1  # to check
 
 BE3_nodes = {'NFI': {'type': 'input',
                      'unit': 'm3/ha',
@@ -50,3 +53,7 @@ BE3_nodes = {'NFI': {'type': 'input',
                      'computation': lambda FBI, HR, **kwargs: FBI * (1 - HR * 1e-2) * m3_to_tonnes
                      },
              }
+
+
+BE3_model = GraphModel(BE3_nodes)
+SL1_model = GraphModel(SL1_nodes)

@@ -58,25 +58,29 @@ ME1_nodes = {'DMC': {'type': 'variable', 'name': 'Total DMC', 'unit': 'tonnes'},
              'ME1': {'type': 'output',
                      'name': 'Total DMC per GDP',
                      'unit': 'tonnes/$',
-                     'computation': lambda DMC, GDP, **kwargs: DMC / GDP * 1e3}}
+                     'computation': lambda DMC, GDP, **kwargs: DMC / GDP * 1e3
+                     }}
 
 
 JE_nodes = {'VDMC': {'type': 'variable', 'name': 'Vector of DMC', 'unit': 'tonnes'},
             'DMC': {'type': 'variable',
                     'name': 'Total DMC',
                     'unit': 'tonnes',
-                    'computation': lambda VDMC, **kwargs: VDMC.sum()},
+                    'computation': lambda VDMC, **kwargs: VDMC.sum()
+                    },
             'MI': {'type': 'input',
                    'name': 'Material Efficiency Improvement',
                    'unit': '%'},
             'RS': {'type': 'variable',
                    'name': 'Resources Saved',
                    'unit': 'tonnes',
-                   'computation': lambda MI, DMC, **kwargs: MI * DMC},
+                   'computation': lambda MI, DMC, **kwargs: MI * DMC
+                   },
             'MS': {'type': 'variable',
                    'name': 'Share of Materials',
                    'unit': '1',
-                   'computation': lambda VDMC, DMC, **kwargs: VDMC / DMC},
+                   'computation': lambda VDMC, DMC, **kwargs: VDMC / DMC
+                   },
             'AP': {'type': 'parameter',
                    'name': 'Vector of Lastest Average Prices of Commodities',
                    'unit': '$'},
@@ -86,20 +90,25 @@ JE_nodes = {'VDMC': {'type': 'variable', 'name': 'Vector of DMC', 'unit': 'tonne
             'CM': {'type': 'variable',
                    'name': 'Cost per unit of Materials',
                    'unit': '$',
-                   'computation': lambda AP, EX, **kwargs: AP * EX},
+                   'computation': lambda AP, EX, **kwargs: AP * EX
+                   },
             'PM': {'type': 'variable',
                    'name': 'Total Price per unit of Materials',
                    'unit': '$',
-                   'computation': lambda MS, CM, **kwargs: MS * CM},
+                   'computation': lambda MS, CM, **kwargs: MS * CM
+                   },
             'TMS': {'type': 'variable',
                     'name': 'Monetary Savings',
                     'unit': '$',
-                    'computation': lambda PM, RS, **kwargs: PM.sum() * RS},
+                    'computation': lambda PM, RS, **kwargs: PM.sum() * RS
+                    },
             'AW': {'type': 'parameter', 'name': 'Average Wage', 'unit': '$'},
             'JE': {'type': 'output',
                    'name': 'Job Equivalents',
                    'unit': '1',
-                   'computation': lambda TMS, AW, **kwargs: TMS / AW}}
+                   'computation': lambda TMS, AW, **kwargs: TMS / AW
+                   }}
 
 
-material_model = GraphModel(concatenate_graph_specs([Waste_nodes, VDMC_nodes, ME2_nodes, ME1_nodes, JE_nodes]))
+material_model = GraphModel(concatenate_graph_specs(
+    [Waste_nodes, VDMC_nodes, ME2_nodes, ME1_nodes, JE_nodes]))
