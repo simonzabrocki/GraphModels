@@ -33,7 +33,7 @@ IWW_nodes = {'Kc': {'type': 'parameter', 'unit': '1', 'name': 'Crop Factor Vecto
              'ICU': {'type': 'variable',
                      'name': 'Irrigation Consumptive Use',
                      'unit': 'mm/year',
-                     'computation': lambda ETc, ETa, **kwargs: abs(ETc - ETa) # bug to fix
+                     'computation': lambda ETc, ETa, **kwargs: abs(ETc - ETa)  # bug to fix
                      },
              'AIR': {'type': 'parameter',
                      'unit': '1000 ha',

@@ -12,6 +12,55 @@ GWPCH4 = 21
 N2ON_to_NO2 = 1.57
 kg_to_Gg = 1e-6
 ktonnes_to_hg = 1e-7
+kg_to_1000tonnes = 1e-6
+day_per_year = 365
+ktonnes_to_hg = 1e7
+
+# Nodes
+FPi_nodes = {'FLOi': {'type': 'input',
+                      'unit': '1000 tonnes',
+                      'name': 'Food losses per food group'},
+             'FDKGi': {'type': 'input',
+                       'unit': 'kg/capita/day',
+                       'name': 'Kg food demand per day per food group'},
+             'SSRi': {'type': 'input',
+                      'unit': '1',
+                      'name': 'Self-sufficiency ratio per food group',
+                      },
+             'FDPi': {'type': 'variable',
+                      'unit': '1000 tonnes',
+                      'name': 'Total food production per food group',
+                      'computation': lambda FDKGi, Pop, FLOi, **kwargs: kg_to_1000tonnes * day_per_year * FDKGi * Pop * 1e3 + FLOi
+                      },
+             'OFi': {'type': 'variable',
+                     'unit': '1000 tonnes',
+                     'name': 'Other food demand',
+                     'computation': lambda SDi, NFDi, PDi, RDi, SVi, **kwargs: SDi + NFDi + PDi + RDi + SVi
+                     },
+             'SDi': {'type': 'input',
+                     'unit': '1000 tonnes',
+                     'name': 'Seed demand per food group'},
+             'NFDi': {'type': 'input',
+                      'unit': '1000 tonnes',
+                      'name': 'Non-food demand per food group'},
+             'PDi': {'type': 'input',
+                     'unit': '1000 tonnes',
+                     'name': 'Processed demand per food group'},
+             'RDi': {'type': 'input',
+                     'unit': '1000 tonnes',
+                     'name': 'Residual demand per food group'},
+             'SVi': {'type': 'input',
+                     'unit': '1000 tonnes',
+                     'name': 'Stock variation per food group'},
+             'FPi': {'type': 'output',
+                     'name': 'Food production per food group',
+                     'unit': '1000 tonnes',
+                     'computation': lambda SSRi, OFi, FDi, FDPi, **kwargs: (OFi + FDi + FDPi) * SSRi
+                     },
+             'FDi': {'type': 'input',
+                     'unit': '1000 tonnes',
+                     'name': 'Feed demand per food group'},
+             'Pop': {'type': 'input', 'unit': '1000 persons', 'name': 'Total population'}}
 
 TAi_nodes = {'FPi': {'type': 'input',
                      'unit': 'tonnes',
@@ -190,6 +239,7 @@ nodes = concatenate_graph_specs(
     [GE3_nodes, TEE_CO2eq_nodes, TMA_CO2eq_nodes, TMT_CO2eq_nodes, TMP_CO2eq_nodes, FE_CO2eq_nodes, M_xi_nodes, TMi_nodes])
 
 # models
+FPi_nodes = GraphModel(FPi_nodes)
 TAi_model = GraphModel(TAi_nodes)
 TMi_model = GraphModel(TMi_nodes)
 M_xi_model = GraphModel(M_xi_nodes)
