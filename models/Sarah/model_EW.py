@@ -79,9 +79,12 @@ MWU_nodes = {'WP': {'type': 'input', 'name': 'Water Price', 'unit': '$/15m3'},
              }
 
 
-EW1_nodes = {'IWU': {'type': 'input',
+EW1_nodes = {'IWU': {'type': 'parameter',
                      'name': 'Industrial Water Withdrawal',
                      'unit': 'm3/year'},
+             'AIR': {'type': 'parameter',
+                     'unit': '1000 ha',
+                     'name': 'Area Actually Irrigated'},
              'MWU': {'type': 'input',
                      'name': 'Municipal Water Withdrawal',
                      'unit': 'm3/year'},
@@ -93,9 +96,25 @@ EW1_nodes = {'IWU': {'type': 'input',
                      'unit': 'm3/year',
                      'computation': lambda AWU, IWU, MWU, **kwargs: AWU + IWU + MWU
                      },
-             'AGVA': {'type': 'parameter',
+
+             'AGVA': {'type': 'input',
                       'name': 'Agricultural Gross Value Added',
-                      'unit': '$'},
+                      'unit': '$',
+                      },
+
+             'TC': {'type': 'parameter',
+                    'unit': '1000 ha',
+                    'name': 'Total Cultivated Land'},
+             'PAIR': {'type': 'variable',
+                      'name': 'Proportion of Irrigated Land',
+                      'unit': '1',
+                      'computation': lambda AIR, TC, **kwargs: AIR / TC
+                      },
+             'Cr': {'type': 'variable',
+                    'name': 'Corrective coefficient',
+                    'unit': '1',
+                    'computation': lambda PAIR, **kwargs: 1 / (1 + (PAIR / (1 - PAIR) * 0.375))
+                    },
 
              'IGVA': {'type': 'parameter',
                       'name': 'Industrial Gross Value Added',
@@ -104,13 +123,12 @@ EW1_nodes = {'IWU': {'type': 'input',
              'SGVA': {'type': 'parameter',
                       'name': 'Service Sector Gross Value Added',
                       'unit': '$'},
-
-
              'EW1': {'type': 'output',
                      'name': 'Water Use Efficiency',
                      'unit': '$/(m3/year)',
-                     'computation': lambda TWW, IGVA, SGVA, AGVA, **kwargs: 1e-9 * (IGVA + SGVA + AGVA) / TWW
-                     }}
+                     'computation': lambda TWW, AGVA, IGVA, SGVA, Cr, **kwargs: (AGVA * (1 - Cr) + IGVA + SGVA) / (TWW * 1e9)
+                     },
+             }
 
 EW2_nodes = {
     'IRWR': {'type': 'input',
