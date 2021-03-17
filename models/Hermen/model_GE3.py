@@ -80,7 +80,7 @@ TAi_nodes = {'FPi': {'type': 'input',
              'TAi': {'type': 'output',
                      'unit': 'head',
                      'name': 'Vector total animal population',
-                     'computation': lambda ANPi, PTTAi, **kwargs: PTTAi * ANPi.groupby(level=['Area', 'Year', 'emi_item']).sum().rename_axis(index={"emi_item": 'Item'})
+                     'computation': lambda ANPi, PTTAi, **kwargs: PTTAi * ANPi.groupby(level=['ISO', 'Year', 'emi_item']).sum().rename_axis(index={"emi_item": 'Item'})
                      },
              }
 
@@ -232,7 +232,7 @@ GE3_nodes = {'Pop': {'type': 'input', 'unit': '1000 persons', 'name': 'Total pop
              'GE3': {'type': 'output',
                      'unit': 'gigagrams (CO2eq) / capita',
                      'name': 'Ratio of non-CO2 emissions in agriculture to population',
-                     'computation': lambda OEi, TEE_CO2eq, TMT_CO2eq, TMP_CO2eq, TMA_CO2eq, FE_CO2eq, Pop, **kwargs: (OEi + (TEE_CO2eq + TMT_CO2eq + TMP_CO2eq + TMA_CO2eq + FE_CO2eq).groupby(level=['Area', 'Year']).sum()) / (Pop * 1e3)}}
+                     'computation': lambda OEi, TEE_CO2eq, TMT_CO2eq, TMP_CO2eq, TMA_CO2eq, FE_CO2eq, Pop, **kwargs: (OEi + (TEE_CO2eq + TMT_CO2eq + TMP_CO2eq + TMA_CO2eq + FE_CO2eq).groupby(level=['ISO', 'Year']).sum()) / (Pop * 1e3)}}
 
 
 nodes = concatenate_graph_specs(
