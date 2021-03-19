@@ -8,7 +8,7 @@ def get_X_y_from_data(model, data_dict):
 def df_to_dict(df):
     X = {}
     for code in df.columns:
-        X[code] = df[code].fillna(0)
+        X[code] = df[code]#.fillna(0)
     return X
 
 

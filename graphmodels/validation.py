@@ -22,6 +22,7 @@ def score_model(Model, X, y_true):
     results = Model.run(X)
     scores = []
     for var in y_true.keys():
+        print(var)
         score = score_variable(y_true[var], results[var])
         score['Variable'] = var
         scores.append(score)
