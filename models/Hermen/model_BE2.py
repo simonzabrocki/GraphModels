@@ -109,7 +109,7 @@ CL_nodes = {'TCLDi': {
                'type': 'output',
                'name': 'Cropland stock',
                'unit': '1000 ha',
-               'computation':  lambda TCLDi, **kwargs: TCLDi.groupby(level=['ISO', 'Year']).sum() * 1e-3 # bug on a 1e-1 factor
+               'computation':  lambda TCLDi, **kwargs: TCLDi.groupby(level=['ISO', 'Year']).sum() * 1e-2 # Strange to check !
             },
 }
 
