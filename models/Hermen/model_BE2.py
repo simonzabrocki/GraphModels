@@ -114,7 +114,7 @@ CL_nodes = {'TCLDi': {
                'type': 'output',
                'name': 'Cropland stock',
                'unit': '1000 ha',
-               'computation':  lambda TCLDi, CL_corr_coef, **kwargs: TCLDi.groupby(level=['ISO', 'Year']).sum() * 1e-2 *CL_corr_coef # Strange to check !
+               'computation':  lambda TCLDi, CL_corr_coef, **kwargs: TCLDi.groupby(level=['ISO', 'Year']).sum() * 1e-3 * CL_corr_coef#  Strange to check !
             },
 }
 
