@@ -6,13 +6,17 @@ WARNINGs:
 - As pandas explains, using loc[:, :, blabla] has really terrible performance, try to avoid
 
 ROADMAP:
+- Add auto unit check 
+- Allow for arbitrary 'type' field that can have customizable plotting props
+- Split in different file
+- For fun maybe try to add some numba to speed up
+
 - Add a concatenate function to properly concatenate models without duplicates OK !
 - Automatically parse the computation to avoid having to type the name OK !
-
-
 - Cleanup the parser TODO
 - Rewrite parser and drawer as function rather than objects TODO
 - Add on pip for easier use by the team + clean github repo
+
 """
 __author__ = 'Simon'
 
@@ -151,7 +155,7 @@ class GraphModel(nx.DiGraph):
         return X
 
     def step_wise_model_function(self, X):
-        '''The function computed by the model.
+        '''The function computed by the model. Used for debugging
         Args:
             X(dict): The values of inputs, parameters, variables and outputs of the graph.
         Returns:
@@ -440,6 +444,7 @@ class GraphParser():
 
 
 # Function composition
+
 def compose(*functions):
     return reduce(lambda f, g: lambda x: f(g(X=x)), functions, lambda x: x)
 
@@ -459,6 +464,7 @@ def model_function(G):
 
 
 # Node merging
+
 def get_duplicated_nodes(id_type_df):
     duplicated_nodes = (id_type_df.groupby('id').count() > 1)
     duplicated_nodes = duplicated_nodes[duplicated_nodes.type].index
@@ -474,7 +480,7 @@ def get_id_type_df(list_of_graph_specs):
 
 def merge_nodes(nodes_to_merge):
     if 'computation' in nodes_to_merge.columns:
-        pass
+        pass # ????
         nodes_to_merge.dropna()
         computation = nodes_to_merge.dropna(subset=['computation']).computation.unique()[0]
         unit = nodes_to_merge.unit.unique()[0]
@@ -515,6 +521,8 @@ def concatenate_graph_specs(list_of_graph_specs):
 
 
 def converte_to_format(old_nodes):
+    
+    '''To remove not usefull anymore'''
     new_nodes = {}
 
     for node in old_nodes:

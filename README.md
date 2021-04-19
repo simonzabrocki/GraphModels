@@ -7,7 +7,7 @@ A framework to compute an visualize GGGI models using computational graphs.
 # TODO
 
 ## Code quality
-- Add unit tests on the core graphmodel
+- Improve unit tests on the core graphmodel
 - Add unit tests on the models
 - split scripts in graphmodel between plotting, computing and the core module
 - Remove the older version models as well as the old data and parameters
@@ -15,9 +15,11 @@ A framework to compute an visualize GGGI models using computational graphs.
 
 
 ## Features
-- Create a script to automatically plot all the graphs
+- Create a script to automatically save all the graphs in a folder
 - Add an accessible full description on all models
-- Create a function to go from the db format to the computing format
+- Create an interface from the db format to the computing format
+- Add country wise, variable wise metrics for testing
+- Find a way to remove the mandatory kwargs argument in the compuation functions
 
 
 
