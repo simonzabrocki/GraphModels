@@ -1,20 +1,25 @@
 from statsmodels.tsa.api import ExponentialSmoothing, SimpleExpSmoothing, Holt
+import pandas as pd
+import numpy as np
 
 
 def reindex_series_non_itemized(df, min_year=2000, max_year=2050):
-    multi_index = pd.MultiIndex.from_product([df.index.get_level_values('ISO').unique(), np.arange(min_year, max_year+1)], names=['ISO', 'Year'])
+    multi_index = pd.MultiIndex.from_product([df.index.get_level_values(
+        'ISO').unique(), np.arange(min_year, max_year+1)], names=['ISO', 'Year'])
     return df.reindex(multi_index)
 
 
 def reindex_series_itemized(df, min_year=2000, max_year=2050):
-    multi_index = pd.MultiIndex.from_product([df.index.get_level_values('ISO').unique(), np.arange(min_year, max_year+1), df.index.get_level_values('Item').unique()], names=['ISO', 'Year', 'Item'])
+    multi_index = pd.MultiIndex.from_product([df.index.get_level_values('ISO').unique(), np.arange(
+        min_year, max_year+1), df.index.get_level_values('Item').unique()], names=['ISO', 'Year', 'Item'])
     return df.reindex(multi_index)
 
 
 def apply_percent_target_projection(series, percent_target=0, baseline_year=2018, target_year=2050):
     series = series.copy()
     series = reindex_series_non_itemized(series, max_year=target_year)
-    series.loc[:, target_year, :] = percent_target * series.loc[:, baseline_year, :].values
+    series.loc[:, target_year, :] = percent_target * \
+        series.loc[:, baseline_year, :].values
     return series.interpolate()
 
 
@@ -22,16 +27,19 @@ def apply_itemized_percent_target_projection(series, percent_target=0, baseline_
     '''To improve: Apply item wise projection'''
     series = series.copy()
     series = reindex_series_itemized(series, max_year=target_year)
-    series.loc[:, target_year, :] = percent_target * series.loc[:, baseline_year, :].values
+    series.loc[:, target_year, :] = percent_target * \
+        series.loc[:, baseline_year, :].values
 
 
 def apply_annual_rate_projection(series, rate=1, baseline_year=2018, target_year=2050):
     series = series.copy()
     series = reindex_series_non_itemized(series, max_year=target_year)
 
-    year = series.loc[:, baseline_year:].index.get_level_values(level='Year').values
+    year = series.loc[:, baseline_year:].index.get_level_values(
+        level='Year').values
 
-    series.loc[:, baseline_year:] = series.loc[:, baseline_year].values * rate ** (year - baseline_year)
+    series.loc[:, baseline_year:] = series.loc[:,
+                                               baseline_year].values * rate ** (year - baseline_year)
 
     return series
 
@@ -59,15 +67,16 @@ def apply_ffill_projection(series, target_year=2050):
     return series.groupby(['ISO']).fillna(method='ffill')
 
 
-
 def apply_Holt_projection(series, baseline_year=2018, target_year=2050, smoothing_level=0.3):
     '''Improve choice of smoothing methods'''
     series = series.copy()
     series = reindex_series_non_itemized(series, max_year=target_year)
 
     for ISO in series.index.get_level_values('ISO').unique():
-        fit = Holt(series.loc[ISO, :baseline_year].values).fit(smoothing_level=smoothing_level)
-        series.loc[ISO, baseline_year:target_year+1] = fit.forecast(target_year - baseline_year + 1)
+        fit = Holt(series.loc[ISO, :baseline_year].values).fit(
+            smoothing_level=smoothing_level)
+        series.loc[ISO, baseline_year:target_year +
+                   1] = fit.forecast(target_year - baseline_year + 1)
 
     return series
 
