@@ -13,7 +13,7 @@ digraph {
 	HR [label=HR color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Harvest rate 
  (HR) 
  %" peripheries=1 shape=rectangle style=filled]
-	BE3 [label=BE3 color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="net change forest biomass 
+	BE3 [label=BE3 color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="net change forest biomass 
  (BE3) 
  tonnes/ha" peripheries=1 shape=rectangle style=filled]
 	BE3_comp [label=BE3_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="FBI * (1 - HR * 1e-2) * m3_to_tonnes" peripheries=1 shape=rectangle style=""]
