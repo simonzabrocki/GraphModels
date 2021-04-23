@@ -18,7 +18,7 @@ ROADMAP:
 - Add on pip for easier use by the team + clean github repo
 
 """
-__author__ = 'Simon'
+__author__ = 'Simon Zabrocki'
 
 import networkx as nx
 import graphviz
@@ -73,6 +73,7 @@ class GraphModel(nx.DiGraph):
         self.make_graph(graph_specifications)
         self.node_ordering = self.get_computational_nodes_ordering()
         self.model_function = model_function(self)
+        self.graph_specifications = graph_specifications
 
     def checks(self, nodes, edges):
         '''Checks if the graph is well defined.
@@ -155,7 +156,7 @@ class GraphModel(nx.DiGraph):
         return X
 
     def step_wise_model_function(self, X):
-        '''The function computed by the model. Used for debugging
+        '''The function computed by the model. Used for debugging.
         Args:
             X(dict): The values of inputs, parameters, variables and outputs of the graph.
         Returns:
@@ -463,30 +464,46 @@ def model_function(G):
     return compose(*functions_list)
 
 
-# Node merging
-
-def get_duplicated_nodes(id_type_df):
-    duplicated_nodes = (id_type_df.groupby('id').count() > 1)
-    duplicated_nodes = duplicated_nodes[duplicated_nodes.type].index
-    return duplicated_nodes
+# Node merging quite ugly now to improve, bugs when  same duplicated output
+def get_duplicated_nodes(list_of_graph_specs):
+    id_type_df = get_id_type_df(list_of_graph_specs)
+    return id_type_df.loc[id_type_df.id.duplicated()].id.tolist()
 
 
 def get_id_type_df(list_of_graph_specs):
     id_type_df = [[(d, node['type']) for d, node in graph_spec.items()]
                   for graph_spec in list_of_graph_specs]
-    id_type_df = pd.DataFrame(sum(id_type_df, []), columns=['id', 'type'])
+    id_type_df = pd.DataFrame(sum(id_type_df, []), columns=['id', 'type']).drop_duplicates()
     return id_type_df
 
 
-def merge_nodes(nodes_to_merge):
-    if 'computation' in nodes_to_merge.columns:
-        pass # ????
-        nodes_to_merge.dropna()
+def get_nodes_df(node_list):
+    nodes_df = pd.DataFrame(node_list)
+    assert nodes_df[['unit', 'name']].drop_duplicates().shape[0] == 1, f'{node_id} has different name or unit across specifications'
+    return nodes_df
+
+
+def get_node_from_list_of_specs(node_id, list_of_graph_specs):
+    node_list = [nodes[node_id] for nodes in list_of_graph_specs if node_id in nodes.keys()]
+    return node_list
+
+
+def merge_nodes(node_list):
+    nodes_to_merge = get_nodes_df(node_list)      
+
+    if 'variable' in nodes_to_merge.type.unique():
         computation = nodes_to_merge.dropna(subset=['computation']).computation.unique()[0]
         unit = nodes_to_merge.unit.unique()[0]
         name = nodes_to_merge.name.unique()[0]
         return {'name': name, 'type': 'variable', 'unit': unit, 'computation': computation}
+    elif set(['input', 'output']) <= set(nodes_to_merge.type.unique()):
+        computation = nodes_to_merge.dropna(subset=['computation']).computation.unique()[0]
+        unit = nodes_to_merge.unit.unique()[0]
+        name = nodes_to_merge.name.unique()[0]
+        return {'name': name, 'type': 'variable', 'unit': unit, 'computation': computation}
+
     else:
+        
         return nodes_to_merge.drop_duplicates().to_dict(orient='records')[0]
 
 
@@ -496,28 +513,30 @@ def concatenate_graph_specs(list_of_graph_specs):
     - Duplicated nodes are removed.
     - Nodes that are inputs in some and outputs in other becomes variables.
     '''
-    id_type_df = get_id_type_df(list_of_graph_specs)
-
-    duplicated_nodes = get_duplicated_nodes(id_type_df)
-
-    merged_nodes = {}
-
-    for node_id in duplicated_nodes:
-        nodes_to_merge = pd.DataFrame([nodes[node_id]
-                                       for nodes in list_of_graph_specs if node_id in nodes.keys()])
-
-        # Sanity check to make sure graphs are consistent
-        assert nodes_to_merge[['unit', 'name']].drop_duplicates(
-        ).shape[0] == 1, f'{node_id} has different name or unit across specifications'
-
-        merged_nodes[node_id] = merge_nodes(nodes_to_merge)
 
     concatenated_specs = {}
     for graph_specs in list_of_graph_specs:
         concatenated_specs.update(graph_specs)
+
+
+    duplicated_nodes = get_duplicated_nodes(list_of_graph_specs)
+
+    merged_nodes = {}
+
+    for node_id in duplicated_nodes:
+        nodes_to_merge = get_node_from_list_of_specs(node_id, list_of_graph_specs)
+        merged_node = merge_nodes(nodes_to_merge)
+        merged_nodes[node_id] = merged_node
+            
     concatenated_specs.update(merged_nodes)
 
     return concatenated_specs
+
+
+def merge_models(model_list):
+    concatenated_spec = concatenate_graph_specs([model.graph_specifications for model in model_list])
+    merged_model = GraphModel(concatenated_spec)
+    return merged_model
 
 
 def converte_to_format(old_nodes):
