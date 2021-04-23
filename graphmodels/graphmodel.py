@@ -75,8 +75,8 @@ class GraphModel(nx.DiGraph):
         self.model_function = model_function(self)
         self.graph_specifications = graph_specifications
 
-    def checks(self, nodes, edges):
-        '''Checks if the graph is well defined.
+    def check_nodes_and_edges(self, nodes, edges):
+        '''Checks that arguments of computations are defined in nodes.
 
         Args:
             nodes (List): list of nodes.
@@ -86,6 +86,23 @@ class GraphModel(nx.DiGraph):
         edge_set = set([e[0] for e in edges])
         diff = edge_set - node_set
         assert edge_set <= node_set, f"{diff} is used in a computation but is not defined in a node"
+
+    def check_types(self, summary_df):
+        '''Checks that node types are well defined with respect to computional/non computationnal.
+
+        Args:
+            nodes (List): list of nodes.
+            edges (List): list of edges.
+        '''
+        summary_df = summary_df.copy().reset_index()
+        summary_df_comp = summary_df[~summary_df.computation.isna()]
+        summary_df_non_comp = summary_df[summary_df.computation.isna()]
+
+        non_comp_wrong_nodes = summary_df_non_comp[~summary_df_non_comp.type.isin(['input', 'parameter'])].id.tolist()
+        comp_wrong_nodes = summary_df_comp[~summary_df_comp.type.isin(['variable', 'output'])].id.tolist()
+
+        assert len(non_comp_wrong_nodes) == 0, f'nodes {non_comp_wrong_nodes} are non computational but have wrong types'
+        assert len(comp_wrong_nodes) == 0, f'nodes {comp_wrong_nodes} are computational but have wrong types'
 
     def make_graph(self, graph_nodes):
         '''Make the nx.Digraph object.
@@ -97,7 +114,8 @@ class GraphModel(nx.DiGraph):
             None, Initialize the graph object.
         '''
         nodes, edges, summary_df = GraphParser().parse(graph_nodes)
-        self.checks(nodes, edges)
+        self.check_nodes_and_edges(nodes, edges)
+        self.check_types(summary_df)
         self.add_nodes_from(nodes)
         self.add_edges_from(edges)
         self.summary_df = summary_df  # a bit clunky to put it here
