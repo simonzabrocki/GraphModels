@@ -57,7 +57,7 @@ draw_properties = {
 class GraphModel(nx.DiGraph):
     '''GraphModel allows to write a model as a Graph.
 
-    It herites from nx.Digraph class.
+    TO DO: Add minimal code example
 
     Attributes:
         node_ordering (list): Topological order of the computationnal nodes.

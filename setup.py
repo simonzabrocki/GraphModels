@@ -8,8 +8,8 @@ with open('requirements.txt') as f:
     required = [r.split('==')[0] for r in required]
 
 setup(
-    name='ggmodel',
-    version='0.0.1',
+    name='ggmodel_dev',
+    version='0.0.13',
     description='A Python package for creating graphical models',
     url='https://github.com/Global-Green-Growth-Institute/GraphModels',
     author='Simon Zabrocki',
@@ -17,8 +17,8 @@ setup(
     license='BSD 2-clause',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    packages=['ggmodel'],
-    package_dir={'ggmodel': 'graphmodels/'},
+    packages=['ggmodel_dev'],
+    package_dir={'ggmodel_dev': 'ggmodel/'},
     install_requires=required,
     classifiers=[
         'Development Status :: 1 - Planning',
@@ -28,3 +28,4 @@ setup(
         'Programming Language :: Python :: 3.6',
     ],
 )
+

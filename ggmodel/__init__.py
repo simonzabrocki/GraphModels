@@ -1,3 +1,3 @@
-from ggmodel.graphmodel import (
+from ggmodel_dev.graphmodel import (
     GraphModel
     )
