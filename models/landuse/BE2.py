@@ -4,7 +4,7 @@ __status__ = 'Pending Validation'
 """
 TO DO.
 """
-from graphmodels.graphmodel import GraphModel, concatenate_graph_specs
+from ggmodel.graphmodel import GraphModel, concatenate_graph_specs
 import pandas as pd
 
 # To check naming, confusing with demand/prod + total not total

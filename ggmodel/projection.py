@@ -27,8 +27,12 @@ def apply_itemized_percent_target_projection(series, percent_target=0, baseline_
     '''To improve: Apply item wise projection'''
     series = series.copy()
     series = reindex_series_itemized(series, max_year=target_year)
+
+    series.loc[:, baseline_year+1:, :] = np.nan # remove points after baseline year to have consistent projection
     series.loc[:, target_year, :] = percent_target * \
         series.loc[:, baseline_year, :].values
+
+    return series.groupby(level=['ISO', 'Item']).apply(lambda x: x.interpolate())
 
 
 def apply_annual_rate_projection(series, rate=1, baseline_year=2018, target_year=2050):

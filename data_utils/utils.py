@@ -1,4 +1,4 @@
-from graphmodels.database import select_dataset, upload_dataset
+from data_utils.database import select_dataset, upload_dataset
 
 def get_X_y_from_data(model, data_dict):
     '''TO CLEAN UP'''
