@@ -12,7 +12,7 @@ check model should plot the one that are not checked
 '''
 
 
-def score_model(Model, X, y_true):
+def score_model_old(Model, X, y_true):
     '''Run a model without scenario to check that the aggregation is correct
 
     TO CLEAN UP: put result in dataframe
@@ -23,14 +23,14 @@ def score_model(Model, X, y_true):
     scores = []
     for var in y_true.keys():
         print(var)
-        score = score_variable(y_true[var], results[var])
+        score = score_variable_old(y_true[var], results[var])
         score['Variable'] = var
         scores.append(score)
 
     return pd.DataFrame(scores)
 
 
-def score_variable(baseline, computation):
+def score_variable_old(baseline, computation):
     '''Scores a variable'''
     base_comp = pd.concat([baseline, computation], axis=1).replace(
         [np.inf, -np.inf], np.nan).dropna()
@@ -56,59 +56,70 @@ def plot_diagnostic(Model, X, y_true, var, hover_data=[], color=None, trendline=
     return plot_baseline_vs_computation(y_true[var], results[var], hover_data=hover_data, trendline=trendline, color=color)
 
 
-'''
-TO IMPROVE
-Make the graph more flexible in terms of hoverdata etc, function has now weird parameters
-also plot_comp_base have reveresed agruments
-check model should plot the one that are not checked
-'''
+def data_dict_to_df(data_dict):
+    
+    data_dict = data_dict.copy()
+    
+    data = pd.concat([v.to_frame(name='Value').assign(Variable=k).reset_index() for k, v in data_dict.items()], axis=0)
+        
+    return data
+
+def get_X_y_from_data(model, data_dict):
+    '''TO CLEAN UP'''
+    X = {key: data_dict[key] for key in model.inputs_() + model.parameters_()}
+    y = {key: data_dict[key] for key in model.variables_() + model.outputs_() if key in data_dict}
+    return X, y
 
 
-def check_model(Model, X, y_true):
-    '''Run a model without scenario to check that the aggregation is correct
-
-    TO CLEAN UP: put result in dataframe
-
-    '''
-
-    results = Model.run(X)
-
-    print('Checking computations:')
-    for var in y_true.keys():
-        computation = results[var]
-        baseline = y_true[var]
-        scores = scores_baseline_computation(baseline, computation)
-        print(var, "r2:", scores['r2'], end=' | ')
-        print(var, "corr:", scores['corr'])
+def make_baseline_computation_df(y, y_pred):
+    baseline = data_dict_to_df(y)
+    computation = data_dict_to_df(y_pred)
+    
+    merge_on = [col for col in computation.columns if col != 'Value']
+    
+    baseline_computation_df = baseline.merge(computation, on=merge_on, suffixes=('_baseline', '_computation')).dropna(subset=['Value_baseline', 'Value_computation'])
+    
+    return baseline_computation_df
 
 
-def scores_baseline_computation(baseline, computation):
-
-    base_comp = pd.concat([baseline, computation], axis=1).replace(
-        [np.inf, -np.inf], np.nan).dropna()
-
-    base_comp.columns = ['baseline', 'computation']
-
-    return {'r2': r2_score(base_comp.baseline, base_comp.computation), 'corr': base_comp.baseline.corr(base_comp.computation)}
-
-
-def plot_computation_vs_baseline(baseline, computation):
-    df = pd.concat([baseline, computation], axis=1).dropna()
-    df.columns = ['baseline', 'computation']
-    fig = px.scatter(df.reset_index(), x=f'baseline', y=f'computation',
-                     hover_data=['ISO', 'Year'], trendline='ols')
-    return fig
+def score_variable(baseline, computation):
+    
+    scores = {
+        'r2': r2_score(baseline, computation),
+        'correlation': baseline.corr(computation),
+        'rmse': mean_squared_error(baseline, computation)
+    }
+    return pd.Series(scores)
 
 
-def check_variable_graph(Model, X, y_true, var):
-    """TO CLEAN UP
-    """
-    results = Model.run(X)
+def agg_score_by(baseline_computation_df, by=['ISO', 'Variable']):
+    return (
+        baseline_computation_df.groupby(by)
+                               .apply(lambda x: score_variable(x['Value_baseline'], x['Value_computation']))
+    )
 
-    computation = results[var]
-    baseline = y_true[var]
-    scores = scores_baseline_computation(baseline, computation)
-    print(var, "r2:", scores['r2'], end=' | ')
-    print(var, "corr:", scores['corr'])
 
-    return plot_computation_vs_baseline(baseline, computation)
+def score_model(model, data_dict):
+    X, y = get_X_y_from_data(model, data_dict)
+    y_pred = model.run(X)
+    baseline_computation_df = make_baseline_computation_df(y, y_pred)
+    
+    return {
+        'score_by_Variable': agg_score_by(baseline_computation_df, by='Variable'),
+        'score_by_ISO': agg_score_by(baseline_computation_df, by='ISO'),
+        'score_by_ISO_Variable': agg_score_by(baseline_computation_df, by=['ISO', 'Variable'])
+    }
+
+
+def score_model_dictionnary(model_dictionnary, data_dict):
+    scores = {}
+    for model_name, model in model_dictionnary.items():
+    
+        print(model_name, end=': ')
+        try:
+            scores[model_name] = score_model(model, data_dict)
+            print('Done')
+        except Exception as e:
+            print('Error:', e)
+    
+    return scores
