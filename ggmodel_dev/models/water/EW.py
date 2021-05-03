@@ -5,7 +5,10 @@ __status__ = 'Pending Validation'
 TO DO.
 """
 
-from ggmodel.graphmodel import GraphModel, concatenate_graph_specs
+
+from ggmodel_dev.graphmodel import GraphModel, concatenate_graph_specs
+from ggmodel_dev.utils import get_model_properties
+
 import numpy as np
 
 # Conversions
@@ -182,3 +185,5 @@ model_dictionnary = {'IWW_model': IWW_model,
                      'EW2_model': EW2_model,
                      'EW_model': EW_model,
                      }
+
+model_properties = get_model_properties('models/water/EW_properties.json')

@@ -9,7 +9,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='ggmodel_dev',
-    version='0.0.13',
+    version='0.0.22',
     description='A Python package for creating graphical models',
     url='https://github.com/Global-Green-Growth-Institute/GraphModels',
     author='Simon Zabrocki',
@@ -17,8 +17,9 @@ setup(
     license='BSD 2-clause',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    packages=['ggmodel_dev'],
-    package_dir={'ggmodel_dev': 'ggmodel/'},
+    #packages=find_packages('ggmodel_dev'),
+    packages=['ggmodel_dev', 'ggmodel_dev.models', 'ggmodel_dev.models.water', 'ggmodel_dev.models.landuse'],
+    package_dir={'ggmodel_dev': 'ggmodel_dev/'},
     install_requires=required,
     classifiers=[
         'Development Status :: 1 - Planning',
@@ -27,5 +28,8 @@ setup(
         'Operating System :: POSIX :: Linux',
         'Programming Language :: Python :: 3.6',
     ],
+    package_data={'ggmodel_dev.models.water': ['*.json'], 'ggmodel_dev.models.landuse': ['*.json']},
+    include_package_data=True,
 )
 
+print(find_packages(''))

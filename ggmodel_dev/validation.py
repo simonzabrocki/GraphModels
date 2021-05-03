@@ -77,7 +77,11 @@ def make_baseline_computation_df(y, y_pred):
     
     merge_on = [col for col in computation.columns if col != 'Value']
     
-    baseline_computation_df = baseline.merge(computation, on=merge_on, suffixes=('_baseline', '_computation')).dropna(subset=['Value_baseline', 'Value_computation'])
+    baseline_computation_df = (
+        baseline.merge(computation, on=merge_on, suffixes=('_baseline', '_computation'))
+        .replace([np.inf, -np.inf], np.nan)
+        .dropna(subset=['Value_baseline', 'Value_computation'])
+    )
     
     return baseline_computation_df
 
@@ -101,7 +105,9 @@ def agg_score_by(baseline_computation_df, by=['ISO', 'Variable']):
 
 def score_model(model, data_dict):
     X, y = get_X_y_from_data(model, data_dict)
-    y_pred = model.run(X)
+    result = model.run(X)
+    y_pred = {k: v for k, v in result.items() if k in y}
+
     baseline_computation_df = make_baseline_computation_df(y, y_pred)
     
     return {
