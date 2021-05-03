@@ -17,7 +17,6 @@ setup(
     license='BSD 2-clause',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    #packages=find_packages('ggmodel_dev'),
     packages=['ggmodel_dev', 'ggmodel_dev.models', 'ggmodel_dev.models.water', 'ggmodel_dev.models.landuse'],
     package_dir={'ggmodel_dev': 'ggmodel_dev/'},
     install_requires=required,
@@ -31,5 +30,3 @@ setup(
     package_data={'ggmodel_dev.models.water': ['*.json'], 'ggmodel_dev.models.landuse': ['*.json']},
     include_package_data=True,
 )
-
-print(find_packages(''))
