@@ -92,3 +92,19 @@ def run_projection(projection_dict, data_dict):
         data_dict[variable] = function(data_dict[variable])
 
     return data_dict
+
+
+def run_scenario_list(scenario_function,
+                      list_of_scenarios,
+                      projection_dictionnary,
+                      data_dict,
+                      ):
+    
+    proj_data_dict = run_projection(projection_dictionnary, data_dict.copy())
+
+    results = {}
+    
+    for i, args in enumerate(list_of_scenarios):
+        results[f'scenario_{i}'] = scenario_function(proj_data_dict, **args)
+        
+    return results
