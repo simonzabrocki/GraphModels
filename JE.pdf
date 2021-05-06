@@ -1,0 +1,135 @@
+digraph {
+	graph [splines=ortho]
+	PCS [label=PCS color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Physical Capital Stock 
+ (PCS) 
+ $" peripheries=1 shape=rectangle style=filled]
+	DCGS [label=DCGS color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Durable Consumption Good Stock 
+ (DCGS) 
+ $" peripheries=1 shape=rectangle style=filled]
+	RC [label=RC color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Rate of Capital Depreciation 
+ (RC) 
+ %" peripheries=1 shape=rectangle style=filled]
+	PDCG [label=PDCG color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Proportion of Durable Consumption Goods Discarded 
+ (PDCG) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	DSES [label=DSES color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Discarded Socio-Economic Stock 
+ (DSES) 
+ tonnes" peripheries=1 shape=rectangle style=filled]
+	DSES_comp [label=DSES_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="ME1 * (RC * PCS + PDCG * DCGS)" peripheries=1 shape=rectangle style=""]
+	RR [label=RR color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Recycling Ratio 
+ (RR) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	WASTE [label=WASTE color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Waste Generated 
+ (WASTE) 
+ tonnes" peripheries=1 shape=rectangle style=filled]
+	WASTE_comp [label=WASTE_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="DSES * (1 - RR) # to be checked" peripheries=1 shape=rectangle style=""]
+	ME1 [label=ME1 color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="DMC per GDP 
+ (ME1) 
+ tonnes/$" peripheries=1 shape=rectangle style=filled]
+	ME1_comp [label=ME1_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="DMC / GDP" peripheries=1 shape=rectangle style=""]
+	DEi [label=DEi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Domestic Extraction per material 
+ (DEi) 
+ tonnes" peripheries=1 shape=rectangle style=filled]
+	IMPi [label=IMPi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Imports per material 
+ (IMPi) 
+ tonnes" peripheries=1 shape=rectangle style=filled]
+	EXPi [label=EXPi color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Exports per material 
+ (EXPi) 
+ tonnes" peripheries=1 shape=rectangle style=filled]
+	DMCi [label=DMCi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Domestic material consumption per material 
+ (DMCi) 
+ tonnes" peripheries=1 shape=rectangle style=filled]
+	DMCi_comp [label=DMCi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="DEi + IMPi - EXPi" peripheries=1 shape=rectangle style=""]
+	MF [label=MF color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Material footprint 
+ (MF) 
+ tonnes" peripheries=1 shape=rectangle style=filled]
+	Pop [label=Pop color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Population 
+ (Pop) 
+ capita" peripheries=1 shape=rectangle style=filled]
+	ME2 [label=ME2 color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="MF per capita 
+ (ME2) 
+ tonnes/capita" peripheries=1 shape=rectangle style=filled]
+	ME2_comp [label=ME2_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="MF / Pop" peripheries=1 shape=rectangle style=""]
+	DMC [label=DMC color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Domestic material consumption 
+ (DMC) 
+ tonnes" peripheries=1 shape=rectangle style=filled]
+	DMC_comp [label=DMC_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="DMCi.sum() # add groupby iso year" peripheries=1 shape=rectangle style=""]
+	GDP [label=GDP color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Gross domestic product 
+ (GDP) 
+ $" peripheries=1 shape=rectangle style=filled]
+	MI [label=MI color="#eeeeee" fillcolor="#e76f51" fontcolor="#eeeeee" fontname=roboto label="Material Efficiency Improvement 
+ (MI) 
+ %" peripheries=1 shape=rectangle style=filled]
+	RS [label=RS color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Resources Saved 
+ (RS) 
+ tonnes" peripheries=1 shape=rectangle style=filled]
+	RS_comp [label=RS_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="MI * DMC" peripheries=1 shape=rectangle style=""]
+	MS [label=MS color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Share of Materials 
+ (MS) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	MS_comp [label=MS_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="DMCi / DMC" peripheries=1 shape=rectangle style=""]
+	APCi [label=APCi color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Average Price per commodity 
+ (APCi) 
+ $/tonnes" peripheries=1 shape=rectangle style=filled]
+	EPI [label=EPI color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Export Price Index 
+ (EPI) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	CMi [label=CMi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Cost per material 
+ (CMi) 
+ $/tonnes" peripheries=1 shape=rectangle style=filled]
+	CMi_comp [label=CMi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="APCi * EX" peripheries=1 shape=rectangle style=""]
+	PMi [label=PMi color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Price per unit of Materials 
+ (PMi) 
+ $/tonnes" peripheries=1 shape=rectangle style=filled]
+	PMi_comp [label=PMi_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="MS * CMi" peripheries=1 shape=rectangle style=""]
+	TMS [label=TMS color="#eeeeee" fillcolor="#f4a261" fontcolor="#eeeeee" fontname=roboto label="Monetary Savings 
+ (TMS) 
+ $" peripheries=1 shape=rectangle style=filled]
+	TMS_comp [label=TMS_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="RS * PMi.sum() # to add group by year iso" peripheries=1 shape=rectangle style=""]
+	AW [label=AW color="#eeeeee" fillcolor="#e9c46a" fontcolor="#eeeeee" fontname=roboto label="Average Wage 
+ (AW) 
+ $" peripheries=1 shape=rectangle style=filled]
+	JE [label=JE color="#eeeeee" fillcolor="#2a9d8f" fontcolor="#eeeeee" fontname=roboto label="Job Equivalents 
+ (JE) 
+ 1" peripheries=1 shape=rectangle style=filled]
+	JE_comp [label=JE_comp color="#A9A9A9" fillcolor="#e76f51" fontcolor="#000000" fontname=roboto label="TMS / AW" peripheries=1 shape=rectangle style=""]
+	PCS -> DSES_comp [color="#A9A9A9"]
+	DCGS -> DSES_comp [color="#A9A9A9"]
+	RC -> DSES_comp [color="#A9A9A9"]
+	PDCG -> DSES_comp [color="#A9A9A9"]
+	DSES -> WASTE_comp [color="#A9A9A9"]
+	DSES_comp -> DSES [color="#A9A9A9"]
+	RR -> WASTE_comp [color="#A9A9A9"]
+	WASTE_comp -> WASTE [color="#A9A9A9"]
+	ME1 -> DSES_comp [color="#A9A9A9"]
+	ME1_comp -> ME1 [color="#A9A9A9"]
+	DEi -> DMCi_comp [color="#A9A9A9"]
+	IMPi -> DMCi_comp [color="#A9A9A9"]
+	EXPi -> DMCi_comp [color="#A9A9A9"]
+	DMCi -> DMC_comp [color="#A9A9A9"]
+	DMCi -> MS_comp [color="#A9A9A9"]
+	DMCi_comp -> DMCi [color="#A9A9A9"]
+	MF -> ME2_comp [color="#A9A9A9"]
+	Pop -> ME2_comp [color="#A9A9A9"]
+	ME2_comp -> ME2 [color="#A9A9A9"]
+	DMC -> ME1_comp [color="#A9A9A9"]
+	DMC -> RS_comp [color="#A9A9A9"]
+	DMC -> MS_comp [color="#A9A9A9"]
+	DMC_comp -> DMC [color="#A9A9A9"]
+	GDP -> ME1_comp [color="#A9A9A9"]
+	MI -> RS_comp [color="#A9A9A9"]
+	RS -> TMS_comp [color="#A9A9A9"]
+	RS_comp -> RS [color="#A9A9A9"]
+	MS -> PMi_comp [color="#A9A9A9"]
+	MS_comp -> MS [color="#A9A9A9"]
+	APCi -> CMi_comp [color="#A9A9A9"]
+	EPI -> CMi_comp [color="#A9A9A9"]
+	CMi -> PMi_comp [color="#A9A9A9"]
+	CMi_comp -> CMi [color="#A9A9A9"]
+	PMi -> TMS_comp [color="#A9A9A9"]
+	PMi_comp -> PMi [color="#A9A9A9"]
+	TMS -> JE_comp [color="#A9A9A9"]
+	TMS_comp -> TMS [color="#A9A9A9"]
+	AW -> JE_comp [color="#A9A9A9"]
+	JE_comp -> JE [color="#A9A9A9"]
+}
