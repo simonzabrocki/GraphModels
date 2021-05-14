@@ -4,6 +4,7 @@
         "display_name": "Water Use Efficiency",
         "model": "EW1_partial_model",
         "model_group": "Water",
+        "indicator": "EW1",
         "status": "✔️"
     },
     "EW2_partial_model": {
@@ -11,6 +12,7 @@
         "display_name": "Freshwater Availability",
         "model": "EW2_Partial_model",
         "model_group": "Water",
+        "indicator": "EW2",
         "status": "✔️"
     },
     "EW_model": {
@@ -18,6 +20,7 @@
         "display_name": "Efficient Water",
         "model": "EW_model",
         "model_group": "Water",
+        "indicator": "EW",
         "status": "✔️"
     },
     "IWW_model": {
@@ -25,6 +28,7 @@
         "display_name": "Agricultural Water Withdrawal",
         "model": "IWW_model ",
         "model_group": "Water",
+        "indicator": "EW",
         "status": "✔️"
     },
     "MWU_model": {
@@ -32,6 +36,7 @@
         "display_name": "Municipal Water Use",
         "model": "MWU_model",
         "model_group": "Water",
+        "indicator": "EW",
         "status": "✔️"
     }
 }

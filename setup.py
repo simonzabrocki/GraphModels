@@ -17,7 +17,7 @@ setup(
     license='BSD 2-clause',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    packages=['ggmodel_dev', 'ggmodel_dev.models', 'ggmodel_dev.models.water', 'ggmodel_dev.models.landuse'],
+    packages=['ggmodel_dev', 'ggmodel_dev.models', 'ggmodel_dev.models.water', 'ggmodel_dev.models.landuse', 'ggmodel_dev.models.greengrowth'],
     package_dir={'ggmodel_dev': 'ggmodel_dev/'},
     install_requires=required,
     classifiers=[

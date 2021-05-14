@@ -113,7 +113,7 @@ CL_nodes = {'TCLDi': {
 },
     'CL': {
     'type': 'output',
-    'name': 'Cropland stock',
+    'name': 'Cropland',
     'unit': '1000 ha',
     # Strange to check !
     'computation': lambda TCLDi, CL_corr_coef, **kwargs: TCLDi.groupby(level=['ISO', 'Year']).sum() * 1e-3 * CL_corr_coef
@@ -122,7 +122,7 @@ CL_nodes = {'TCLDi': {
 
 IL_FL_nodes = {'CL': {
     'type': 'input',
-    'name': 'Cropland stock',
+    'name': 'Cropland',
     'unit': '1000 ha',
 },
     'CL_baseline': {

@@ -495,7 +495,7 @@ def get_id_type_df(list_of_graph_specs):
     return id_type_df
 
 
-def get_nodes_df(node_list):
+def get_nodes_df(node_list, node_id):
     nodes_df = pd.DataFrame(node_list)
     assert nodes_df[['unit', 'name']].drop_duplicates().shape[0] == 1, f'{node_id} has different name or unit across specifications'
     return nodes_df
@@ -506,8 +506,8 @@ def get_node_from_list_of_specs(node_id, list_of_graph_specs):
     return node_list
 
 
-def merge_nodes(node_list):
-    nodes_to_merge = get_nodes_df(node_list)      
+def merge_nodes(node_list, node_id):
+    nodes_to_merge = get_nodes_df(node_list, node_id)      
 
     if 'variable' in nodes_to_merge.type.unique():
         computation = nodes_to_merge.dropna(subset=['computation']).computation.unique()[0]
@@ -543,7 +543,7 @@ def concatenate_graph_specs(list_of_graph_specs):
 
     for node_id in duplicated_nodes:
         nodes_to_merge = get_node_from_list_of_specs(node_id, list_of_graph_specs)
-        merged_node = merge_nodes(nodes_to_merge)
+        merged_node = merge_nodes(nodes_to_merge, node_id)
         merged_nodes[node_id] = merged_node
             
     concatenated_specs.update(merged_nodes)
