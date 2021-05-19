@@ -42,7 +42,5 @@ model_dictionnary = {'GGGM_model': GreenGrowthModel}
 
 model_properties = get_model_properties('models/greengrowth/GGGM_properties.json')
 
-
-
 all_model_dictionary.update(model_dictionnary)
 all_model_properties.update(model_properties)

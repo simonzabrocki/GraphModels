@@ -77,9 +77,16 @@ def get_variables_metadata(variables, engine=engine):
     return df
 
 
-def select_variables_in_table(variables, tablename, engine=engine):
+def select_variables_in_table(variables, tablename, ISO=[], engine=engine):
+    
     variables_string = "(\'" + ('\',\'').join(variables) + "\')"
-    sql = f'SELECT * FROM {tablename} WHERE \"Variable\" in {variables_string};'
+    
+    sql = f'SELECT * FROM {tablename} WHERE \"Variable\" in {variables_string}'
+    
+    if len(ISO) > 0:
+        iso_string = "(\'" + ('\',\'').join(ISO) + "\')"
+        sql += f'AND \"ISO\" in {iso_string}'
+    
     
     with engine.connect() as conn:
         df = pd.read_sql(sql, conn)
@@ -87,7 +94,8 @@ def select_variables_in_table(variables, tablename, engine=engine):
     return df
 
 
-def get_variables_df(variables, exclude_tables=[], engine=engine):
+
+def get_variables_df(variables, ISO=[], exclude_tables=[], engine=engine):
     '''To slow to do a single query'''
     
     variables_string = format_variable_list(variables)
@@ -102,7 +110,7 @@ def get_variables_df(variables, exclude_tables=[], engine=engine):
         print(table, ', '.join(variables), end=': ')
         if table not in exclude_tables:            
             try:
-                df = select_variables_in_table(variables, table).merge(meta_df.query(f"table == '{table}'"), on=['Variable'])
+                df = select_variables_in_table(variables, table, ISO).merge(meta_df.query(f"table == '{table}'"), on=['Variable'])
                 dfs[table] = df
                 print('Done')
             except Exception as e:
@@ -110,13 +118,3 @@ def get_variables_df(variables, exclude_tables=[], engine=engine):
         else:
             print('Excluded')
     return dfs
-
-
-
-# def select_dataset(dataset_name='aquastat', engine=engine):
-#     '''to slow'''
-#     sql = f'SELECT * FROM {dataset_name} INNER JOIN meta{dataset_name} ON meta{dataset_name}.\\\"Variable\\\"={dataset_name}.\\\"Variable\\\";',
-#     with engine.connect() as conn:
-#         df = pd.read_sql(sql, conn)
-#     df = df.loc[:,~df.columns.duplicated()]
-#     return df

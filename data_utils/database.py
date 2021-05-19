@@ -37,7 +37,12 @@ def select_dataset(dataset, engine=engine):
     '''
     df = select_table(dataset)
     meta_df = select_table(f'meta{dataset}')
-    return pd.merge(df, meta_df, on='Variable')
+    
+    if 'Source' in df.columns:
+        return pd.merge(df, meta_df, on=['Source', 'Variable'])
+        
+    else:
+        return pd.merge(df, meta_df, on='Variable')
 
 
 # def select_dataset(dataset_name='aquastat', engine=engine):
