@@ -10,7 +10,7 @@
     "EW2_partial_model": {
         "description": "A country’s total freshwater availability includes natural and non-conventional sources. Total renewable freshwater is determined by the internal renewable water resources plus the external renewable water resources. A scenario to improve natural freshwater availability is to include non-conventional water resources of desalinated water and treated wastewater. EW 2 is the computed by the total water withdrawal divided by the total renewable freshwater minus the environmental flow requirement. To find the percentage values the water stress output is multiplied by 100.",
         "display_name": "Freshwater Availability",
-        "model": "EW2_Partial_model",
+        "model": "EW2_partial_model",
         "model_group": "Water",
         "indicator": "EW2",
         "status": "✔️"

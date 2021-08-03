@@ -131,3 +131,6 @@ dmypy.json
 models/Hermen/data/
 
 data/
+
+
+data_utils/config.ini

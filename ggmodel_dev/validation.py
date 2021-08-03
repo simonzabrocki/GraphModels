@@ -129,3 +129,44 @@ def score_model_dictionnary(model_dictionnary, data_dict):
             print('Error:', e)
     
     return scores
+
+
+def results_to_dataframes(model, results):
+    
+    summary_df = model.summary_df.drop(columns=['computation'])
+    
+    dfs = {name: series.to_frame(name=name) for name, series in results.items()}
+        
+    for name, df in dfs.items():
+        columns = tuple(df.columns.tolist() + summary_df.loc[name].values.tolist())
+        df.columns =  pd.MultiIndex.from_tuples([columns], names=["Variable", "Name", 'Type', 'Unit'])
+        dfs[name] = df
+
+    return dfs
+
+
+def export_to_xls(result_dfs, path):
+    
+    with pd.ExcelWriter(path) as writer:
+        
+        for name, df in result_dfs.items():
+            df.to_excel(writer, sheet_name=name)
+            
+
+def model_validation_pipeline(model, data_dict):
+    
+    '''Double computation!!! to improve'''
+    
+    scores = score_model(model, data_dict)
+    
+    X, y = get_X_y_from_data(model, data_dict)
+    results = model.run(X)
+    
+    
+    result_dfs = results_to_dataframes(model, results)
+    result_dfs['summary'] = model.summary_df
+    
+    for score, score_df in scores.items():
+        result_dfs[score] = score_df
+        
+    return result_dfs
