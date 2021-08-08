@@ -4,6 +4,25 @@
 A framework to compute an visualize GGGI models using computational graphs.
 
 
+# TODO
+
+## Code quality
+- Improve unit tests on the core graphmodel
+- Add unit tests on the models
+- split scripts in graphmodel between plotting, computing and the core module
+- Remove the older version models as well as the old data and parameters
+- Add asserts on the inputs of the model
+
+
+## Features
+- Create a script to automatically save all the graphs in a folder
+- Add an accessible full description on all models
+- Create an interface from the db format to the computing format
+- Add country wise, variable wise metrics for testing
+- Find a way to remove the mandatory kwargs argument in the compuation functions
+
+
+
 # Purpose
 
 The purpose of this package is to simplify and standardize the implementation of functions used in Green Growth Institute's models. The package solves two problems. First, some contributors to models do not have the time or skills to spend time writting clean and uniform code to implement their ideas. Hence, this program acts as a template guiding collaborators. The coding skill required is minimal and allows for anyone to express their ideas meaningfully and quickly. Secondly, despite being mathematically simple, the models often involve a large number of inputs, variables and parameters with different units, sources and names. Graphs offer a simple way to vizualise and compute the models. Vizualisation is essential internally to create optimizated and logical functions. It is also essential for the credibility of the models, plotting graphs allow anyone to quickly follow and suggest improvement on the models.
@@ -15,7 +34,7 @@ To be added on pip
 
 # How to
 
-The program is consise and revolves around a single object, the GraphModel. In order to build a GraphModel, the nodes are specificied in a dictionnary following a given format. This dictionnary fully defines a directed acyclic graph. The graph has two features, computation and visualisation. The GraphModel can compute the function represented by the graph for given inputs. The GraphModel can also be displayed in a "flow diagram" style.
+The program revolves around a single object, the GraphModel. In order to build a GraphModel, the nodes are specificied in a dictionnary following a given format. This dictionnary fully defines a directed acyclic graph. The graph has two features, computation and visualisation. The GraphModel can compute the function represented by the graph for given inputs. The GraphModel can also be displayed in a "flow diagram" style.
 
 ## Nodes definitions
 
